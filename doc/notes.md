@@ -55,6 +55,7 @@ Casa <- Divisão de Salas <- SmartDevices + Nome do Dono e NIF
 ##### EXEMPLOS
 
 PrecoDiaPorDispositivo = (ValorBase\*ConsumoDispositivo\*(1+Imposto))\*0.9
+
 PrecoDiaPorDispositivo = numeroDispositivos >10?(ValorBase\*ConsumoDispositivo\*(1+Imposto)) \*0.9:(ValorBase\*ConsumoDispositivo\*(1+Imposto))*0.75
 
 ## Simulador
