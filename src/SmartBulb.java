@@ -1,12 +1,8 @@
 package src;
-public class SmartBulb{
+public class SmartBulb extends Device{
     /* Constants Enums Structs */
     public static final int Consumption_Val = 132;
-
-    public enum Mode{
-        ON,
-        OFF
-    };
+    
     public enum Tone {
         Neutral,
         Warm,
@@ -15,7 +11,6 @@ public class SmartBulb{
     /**/
 
     /* Variables */
-    private Mode mode;
     private Tone tone; /* Enum Tone */
     private int dimensions; /* in centimetres */
     private double daily_consumption; /* formula is group specific */
@@ -24,21 +19,21 @@ public class SmartBulb{
 
     /* Constructors */
     public SmartBulb(){
-        this.mode = Mode.OFF;
+        super();
         this.tone = Tone.Neutral;
         this.dimensions = 1;
         this.computeConsumption();
     }
 
     public SmartBulb(Mode mode, Tone tone, int dimensions, double daily_consumption){
-        this.setMode(mode);
+        super();
         this.setTone(tone);
         this.setDimensions(dimensions);
         this.computeConsumption();
     }
 
     public SmartBulb(SmartBulb b){
-        this.setMode(b.getMode());
+        super();
         this.setTone(b.getTone());
         this.setDimensions(b.getDimensions());
         this.computeConsumption();
@@ -49,9 +44,6 @@ public class SmartBulb{
     /* Getters */
     public Tone getTone(){
         return this.tone;
-    }
-    public Mode getMode(){
-        return this.mode;
     }
 
     public int getDimensions(){
@@ -65,9 +57,6 @@ public class SmartBulb{
 
 
     /* Setters */
-    private void setMode(Mode mode){
-        this.mode =  mode;
-    }
     public void setTone(Tone tone){
         this.tone = tone;
         this.computeConsumption();

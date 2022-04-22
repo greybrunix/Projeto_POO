@@ -1,16 +1,10 @@
 package src;
 
-public class SmartSpeaker {
+public class SmartSpeaker extends Device {
     /* Constants  enums and structs */
     public static final int MAX = 20;    
-    public enum Mode{
-        ON,
-        OFF
-    }
-
 
     /* Variables */
-    private Mode mode;
     private double daily_consumption;
     private int volume;
     private String radio;
@@ -19,21 +13,21 @@ public class SmartSpeaker {
 
     /* Constructors */
     public SmartSpeaker(){
-        this.setMode(Mode.OFF);
+        super();
         this.setVolume(0);
         this.setRadio("");
         this.setBrand("");
         this.computeConsumption();
     }
     public SmartSpeaker(Mode mode, int v, String r, String b, double dc){
-        this.setMode(mode);
+        super();
         this.setVolume(v);
         this.setRadio(r);
         this.setBrand(b);
         this.computeConsumption();
     }
     public SmartSpeaker(SmartSpeaker s){
-        this.setMode(s.getMode());
+        super();
         this.setVolume(s.getVolume());
         this.setRadio(s.getRadio());
         this.setBrand(s.getBrand());
@@ -42,9 +36,6 @@ public class SmartSpeaker {
 
 
     /* Getters */
-    public Mode getMode(){
-        return this.mode;
-    }
     public int getVolume(){
         return this.volume;
     }
@@ -60,9 +51,6 @@ public class SmartSpeaker {
 
 
     /* Setters */
-    private void setMode(Mode mode){
-        this.mode = mode;
-    }
     public void setVolume(int v){
         this.volume = v;
         this.computeConsumption();
@@ -84,24 +72,18 @@ public class SmartSpeaker {
             this.daily_consumption = 0;
     }
 
-
-
-    /* Regular Methods */
     public void setON(){
         if (this.getMode() == Mode.OFF){
             this.setMode(Mode.ON);
-            this.computeConsumption();
+            computeConsumption();
         }
     }
     public void setOFF(){
         if (this.getMode() == Mode.ON){
             this.setMode(Mode.OFF);
-            this.computeConsumption();
+            computeConsumption();
         }
     }
-
-
-
     /* Overrides */
     public boolean equals(Object o){
         if (this == o) return true;

@@ -1,40 +1,31 @@
 package src;
-public class SmartCamera {
+public class SmartCamera extends Device{
     
-    /* Enums Structs etc */
-    public enum Mode{
-        ON,
-        OFF
-    };
     /* Variables */
-    private Mode mode;
     private int resolution;
     private int size;
     private double daily_consumption;
 
     /* Constructors */
     public SmartCamera(){
-        this.setMode(Mode.OFF);
+        super();
         this.setRes(0);
         this.setSize(0);
         this.computeConsumption();
     }
     public SmartCamera(Mode mode, int res, int size, double dc){
-        this.setMode(mode);
+        super();
         this.setRes(res);
         this.setSize(size);
         this.computeConsumption();
     }
     public SmartCamera(SmartCamera c){
-        this.setMode(c.getMode());
+        super();
         this.setRes(c.getRes());
         this.setSize(c.getSize());
         this.computeConsumption();
     }
     /* Getters */
-    public Mode getMode(){
-        return this.mode;
-    }
     public int getRes(){
         return this.resolution;
     }
@@ -45,9 +36,6 @@ public class SmartCamera {
         return this.daily_consumption;
     }
     /* Setters */
-    private void setMode(Mode mode){ // Probably wll be redundant
-        this.mode = mode;
-    }
     public void setRes(int res){
         this.resolution = res;
         this.computeConsumption();
@@ -63,26 +51,6 @@ public class SmartCamera {
         else
             this.daily_consumption = 0;
     }
-
-
-
-    /* Regular Methods */
-    public void setON(){
-        if (this.getMode() == Mode.OFF){
-            this.setMode(Mode.ON);
-            this.computeConsumption();
-        }
-    }
-    public void setOFF(){
-        if (this.getMode() == Mode.ON){
-            this.setMode(Mode.OFF);
-            this.computeConsumption();
-        }
-    }
-    
-
-
-
     /* Overrides */
     public boolean equals(Object o){
         if (this == o) return true;
