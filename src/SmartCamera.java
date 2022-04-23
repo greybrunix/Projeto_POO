@@ -1,5 +1,5 @@
 package src;
-public class SmartCamera extends Device{
+public class SmartCamera extends SmartDevice{
     
     /* Variables */
     private int resolution;
@@ -13,7 +13,7 @@ public class SmartCamera extends Device{
         this.setSize(0);
         this.computeConsumption();
     }
-    public SmartCamera(Mode mode, int res, int size, double dc){
+    public SmartCamera(boolean mode, String id, int res, int size, double dc){
         super();
         this.setRes(res);
         this.setSize(size);
@@ -46,11 +46,21 @@ public class SmartCamera extends Device{
     }
     /* Computations */
     public void computeConsumption(){
-        if (this.getMode() == Mode.ON)
+        if (this.getMode())
             this.daily_consumption = this.getRes() * this.getSize();
         else
             this.daily_consumption = 0;
     }
+    public void setON(){
+        this.setMode(true);
+        this.computeConsumption();
+    }
+    public void setOFF(){
+        this.setMode(false);
+        this.computeConsumption();
+    }
+    
+    
     /* Overrides */
     public boolean equals(Object o){
         if (this == o) return true;
@@ -62,7 +72,9 @@ public class SmartCamera extends Device{
     }
     public String toString(){
         StringBuilder sb = new StringBuilder();
-        sb.append("This camera is turned ")
+        sb.append("Camera with id:\t")
+          .append(this.getId())
+          .append("Is this camera on?\t")
           .append(this.getMode())
           .append("\nThis camera is recording in res:\t")
           .append(this.getRes())

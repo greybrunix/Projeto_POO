@@ -1,6 +1,6 @@
 package src;
 
-public class SmartSpeaker extends Device {
+public class SmartSpeaker extends SmartDevice {
     /* Constants  enums and structs */
     public static final int MAX = 20;    
 
@@ -19,7 +19,7 @@ public class SmartSpeaker extends Device {
         this.setBrand("");
         this.computeConsumption();
     }
-    public SmartSpeaker(Mode mode, int v, String r, String b, double dc){
+    public SmartSpeaker(boolean mode, String id, int v, String r, String b){
         super();
         this.setVolume(v);
         this.setRadio(r);
@@ -66,24 +66,31 @@ public class SmartSpeaker extends Device {
 
     /* Computations */
     public void computeConsumption(){
-        if (this.getMode() == Mode.ON)
+        if (this.getMode())
             this.daily_consumption = 1; /* Computation */
         else
             this.daily_consumption = 0;
     }
+    public void volumeUP(){
+        if (this.getVolume() < MAX){
+            this.setVolume(this.volume++);
+        }
+    }
+    public void volumeDOWN(){
+        if (this.getVolume() > 0){
+            this.setVolume(this.volume--);
+        }
+    }
 
     public void setON(){
-        if (this.getMode() == Mode.OFF){
-            this.setMode(Mode.ON);
-            computeConsumption();
-        }
+        this.setMode(true);
+        computeConsumption();
     }
     public void setOFF(){
-        if (this.getMode() == Mode.ON){
-            this.setMode(Mode.OFF);
-            computeConsumption();
-        }
+        this.setMode(false);
+        computeConsumption();
     }
+
     /* Overrides */
     public boolean equals(Object o){
         if (this == o) return true;
@@ -96,7 +103,11 @@ public class SmartSpeaker extends Device {
     }
     public String toString(){
         StringBuilder sb = new StringBuilder();
-        sb.append("Speaker with Volume:\t")
+        sb.append("Speaker with id:\t")
+          .append(this.getId())
+          .append("Is this Speaker on?\t")
+          .append(this.getMode())
+          .append("Speaker with Volume:\t")
           .append(this.getVolume())
           .append("\nPlaying the radio station:\t")
           .append(this.getRadio())
