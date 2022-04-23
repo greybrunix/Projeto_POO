@@ -22,4 +22,11 @@ public class SmartHouse{
         this.devices = new HashMap<String, SmartDevice>();
         this.divisions = new HashMap<String, List<String>>();
     }
+    public void setDeviceOn(String id){
+        this.devices.get(id).setON();
+    }
+    public boolean deviceExists(String id)
+    {
+        return true;
+    }
 }
