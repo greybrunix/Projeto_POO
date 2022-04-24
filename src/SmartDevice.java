@@ -38,4 +38,14 @@ public class SmartDevice {
     public void setOFF(){ // Note this can only happen after a day has passed
         this.setMode(false);
     }
+
+    public boolean equals(Object o){
+        if (this == o) return true;
+        if (o == null || o.getClass() != this.getClass()) return false;
+        SmartDevice sd = (SmartDevice) o;
+        return (this.getId() == sd.getId());
+    }
+    public SmartDevice clone(){
+        return new SmartDevice(this);
+    }
 }
