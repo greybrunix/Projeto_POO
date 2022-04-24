@@ -1,19 +1,16 @@
 package src;
 
 public class SmartBulb extends SmartDevice{
-    /* Constants Enums Structs */
+    /* Constants */
     public static final int Consumption_Val = 132;
     public static final int WARM = 2;
     public static final int NEUTRAL = 1;
     public static final int COLD = 0;
-    /**/
 
     /* Variables */
     private int tone; /* WARM NEUTRAL COLD */
     private int dimensions; /* in centimetres */
     private double daily_consumption; /* formula is group specific */
-    /* */
-
 
     /* Constructors */
     public SmartBulb(){
@@ -22,32 +19,26 @@ public class SmartBulb extends SmartDevice{
         this.dimensions = 1;
         this.computeConsumption();
     }
-
     public SmartBulb(boolean mode,String id,int tone, int dimensions, double daily_consumption){
         super();
         this.setTone(tone);
         this.setDimensions(dimensions);
         this.computeConsumption();
     }
-
     public SmartBulb(SmartBulb b){
         super();
         this.setTone(b.getTone());
         this.setDimensions(b.getDimensions());
         this.computeConsumption();
     }
-    /* */
-
 
     /* Getters */
     public int getTone(){
         return this.tone;
     }
-
     public int getDimensions(){
         return this.dimensions;
     }
-
     public double getConsumption(){
         return this.daily_consumption;
     }
@@ -80,24 +71,14 @@ public class SmartBulb extends SmartDevice{
         else
             this.daily_consumption = 0;
     }
-
-    public void toneUP(){
-    }
-
-    /* Regular Methods */
     public void setON(){
         this.setMode(true);
         this.computeConsumption();
     }
-
     public void setOFF(){
         this.setMode(false);
         this.computeConsumption();
     }
-
-
-
-
 
     /* Overrides */
     public boolean equals(Object o){
