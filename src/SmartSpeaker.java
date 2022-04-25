@@ -67,7 +67,6 @@ public class SmartSpeaker extends SmartDevice {
         this.computeConsumption();
     }
 
-
     /* Computations */
     public void computeConsumption(){
         if (this.getMode())

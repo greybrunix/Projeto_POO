@@ -19,7 +19,7 @@ public class EnergyProvider {
     }
     private EnergyProvider(EnergyProvider ep){
         this.price = ep.getPrice();
-        this.houses = this.getHouses();
+        this.houses = ep.getHouses();
     }
     public int getPrice(){
         return this.price;
@@ -32,8 +32,8 @@ public class EnergyProvider {
         int result = 0;
         for (SmartDevice device : this.houses.get(owner).getDevices().values()){
             result += this.houses.get(owner).getDevices().size()>10?
-                    (base_value*((SmartCamera) device).getConsumption()*(1+tax_factor))*0.9:
-                    (base_value*((SmartCamera) device).getConsumption()*(1+tax_factor))*0.75;
+                    (base_value*device.getConsumption()*(1+tax_factor))*0.9:
+                    (base_value*device.getConsumption()*(1+tax_factor))*0.75;
         }
         this.price = result;
     }

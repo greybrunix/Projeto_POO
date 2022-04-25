@@ -7,7 +7,7 @@ package src;
  *    and related standard methods, such as getters
  *     and setters and optimized standard algorithms
  ********************************************************/
-public class SmartDevice {
+public abstract class SmartDevice {
     // This could be a super of the devices
     private String id;
     private boolean mode;
@@ -32,19 +32,17 @@ public class SmartDevice {
     public String getId(){
         return this.id;
     }
+    abstract public double getConsumption(); 
     public void setMode(boolean mode){
         this.mode = mode;
     }
     private void setId(String id){
         this.id = id;
     }
+    abstract void computeConsumption();
 
-    public void setON(){
-        this.setMode(true);
-    }
-    public void setOFF(){ // Note this can only happen after a day has passed
-        this.setMode(false);
-    }
+    abstract public void setON();
+    abstract public void setOFF();
 
     public boolean equals(Object o){
         if (this == o) return true;
@@ -52,7 +50,5 @@ public class SmartDevice {
         SmartDevice sd = (SmartDevice) o;
         return (this.getId() == sd.getId());
     }
-    public SmartDevice clone(){
-        return new SmartDevice(this);
-    }
+    abstract public SmartDevice clone();
 }
