@@ -60,6 +60,8 @@ PrecoDiaPorDispositivo = numeroDispositivos >10?(ValorBase\*ConsumoDispositivo\*
 
 ## Simulador
 
+guardar em ficheiro, avançar dias, ter certos metodos apenas tomar efeito apos mudança de dia (desligar device, mudar fornecedor de energia, mudar valores etc) ir para qualquer data e ter fatura pronta para qq dia, guardar em ficheiro um certo "savestate" do simulador
+
 ## Apontamentos
 
 Electric company can be a set
