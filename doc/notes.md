@@ -59,3 +59,13 @@ PrecoDiaPorDispositivo = (ValorBase\*ConsumoDispositivo\*(1+Imposto))\*0.9
 PrecoDiaPorDispositivo = numeroDispositivos >10?(ValorBase\*ConsumoDispositivo\*(1+Imposto)) \*0.9:(ValorBase\*ConsumoDispositivo\*(1+Imposto))*0.75
 
 ## Simulador
+
+## Apontamentos
+
+Electric company can be a set
+
+Adding a device to house without adding to room possible?
+
+-> Going to asssume it's not and request to add to room first
+
+I don't see the utility of an empty constructor in ANY class

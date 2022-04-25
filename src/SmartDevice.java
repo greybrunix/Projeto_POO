@@ -1,11 +1,19 @@
 package src;
 
+/********************************************************
+ * 
+ * This class is a super class for each individual SD
+ *   It follows that it has identifier and mode vars
+ *    and related standard methods, such as getters
+ *     and setters and optimized standard algorithms
+ ********************************************************/
 public class SmartDevice {
     // This could be a super of the devices
     private String id;
     private boolean mode;
 
-    public SmartDevice(){
+    /* Do I actually want empty constructors? */
+    public SmartDevice(){ // Might remove this
         this.setMode(false);
         this.setId("");
     }

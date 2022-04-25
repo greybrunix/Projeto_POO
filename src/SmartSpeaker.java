@@ -1,5 +1,9 @@
 package src;
 
+/**
+ * Subclass of SmartDevice which implements a volume,
+ *  a radio station and a brand name
+ */
 public class SmartSpeaker extends SmartDevice {
     /* Constants  enums and structs */
     public static final int MAX = 20;    
@@ -12,7 +16,7 @@ public class SmartSpeaker extends SmartDevice {
 
 
     /* Constructors */
-    public SmartSpeaker(){
+    public SmartSpeaker(){// Might remove this
         super();
         this.setVolume(0);
         this.setRadio("");

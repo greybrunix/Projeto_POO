@@ -1,5 +1,8 @@
 package src;
-
+/**
+ * Subclass of SmartDevice which implements a tone of light,
+ * the dimensions of the bulb in centimetres and the daily consumption
+ */
 public class SmartBulb extends SmartDevice{
     /* Constants */
     public static final int Consumption_Val = 132;
@@ -13,7 +16,7 @@ public class SmartBulb extends SmartDevice{
     private double daily_consumption; /* formula is group specific */
 
     /* Constructors */
-    public SmartBulb(){
+    public SmartBulb(){ // Might remove this
         super();
         this.tone = NEUTRAL;
         this.dimensions = 1;

@@ -1,4 +1,9 @@
 package src;
+
+/**
+ * Subclass of SmartDevice which implements a 
+ * resolution, a file storage size and a daily consumption
+ */
 public class SmartCamera extends SmartDevice{
     
     /* Variables */
@@ -7,7 +12,7 @@ public class SmartCamera extends SmartDevice{
     private double daily_consumption;
 
     /* Constructors */
-    public SmartCamera(){
+    public SmartCamera(){ // Migth remove this
         super();
         this.setRes(0);
         this.setSize(0);
