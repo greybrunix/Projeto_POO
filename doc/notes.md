@@ -69,3 +69,13 @@ Adding a device to house without adding to room possible?
 -> Going to asssume it's not and request to add to room first
 
 I don't see the utility of an empty constructor in ANY class
+
+Are the base values and Tax factor unique or are they global
+
+Going to assume are constant
+
+Going to assume are constant
+
+## Problems
+
+Casting to the specific type of device

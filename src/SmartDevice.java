@@ -39,7 +39,6 @@ public class SmartDevice {
         this.id = id;
     }
 
-
     public void setON(){
         this.setMode(true);
     }
