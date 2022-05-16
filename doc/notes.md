@@ -78,6 +78,9 @@ Going to assume are constant
 
 Going to assume are constant
 
+Usar StrTok (Java.util.StringTokenizer) para ler o input do utilizador, podemos utilizar o espaço (" ") ou a vírgula (","),
+para saber a "ordem" do utilizador (o que fazer)
+
 ## Problems
 
 Casting to the specific type of device
