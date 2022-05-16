@@ -1,4 +1,4 @@
-package src;
+package src.classes;
 
 /**
  * Subclass of SmartDevice which implements a volume,
