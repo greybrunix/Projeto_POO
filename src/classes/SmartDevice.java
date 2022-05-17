@@ -10,31 +10,31 @@ package src.classes;
 public abstract class SmartDevice {
     // This could be a super of the devices
     private String id;
-    private boolean mode;
+    private static boolean mode;
 
     /* Do I actually want empty constructors? */
     public SmartDevice(){ // Might remove this
-        this.setMode(false);
+        setMode(false);
         this.setId("");
     }
     public SmartDevice(boolean mode, String id){
-        this.setMode(mode);
+        setMode(mode);
         this.setId(id);
     }
     public SmartDevice(SmartDevice d){
-        this.setMode(d.getMode());
+        setMode(d.getMode());
         this.setId(d.getId());
     }
 
     public boolean getMode(){
-        return this.mode;
+        return mode;
     }
     public String getId(){
         return this.id;
     }
     abstract public double getConsumption(); 
-    public void setMode(boolean mode){
-        this.mode = mode;
+    public static void setMode(boolean m){
+        mode = m;
     }
     private void setId(String id){
         this.id = id;

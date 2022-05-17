@@ -57,11 +57,11 @@ public class SmartCamera extends SmartDevice{
             this.daily_consumption = 0;
     }
     public void setON(){
-        this.setMode(true);
+        setMode(true);
         this.computeConsumption();
     }
     public void setOFF(){
-        this.setMode(false);
+        setMode(false);
         this.computeConsumption();
     }
     

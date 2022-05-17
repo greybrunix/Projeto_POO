@@ -86,11 +86,11 @@ public class SmartSpeaker extends SmartDevice {
     }
 
     public void setON(){
-        this.setMode(true);
+        setMode(true);
         computeConsumption();
     }
     public void setOFF(){
-        this.setMode(false);
+        setMode(false);
         computeConsumption();
     }
 
