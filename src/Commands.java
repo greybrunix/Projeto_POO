@@ -13,24 +13,31 @@ public class Commands {
     static Scanner sc = new Scanner(System.in);
 
     public static void InitialMenu(Integer command) {
+        Scanner sc = new Scanner(System.in);
         switch (command) {
             case 1 -> {
-                EnergyProvider novo = new EnergyProvider();
+                System.out.println("Insira o preço da energia por kWh: ");
+                EnergyProvider novo = new EnergyProvider(sc.nextInt()); //Falta método de guardar
             }
             case 2 -> {
-                SmartHouse novo = new SmartHouse();
+                System.out.println("Insira os dados da seguinte forma: Nome do Cliente, NIF");
+                StringTokenizer token = new StringTokenizer(sc.nextLine());
+                String nome_cliente = token.nextToken();
+                String NIF = token.nextToken();
+                SmartHouse novo = new SmartHouse(nome_cliente, NIF);
+                SmartHouse.CreateHouse(); //Falta método de guardar
             }
             case 3 -> {
                 Menus.SmartDevices();
                 Commands.SmartDevices(sc.nextInt());
             }
-            case 4 -> SmartHouse.AddDivision();
-            case 5 -> SmartHouse.AddDevice();
+            case 4 -> SmartHouse.AddDivision(); //Falta método
+            case 5 -> SmartHouse.AddDevice(); //Falta método
             case 6 -> SmartDevice.setMode(true);
             case 7 -> SmartDevice.setMode(false);
-            case 8 -> SimuladorControl.SkipTime();
+            case 8 -> SimuladorControl.SkipTime(); //Falta método
             case 9 -> {
-                SimuladorControl.Save();
+                SimuladorControl.Save(); //Falta método
                 System.out.println("Guardado com sucesso!");
             }
             case 10 -> {
@@ -41,22 +48,31 @@ public class Commands {
     }
 
     public static void Menu(Integer command) {
+        Scanner sc = new Scanner(System.in);
         switch (command) {
             case 1 -> {
-                EnergyProvider novo = new EnergyProvider();
+                System.out.println("Insira o preço da energia por kWh: ");
+                EnergyProvider novo = new EnergyProvider(sc.nextInt()); //Falta método de guardar
             }
             case 2 -> {
-                SmartHouse novo = new SmartHouse();
+                System.out.println("Insira os dados da seguinte forma: Nome do Cliente, NIF");
+                StringTokenizer token = new StringTokenizer(sc.nextLine());
+                String nome_cliente = token.nextToken();
+                String NIF = token.nextToken();
+                SmartHouse novo = new SmartHouse(nome_cliente, NIF);
+                SmartHouse.CreateHouse(); //Falta método de guardar
             }
             case 3 -> {
                 Menus.SmartDevices();
                 Commands.SmartDevices(sc.nextInt());
             }
-            case 4 -> SmartHouse.AddDivision();
-            case 5 -> SmartHouse.AddDevice();
+            case 4 -> SmartHouse.AddDivision(); //Falta método
+            case 5 -> SmartHouse.AddDevice(); //Falta método
             case 6 -> SmartDevice.setMode(true);
             case 7 -> SmartDevice.setMode(false);
-            case 8 -> SimuladorControl.SkipTime();
+            case 8 -> {
+                SimuladorControl.SkipTime(); //Falta método
+            }
             case 9 -> {
                 Menus.Estatistica();
                 Commands.Statistics(sc.nextInt());
@@ -72,7 +88,7 @@ public class Commands {
             }
     }
 
-    public static void Statistics(Integer command) {
+    public static void Statistics(Integer command) { //Faltam todos os métodosScanner sc1 = new Scanner(System.in);
         switch (command) {
             case 1 -> SimuladorControl.HouseExpensive();
             case 2 -> SimuladorControl.BiggestFacture();
@@ -82,10 +98,11 @@ public class Commands {
     }
 
     public static void SmartDevices(Integer command) {
-        Scanner sc1 = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         switch (command) {
             case 1 -> {
-                StringTokenizer token = new StringTokenizer(sc1.nextLine());
+                System.out.println("Insira os dados da seguinte forma: Estado, ID, Tonalidade, Dimensões");
+                StringTokenizer token = new StringTokenizer(sc.nextLine(), ",");
                 boolean mode = Boolean.parseBoolean(token.nextToken());
                 String id = token.nextToken();
                 int tone = Integer.parseInt(token.nextToken());
@@ -95,7 +112,8 @@ public class Commands {
                 SmartHouse.AddDevice(); //FALTA TROCAR PARA O CORRETO
             }
             case 2 -> {
-                StringTokenizer token = new StringTokenizer(sc1.nextLine());
+                System.out.println("Insira os dados da seguinte forma: Estado, ID, Volume, Rádio, Marca Coluna");
+                StringTokenizer token = new StringTokenizer(sc.nextLine(), ",");
                 boolean mode = Boolean.parseBoolean(token.nextToken());
                 String id = token.nextToken();
                 int v = Integer.parseInt(token.nextToken());
@@ -105,7 +123,8 @@ public class Commands {
                 SmartHouse.AddDevice(); //FALTA TROCAR PARA O CORRETO
             }
             case 3 -> {
-                StringTokenizer token = new StringTokenizer(sc1.nextLine());
+                System.out.println("Insira os dados da seguinte forma: Estado, ID, Resolução, ");
+                StringTokenizer token = new StringTokenizer(sc.nextLine());
                 boolean mode = Boolean.parseBoolean(token.nextToken());
                 String id = token.nextToken();
                 int res = Integer.parseInt(token.nextToken());
@@ -113,6 +132,10 @@ public class Commands {
                 double dc = Double.parseDouble(token.nextToken());
                 SmartCamera novo = new SmartCamera(mode, id, res, size, dc);
                 SmartHouse.AddDevice(); //FALTA TROCAR PARA O CORRETO
+            }
+            default -> {
+                System.out.println("Opção inválida, tente novamente!");
+                Commands.SmartDevices(sc.nextInt());
             }
         }
     }
