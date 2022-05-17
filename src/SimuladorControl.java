@@ -6,26 +6,26 @@ package src;
 
  public class SimuladorControl{
 
-     public static void HouseExpensive() {
+     public static void houseMostExp() {
      }
 
-     public static void BiggestFacture() {
-
-     }
-
-     public static void CompanyFactures() {
+     public static void largestBill() {
 
      }
 
-     public static void BiggestConsumers() {
+     public static void companyBills() {
 
      }
 
-     public static void SkipTime() {
+     public static void podiumConsumption() {
 
      }
 
-     public static void Save() {
+     public static void skipTime() {
+
+     }
+
+     public static void save() {
 
      }
  }
