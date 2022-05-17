@@ -3,7 +3,9 @@ import src.classes.*;
 import src.classes.*;
 
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.StringTokenizer;
 
 
 public class Commands {
@@ -20,6 +22,7 @@ public class Commands {
             }
             case 3 -> {
                 Menus.SmartDevices();
+                Commands.SmartDevices(sc.nextInt());
             }
             case 4 -> SmartHouse.AddDivision();
             case 5 -> SmartHouse.AddDevice();
@@ -79,15 +82,37 @@ public class Commands {
     }
 
     public static void SmartDevices(Integer command) {
+        Scanner sc1 = new Scanner(System.in);
         switch (command) {
             case 1 -> {
-                SmartBulb novo = new SmartBulb();
+                StringTokenizer token = new StringTokenizer(sc1.nextLine());
+                boolean mode = Boolean.parseBoolean(token.nextToken());
+                String id = token.nextToken();
+                int tone = Integer.parseInt(token.nextToken());
+                int dimensions = Integer.parseInt(token.nextToken());
+                double daily_consumption = Double.parseDouble(token.nextToken());
+                SmartBulb novo = new SmartBulb(mode, id, tone, dimensions, daily_consumption);
+                SmartHouse.AddDevice(); //FALTA TROCAR PARA O CORRETO
             }
             case 2 -> {
-                SmartSpeaker novo = new SmartSpeaker();
+                StringTokenizer token = new StringTokenizer(sc1.nextLine());
+                boolean mode = Boolean.parseBoolean(token.nextToken());
+                String id = token.nextToken();
+                int v = Integer.parseInt(token.nextToken());
+                String r = token.nextToken();
+                String b = token.nextToken();
+                SmartSpeaker novo = new SmartSpeaker(mode, id, v, r, b);
+                SmartHouse.AddDevice(); //FALTA TROCAR PARA O CORRETO
             }
             case 3 -> {
-                SmartCamera novo = new SmartCamera();
+                StringTokenizer token = new StringTokenizer(sc1.nextLine());
+                boolean mode = Boolean.parseBoolean(token.nextToken());
+                String id = token.nextToken();
+                int res = Integer.parseInt(token.nextToken());
+                int size = Integer.parseInt(token.nextToken());
+                double dc = Double.parseDouble(token.nextToken());
+                SmartCamera novo = new SmartCamera(mode, id, res, size, dc);
+                SmartHouse.AddDevice(); //FALTA TROCAR PARA O CORRETO
             }
         }
     }
