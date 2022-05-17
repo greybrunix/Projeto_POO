@@ -1,4 +1,4 @@
-package src.MVC;
+package src;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 

@@ -1,5 +1,5 @@
-package src.MVC;
-import src.classes.EnergyProvider;
+package src;
+
 /**
  * Logica do Programa
  */

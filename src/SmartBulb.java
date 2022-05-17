@@ -1,4 +1,4 @@
-package src.classes;
+package src;
 /**
  * Subclass of SmartDevice which implements a tone of light,
  * the dimensions of the bulb in centimetres and the daily consumption

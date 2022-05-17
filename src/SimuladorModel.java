@@ -1,4 +1,4 @@
-package src.MVC;
+package src;
 
 /**
  * Database

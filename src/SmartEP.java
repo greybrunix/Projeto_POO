@@ -1,23 +1,23 @@
-package src.classes;
+package src;
 
 import java.util.Map;
 import java.util.HashMap;
 
-public class EnergyProvider {
+public class SmartEP {
     public static final int tax_factor = 1;
     public static final int base_value = 10;
     private int price;
     private Map<String,SmartHouse> houses;
 
-    public EnergyProvider(){
+    public SmartEP(){
         this.price = 0;
         this.houses = new HashMap<String,SmartHouse>();
     }
-    public EnergyProvider(int price){
+    public SmartEP(int price){
         this.price = price;
         this.houses = new HashMap<String,SmartHouse>();
     }
-    private EnergyProvider(EnergyProvider ep){
+    private SmartEP(SmartEP ep){
         this.price = ep.getPrice();
         this.houses = ep.getHouses();
     }
@@ -37,7 +37,7 @@ public class EnergyProvider {
         }
         this.price = result;
     }
-    public EnergyProvider clone(){
-        return new EnergyProvider(this);
+    public SmartEP clone(){
+        return new SmartEP(this);
     }
 }
