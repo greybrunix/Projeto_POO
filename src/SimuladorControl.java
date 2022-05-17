@@ -21,11 +21,15 @@ package src;
 
      }
 
-     public static void skipTime() {
+     public static void skipTime(String dias) {
 
      }
 
      public static void save() {
 
+     }
+
+     public static void createHouse() {
+         
      }
  }

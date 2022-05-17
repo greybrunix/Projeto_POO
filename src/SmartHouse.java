@@ -2,33 +2,34 @@ package src;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
+import java.util.ArrayList;
 /**
  * Class that refers to a house, a collection of devices and rooms
  */
 public class SmartHouse{
 
-    private Map<String, SmartDevice> devices;
-    private Map<String, List<String>> rooms;
+    private static Map<String, SmartDevice> devices;
+    private static Map<String, List<String>> rooms;
     private String owner;
     private String NIF;
 
     public SmartHouse(){ // Might remove this class
         this.owner = "";
         this.NIF =  "";
-        this.devices = new HashMap<String, SmartDevice>();
-        this.rooms = new HashMap<String, List<String>>();
+        devices = new HashMap<String, SmartDevice>();
+        rooms = new HashMap<String, List<String>>();
     }
     public SmartHouse(String owner, String NIF){
         this.owner = owner;
         this.NIF = NIF;
-        this.devices = new HashMap<String, SmartDevice>();
-        this.rooms = new HashMap<String, List<String>>();
+        devices = new HashMap<String, SmartDevice>();
+        rooms = new HashMap<String, List<String>>();
     }
     private SmartHouse(SmartHouse h){
         this.owner = h.getOwner();
         this.NIF = h.getNIF();
-        this.devices = h.getDevices();
-        this.rooms = h.getRooms();
+        devices = h.getDevices();
+        rooms = h.getRooms();
     }
     public String getOwner(){
         return this.owner;
@@ -37,10 +38,10 @@ public class SmartHouse{
         return this.NIF;
     }
     public Map<String, SmartDevice> getDevices(){
-        return this.devices;
+        return devices;
     }
     public Map<String, List<String>> getRooms(){
-        return this.rooms;
+        return rooms;
     }
     public void setOwner(String newOwn){
         this.owner = newOwn;
@@ -49,38 +50,41 @@ public class SmartHouse{
         this.NIF = nif;
     }
 
-    public void addDeviceToRoom(SmartDevice dev, String room){
-        this.devices.put(dev.getId(), dev);
-        this.rooms.get(dev.getId()).add(dev.getId()); // What the fuck?
+    public static void addDeviceToRoom(SmartDevice dev, String room){
+        devices.put(dev.getId(), dev);
+        rooms.get(dev.getId()).add(dev.getId()); // What the fuck?
     }
 
 
     public void setDeviceOn(String id){
-        this.devices.get(id).setON();
+        devices.get(id).setON();
     }
     public void setAllOn(){
-        for (SmartDevice device: this.devices.values())
+        for (SmartDevice device: devices.values())
             device.setON();
-        for (List<String> devices_in_room: this.rooms.values())
+        for (List<String> devices_in_room: rooms.values())
             for (String identifier: devices_in_room)
                 setDeviceOn(identifier);
     }
     public void setDeviceOff(String id){
-        this.devices.get(id).setOFF();
+        devices.get(id).setOFF();
     }
     public void setAllOff(){
-        for (SmartDevice device: this.devices.values())
+        for (SmartDevice device: devices.values())
             device.setOFF();
-        for (List<String> devices_in_room: this.rooms.values())
+        for (List<String> devices_in_room: rooms.values())
             for (String identifier: devices_in_room)
                 setDeviceOff(identifier);
     }
-
+    public static void addRoom(String room){
+        List<String> devs = new ArrayList<String>();
+        rooms.put(room, devs);
+    }
 
 
     public boolean deviceExists(String id)
     {
-        for (List<String> devices_in_room: this.rooms.values())
+        for (List<String> devices_in_room: rooms.values())
             for (String identifier: devices_in_room)
                 if (id == identifier) return true;
         return false;
@@ -100,9 +104,9 @@ public class SmartHouse{
           .append("With Fiscal Identifying Number:\t")
           .append(this.getNIF())
           .append("With the following devices:\t")
-          .append(this.devices.toString())
+          .append(devices.toString())
           .append("And the following rooms:\t")
-          .append(this.rooms.keySet().toString());
+          .append(rooms.keySet().toString());
         return sb.toString();
     }
     public SmartHouse clone(){

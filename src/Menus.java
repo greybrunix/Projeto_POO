@@ -1,4 +1,4 @@
-package src.MVC;
+package src;
 
 /*
  * Menus for UI
@@ -6,7 +6,7 @@ package src.MVC;
 
 public class Menus {
 
-    public static void InitialMenu () {
+    public static void initialMenu () {
         System.out.print("""
                 **************MENU***************
                 *  1- Criar Fornecedor          *
@@ -23,7 +23,7 @@ public class Menus {
                 """);
     }
 
-    public static void Menu () {
+    public static void menu () {
         System.out.print("""
                 **************MENU***************
                 *  1- Criar Fornecedor          *
@@ -41,7 +41,7 @@ public class Menus {
                 """);
     }
 
-    public static void Estatistica () {
+    public static void estatistica () {
         System.out.print("""
                 **********************Estatística*********************
                 *  1- Casa que mais gastou no período                *
@@ -53,7 +53,7 @@ public class Menus {
                 """);
     }
 
-    public static void SmartDevices () {
+    public static void devMenu () {
         System.out.print("""
                 *******SmartDevice********
                 *  1- SmartBulb          *
