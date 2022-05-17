@@ -1,13 +1,17 @@
-package src;
+package src.view;
 import java.util.Scanner;
 import java.util.StringTokenizer;
+
+import src.control.Commands;
+import src.control.SimuladorControl;
+import src.model.SimuladorModel;
 
 
 /**
  * UI
  */
 
-public class SimuladorView {
+public class View {
     public static void main(String args[]) {
         boolean over = false;
         SimuladorControl controlo = new SimuladorControl();
@@ -16,11 +20,11 @@ public class SimuladorView {
         Scanner command = new Scanner(System.in);
         StringTokenizer commandToken = new StringTokenizer(command.toString());
 
-        Menus.InitialMenu();
+        ViewMenu.InitialMenu();
         Commands.InitialMenu(number.nextInt());
 
         while (!over) {
-            Menus.Menu();
+            ViewMenu.Menu();
             Commands.Menu(number.nextInt());
         }
         number.close();

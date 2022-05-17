@@ -1,4 +1,6 @@
-package src;
+package src.model;
+
+import src.control.SimuladorControl;
 
 /**
  * Database
