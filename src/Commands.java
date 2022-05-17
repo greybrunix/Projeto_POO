@@ -47,6 +47,7 @@ public class Commands {
             }
             case 3 -> {
                 Menus.SmartDevices();
+                Commands.SmartDevices(sc.nextInt());
             }
             case 4 -> SmartHouse.AddDivision();
             case 5 -> SmartHouse.AddDevice();
