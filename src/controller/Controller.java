@@ -86,7 +86,12 @@ import view.*;
                 break;
             }
             case 6 -> {
-                System.out.println("");
+                System.out.println("Insira o nome do dono e o nome da empresa");
+                System.out.print(">> ");
+                String[] argv = ssc.nextLine().split(",");
+                mod.signContract(argv[0], argv[1]);
+                startAppNewSys(mod);
+                break;
             }
             case 7 -> {
                 System.out.println("Insira o numero de dias que pretende avancar: ");
