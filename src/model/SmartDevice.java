@@ -14,28 +14,28 @@ package model;
 public abstract class SmartDevice {
     // This could be a super of the devices
     private String id;
-    private static boolean mode;
+    private boolean mode;
 
     /* Do I actually want empty constructors? */
     public SmartDevice(){ // Might remove this
     }
     public SmartDevice(boolean mode, String id){
-        setMode(mode);
+        this.setMode(mode);
         this.setId(id);
     }
     public SmartDevice(SmartDevice d){
-        setMode(d.getMode());
+        this.setMode(d.getMode());
         this.setId(d.getId());
     }
 
     public boolean getMode(){
-        return mode;
+        return this.mode;
     }
     public String getId(){
         return this.id;
     }
     abstract public double getConsumption(); 
-    public static void setMode(boolean m){
+    public void setMode(boolean m){
         mode = m;
     }
     private void setId(String id){

@@ -25,7 +25,6 @@ public interface ViewMenu {
                 *  4- Adicionar Divisao          *
                 *  5- Adicionar Disp. a casa     *
                 *  6- Estabelecer Contrato       *
-                *  7- Ligar Dispositivos         *
                 *  8- Proceder no tempo          *
                 *  0- Voltar ao menu anterior    *
                 **********************************"""

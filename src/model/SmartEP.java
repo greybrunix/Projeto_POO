@@ -18,9 +18,9 @@ public class SmartEP {
         this.price = 0;
         this.houses = new HashMap<String,SmartHouse>();
     }
-    public SmartEP(String name, int price){
+    public SmartEP(String name){
         this.name  = name;
-        this.price = price;
+        this.price = 0;
         this.houses = new HashMap<String,SmartHouse>();
     }
     private SmartEP(SmartEP ep){
@@ -48,6 +48,14 @@ public class SmartEP {
         this.price = result;
     }
 
+    @Override
+    public boolean equals(Object o){
+        if (this == o) return true;
+        if (o == null || this.getClass() != o.getClass()) return false;
+        SmartEP comerc = (SmartEP) o;
+        return (this.name == comerc.getName()
+                && this.houses.equals(comerc.getHouses()));
+    }
     @Override
     public SmartEP clone(){
         return new SmartEP(this);

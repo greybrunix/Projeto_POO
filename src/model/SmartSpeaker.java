@@ -21,11 +21,12 @@ public class SmartSpeaker extends SmartDevice {
     /* Constructors */
     public SmartSpeaker(){
     }
-    public SmartSpeaker(boolean mode, String id, int v, String r, String b){
+    public SmartSpeaker(boolean mode, String id, int v, String r, String b, double bbp){
         super(mode, id);
         this.setVolume(v);
         this.setRadio(r);
         this.setBrand(b);
+        this.setBrandBP(bbp);
         this.computeConsumption();
     }
     public SmartSpeaker(SmartSpeaker s){
@@ -33,6 +34,7 @@ public class SmartSpeaker extends SmartDevice {
         this.setVolume(s.getVolume());
         this.setRadio(s.getRadio());
         this.setBrand(s.getBrand());
+        this.setBrandBP(s.getBrandBP());
         this.computeConsumption();
     }
 
@@ -47,6 +49,9 @@ public class SmartSpeaker extends SmartDevice {
     public String getBrand(){
         return this.brand;
     }
+    public double getBrandBP(){
+        return this.brand_base_price;
+    }
     public double getConsumption(){
         return this.daily_consumption;
     }
@@ -54,14 +59,28 @@ public class SmartSpeaker extends SmartDevice {
 
     /* Setters */
     public void setVolume(int v){
+        if (v >= 0 && v <= 20){
         this.volume = v;
         this.computeConsumption();
+        }
+        if (v < 0){
+            this.volume = 0;
+            this.computeConsumption();
+        }
+        if (v > 20){
+            this.volume = 20;
+            this.computeConsumption();
+        }
     }
     public void setRadio(String r){
         this.radio = r;
     }
     public void setBrand(String b){
         this.brand = b;
+        this.computeConsumption();
+    }
+    public void setBrandBP(double bbp){
+        this.brand_base_price = bbp;
         this.computeConsumption();
     }
 

@@ -43,4 +43,11 @@ public interface View {
     {
         System.out.println("Obrigado por fazer uso do nosso servico, ate a proxima!");
     }
+    static void showDeviceAddError()
+    {
+        System.err.println("Erro, por favor verifique se "
+            + "1) a casa existe, 2) A casa ainda nao tem contrato, "
+            + "3) a divisao existe ou 4) O SmartDevice existe"
+            + ". \n Por favor corrija de modo a que estas condicoes se verifiquem");
+    }
 }

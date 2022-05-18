@@ -22,7 +22,7 @@ public class SmartBulb extends SmartDevice{
     /* Constructors */
     public SmartBulb(){ // Might remove this
     }
-    public SmartBulb(boolean mode,String id,int tone, int dimensions, double daily_consumption){
+    public SmartBulb(boolean mode,String id,int tone, int dimensions){
         super(mode, id);
         this.setTone(tone);
         this.setDimensions(dimensions);

@@ -14,7 +14,7 @@ public class SmartCamera extends SmartDevice{
     /* Constructors */
     public SmartCamera(){ // Might remove this
     }
-    public SmartCamera(boolean mode, String id, int res, int size, double dc){
+    public SmartCamera(boolean mode, String id, int res, int size){
         super(mode, id);
         this.setRes(res);
         this.setSize(size);
@@ -48,7 +48,8 @@ public class SmartCamera extends SmartDevice{
     /* Computations */
     public void computeConsumption(){
         if (this.getMode())
-            this.daily_consumption = this.getRes() * this.getSize();
+            this.daily_consumption = this.getRes()*0.10 * this.getSize()*0.001*0.9;
+
         else
             this.daily_consumption = 0;
     }
