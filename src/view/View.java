@@ -10,7 +10,7 @@ public interface View {
     {
         System.out.print("""
                 ***** Bem vindo/a ao Simulador de Casas Inteligentes *****
-                  *    Estara disponivel, seguido a esta mensagem,     *
+                  *    Estara disponivel, a seguir desta mensagem,     *
                   * uma serie de menus onde a simulacao em si decorra  *
                 ----------------------------------------------------------
 

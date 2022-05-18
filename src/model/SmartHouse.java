@@ -8,8 +8,8 @@ import java.util.ArrayList;
  */
 public class SmartHouse{
 
-    private static Map<String, SmartDevice> devices;
-    private static Map<String, List<String>> rooms;
+    private Map<String, SmartDevice> devices;
+    private Map<String, List<String>> rooms;
     private String owner;
     private String NIF;
 
@@ -22,14 +22,14 @@ public class SmartHouse{
     public SmartHouse(String owner, String NIF){
         this.owner = owner;
         this.NIF = NIF;
-        devices = new HashMap<String, SmartDevice>();
-        rooms = new HashMap<String, List<String>>();
+        this.devices = new HashMap<String, SmartDevice>();
+        this.rooms = new HashMap<String, List<String>>();
     }
     private SmartHouse(SmartHouse h){
         this.owner = h.getOwner();
         this.NIF = h.getNIF();
-        devices = h.getDevices();
-        rooms = h.getRooms();
+        this.devices = h.getDevices();
+        this.rooms = h.getRooms();
     }
     public String getOwner(){
         return this.owner;
@@ -50,11 +50,10 @@ public class SmartHouse{
         this.NIF = nif;
     }
 
-    public static void addDeviceToRoom(SmartDevice dev, String room){
-        devices.put(dev.getId(), dev);
-        rooms.get(dev.getId()).add(dev.getId()); // What the fuck?
+    public void addDeviceToRoom(SmartDevice dev, String room){
+        this.devices.put(dev.getId(), dev);
+        this.rooms.get(dev.getId()).add(dev.getId()); // What the fuck?
     }
-
 
     public void setDeviceOn(String id){
         devices.get(id).setON();
@@ -76,9 +75,9 @@ public class SmartHouse{
             for (String identifier: devices_in_room)
                 setDeviceOff(identifier);
     }
-    public static void addRoom(String room){
+    public void addRoom(String room){
         List<String> devs = new ArrayList<String>();
-        rooms.put(room, devs);
+        this.rooms.put(room, devs);
     }
 
 

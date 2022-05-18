@@ -29,7 +29,7 @@ public class FileLoadingSaving implements Serializable
         }
         oos.close();
     }
-    public State loadState(String fileName) throws
+    public Model loadState(String fileName) throws
                                 FileNotFoundException,
                                 IOException
     {
@@ -40,9 +40,9 @@ public class FileLoadingSaving implements Serializable
             throw new FileNotFoundException("Error file not found. ");
         }
         ObjectInputStream ois = new ObjectInputStream(fis);
-        State sys = null;
+        Model sys = null;
         try{
-            sys = (State) ois.readObject();
+            sys = (Model) ois.readObject();
         } catch (Exception e) {
             ois.close();
             throw new IOException("Error Loading File. "); 

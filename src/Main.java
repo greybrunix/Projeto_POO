@@ -1,9 +1,9 @@
 import controller.Controller;
-import model.State;
+import model.Model;
 import view.View;
 
 public class Main {
-    public static final State sys = new State();
+    public static final Model sys = new Model();
     public static Controller control = new Controller();
     public static void main(String[] args){
         View.welcomeStart();

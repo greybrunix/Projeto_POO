@@ -1,7 +1,5 @@
 package controller;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.Scanner;
 import model.*;
 import view.*;
@@ -17,12 +15,13 @@ import view.*;
     public Controller(){
     }
 
-    public void startApp(State sys)
+    public void startApp(Model sys)
     {
         ViewMenu.startMenu();
-        switch(sc.nextInt() % 3){
+        int test_int = sc.nextInt();
+        switch(Math.abs(test_int) % 3){
             case 1 -> {
-                sys = new State();
+                sys = new Model();
                 try{
                     sys = file.loadState(save_slot);
                 } catch (Exception e) {
@@ -43,13 +42,18 @@ import view.*;
                 System.exit(1);
                 break;
             }
-        }
     }
+}
 
-    public void startAppNewSys(State sys) {
-        ViewMenu.startNewMenu();
-        switch (sc.nextInt()){
+    public void startAppNewSys(Model sys) {
+        ViewMenu.startMenuNew();
+        int test_int = sc.nextInt();
+        switch (Math.abs(test_int) % 9){
             case 1 -> {
+                System.out.println("Insira os dados do Fornecedor separado por espaços: ");
+                System.out.print(">> ");
+                String data = sc.nextLine();
+                data.split(" ");
 
             }
 
@@ -57,10 +61,10 @@ import view.*;
         }
     }
 
-    public void app(State sys) {
+    public void app(Model sys) {
     }
 
-    public void stats(State sys){
+    public void stats(Model sys){
     }
 
     public void houseMostExp(String name) {

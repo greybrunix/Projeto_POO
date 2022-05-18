@@ -13,7 +13,7 @@ public interface ViewMenu {
                 *  2- Novo Estado                *
                 *  0- Fechar Programa            *
                 **********************************"""
-                + ">> ");
+                + "\n>> ");
     }
 
     static void startMenuNew(){
@@ -29,7 +29,7 @@ public interface ViewMenu {
                 *  8- Proceder no tempo          *
                 *  0- Voltar ao menu anterior    *
                 **********************************"""
-                + ">> ");
+                + "\n>> ");
     }
     static void startMenuNewDev() {
         System.out.print("""
@@ -39,7 +39,7 @@ public interface ViewMenu {
                 *  3- SmartCamera                *
                 *  0- Voltar ao menu anterior    *
                 **********************************"""
-                + ">> ");
+                + "\n>> ");
     }
 
     static void mainMenu() {
@@ -54,7 +54,7 @@ public interface ViewMenu {
                 *  7- Guardar Estado             *
                 *  0- Fechar o Programa          *
                 **********************************"""
-                + ">> ");
+                + "\n>> ");
     }
     static void mainMenuDev(){
         System.out.print("""
@@ -63,7 +63,7 @@ public interface ViewMenu {
                 *  2- Desligar um disp.          *
                 *  0- Voltar ao menu anterior    *
                 **********************************"""
-                + ">> ");
+                + "\n>> ");
     }
     static void mainMenuHouse(){
         System.out.print("""
@@ -75,7 +75,7 @@ public interface ViewMenu {
                 *  5- Alterar Contrato           *
                 *  0- Voltar ao menu anterior    *
                 **********************************"""
-                + ">> ");
+                + "\n>> ");
     }
     static void mainMenuComer(){
         System.out.print("""
@@ -84,7 +84,7 @@ public interface ViewMenu {
                 *  2- Alterar fator de impostos  *
                 *  0- Voltar ao menu anterior    *
                 **********************************"""
-                + ">> ");
+                + "\n>> ");
     }
     static void mainMenuStats() {
         System.out.print("""
@@ -96,6 +96,6 @@ public interface ViewMenu {
                 *     durante um período a determinar                *
                 *  0- Voltar ao menu anterior                        *
                 ******************************************************"""
-                + ">> ");
+                + "\n>> ");
     }
 }
