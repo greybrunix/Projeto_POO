@@ -10,25 +10,43 @@ import java.io.Serializable;
 
 public class FileLoadingSaving implements Serializable
 {
+
+    public FileLoadingSaving(){
+    }
+
+
     public void save(String fileName) throws 
-                        FileNotFoundException,
                         IOException
     {
         FileOutputStream fos = new FileOutputStream(fileName);
         ObjectOutputStream oos = new ObjectOutputStream(fos);
-
-        oos.writeObject(this);
-        oos.flush();
+        try{
+            oos.writeObject(this);
+            oos.flush();
+        } catch (Exception e) {
+            oos.close();
+            throw new IOException("Error saving to file. ");
+        }
         oos.close();
     }
-    public static State loadState(String fileName) throws
+    public State loadState(String fileName) throws
                                 FileNotFoundException,
-                                IOException,
-                                ClassNotFoundException                            
+                                IOException
     {
-        FileInputStream fis = new FileInputStream(fileName);
+        FileInputStream fis = null;
+        try {
+            fis = new FileInputStream(fileName);
+        } catch (Exception e){
+            throw new FileNotFoundException("Error file not found. ");
+        }
         ObjectInputStream ois = new ObjectInputStream(fis);
-        State sys = (State) ois.readObject();
+        State sys = null;
+        try{
+            sys = (State) ois.readObject();
+        } catch (Exception e) {
+            ois.close();
+            throw new IOException("Error Loading File. "); 
+        }
         ois.close();
         return sys;
     }
