@@ -1,13 +1,9 @@
 package model;
 
 import java.util.Map;
-import java.util.Set;
-
 import view.View;
-
 import java.time.LocalDate;
 import java.util.HashMap;
-import java.util.HashSet;
 
 public class Model {
     private final Map<String, SmartDevice> devices_no_house;
@@ -45,7 +41,7 @@ public class Model {
            View.showDeviceAddError(); 
     }
     public void signContract(String owner, String comp_name){
-        if (existsHouse(owner) &&){
+        if (existsHouse(owner) && existsEnerg(comp_name)){
         energ_prov.get(comp_name).getHouses().put(owner, houses_no_contract.get(owner));
         houses_no_contract.remove(owner);
         }
@@ -63,6 +59,11 @@ public class Model {
     private boolean existsHouse(String name){
         for (SmartHouse house : houses_no_contract.values())
             if (name == house.getOwner()) return true;
+        return false;
+    }
+    private boolean existsEnerg(String name){
+        for (SmartEP ep : energ_prov.values())
+            if (name == ep.getName()) return true;
         return false;
     }
 }
