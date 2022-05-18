@@ -1,4 +1,4 @@
-package src.model;
+package model;
 
 /**
  * Subclass of SmartDevice which implements a 
@@ -12,20 +12,16 @@ public class SmartCamera extends SmartDevice{
     private double daily_consumption;
 
     /* Constructors */
-    public SmartCamera(){ // Migth remove this
-        super();
-        this.setRes(0);
-        this.setSize(0);
-        this.computeConsumption();
+    public SmartCamera(){ // Might remove this
     }
     public SmartCamera(boolean mode, String id, int res, int size, double dc){
-        super();
+        super(mode, id);
         this.setRes(res);
         this.setSize(size);
         this.computeConsumption();
     }
     public SmartCamera(SmartCamera c){
-        super();
+        super(c.getMode(), c.getId());
         this.setRes(c.getRes());
         this.setSize(c.getSize());
         this.computeConsumption();
@@ -67,14 +63,17 @@ public class SmartCamera extends SmartDevice{
     
     
     /* Overrides */
+    @Override
     public boolean equals(Object o){
         if (this == o) return true;
         if (o == null || this.getClass() != o.getClass()) return false;
 
         SmartCamera camera = (SmartCamera) o;
-        return (this.getRes() == camera.getRes()
+        return (super.equals(camera)
+                && this.getRes() == camera.getRes()
                 && this.getSize() == camera.getSize());
     }
+    @Override
     public String toString(){
         StringBuilder sb = new StringBuilder();
         sb.append("Camera with id:\t")
@@ -90,6 +89,7 @@ public class SmartCamera extends SmartDevice{
           .append('\n');
         return sb.toString();
     }
+    @Override
     public SmartCamera clone(){
         return new SmartCamera(this);
     }

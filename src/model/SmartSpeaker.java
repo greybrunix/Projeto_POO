@@ -1,8 +1,10 @@
-package src.model;
+package model;
 
 /**
  * Subclass of SmartDevice which implements a volume,
  *  a radio station and a brand name
+ * 
+ * 
  */
 public class SmartSpeaker extends SmartDevice {
     /* Constants  enums and structs */
@@ -13,25 +15,21 @@ public class SmartSpeaker extends SmartDevice {
     private int volume;
     private String radio;
     private String brand;
+    private double brand_base_price;
 
 
     /* Constructors */
-    public SmartSpeaker(){// Might remove this
-        super();
-        this.setVolume(0);
-        this.setRadio("");
-        this.setBrand("");
-        this.computeConsumption();
+    public SmartSpeaker(){
     }
     public SmartSpeaker(boolean mode, String id, int v, String r, String b){
-        super();
+        super(mode, id);
         this.setVolume(v);
         this.setRadio(r);
         this.setBrand(b);
         this.computeConsumption();
     }
     public SmartSpeaker(SmartSpeaker s){
-        super();
+        super(s.getMode(), s.getId());
         this.setVolume(s.getVolume());
         this.setRadio(s.getRadio());
         this.setBrand(s.getBrand());
@@ -70,7 +68,7 @@ public class SmartSpeaker extends SmartDevice {
     /* Computations */
     public void computeConsumption(){
         if (this.getMode())
-            this.daily_consumption = 1; /* Computation */
+            this.daily_consumption = .6*brand_base_price + .4*volume; /* Computation */
         else
             this.daily_consumption = 0;
     }
@@ -95,15 +93,18 @@ public class SmartSpeaker extends SmartDevice {
     }
 
     /* Overrides */
+    @Override
     public boolean equals(Object o){
         if (this == o) return true;
         if (o == null || this.getClass() != o.getClass()) return false;
 
         SmartSpeaker speaker = (SmartSpeaker) o;
-        return (this.getVolume() == speaker.getVolume()
+        return ( super.equals(speaker)
+            && this.getVolume() == speaker.getVolume()
             && this.getRadio().equals(speaker.getRadio())
             && this.getBrand().equals(speaker.getBrand()));
     }
+    @Override
     public String toString(){
         StringBuilder sb = new StringBuilder();
         sb.append("Speaker with id:\t")
@@ -121,6 +122,7 @@ public class SmartSpeaker extends SmartDevice {
           .append('\n');
         return sb.toString();
     }
+    @Override
     public SmartSpeaker clone(){
         return new SmartSpeaker(this);
     }

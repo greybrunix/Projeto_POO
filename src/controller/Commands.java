@@ -1,17 +1,20 @@
-package src.control;
+package controller;
+import model.*;
+import view.*;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
-import src.model.SimuladorModel;
-import src.model.SmartBulb;
-import src.model.SmartCamera;
-import src.model.SmartDevice;
-import src.model.SmartEP;
-import src.model.SmartHouse;
-import src.model.SmartSpeaker;
+import control.SimuladorControl;
+import model.SimuladorModel;
+import model.SmartBulb;
+import model.SmartCamera;
+import model.SmartDevice;
+import model.SmartEP;
+import model.SmartHouse;
+import model.SmartSpeaker;
 
 
 public class Commands {

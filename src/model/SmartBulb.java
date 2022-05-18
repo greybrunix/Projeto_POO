@@ -1,14 +1,18 @@
-package src.model;
+package model;
 /**
  * Subclass of SmartDevice which implements a tone of light,
  * the dimensions of the bulb in centimetres and the daily consumption
+ * 
+ * @author Bruno Giao
+ * @author Miguel Vaz
+ * @author João Cruz
  */
 public class SmartBulb extends SmartDevice{
     /* Constants */
-    public static final int Consumption_Val = 132;
-    public static final int WARM = 2;
-    public static final int NEUTRAL = 1;
-    public static final int COLD = 0;
+    public static final int Consumption_Val = 1;
+    public static final int WARM = 100;
+    public static final int NEUTRAL = 50;
+    public static final int COLD = 10;
 
     /* Variables */
     private int tone; /* WARM NEUTRAL COLD */
@@ -17,19 +21,15 @@ public class SmartBulb extends SmartDevice{
 
     /* Constructors */
     public SmartBulb(){ // Might remove this
-        super();
-        this.tone = NEUTRAL;
-        this.dimensions = 1;
-        this.computeConsumption();
     }
     public SmartBulb(boolean mode,String id,int tone, int dimensions, double daily_consumption){
-        super();
+        super(mode, id);
         this.setTone(tone);
         this.setDimensions(dimensions);
         this.computeConsumption();
     }
     public SmartBulb(SmartBulb b){
-        super();
+        super(b.getMode(), b.getId());
         this.setTone(b.getTone());
         this.setDimensions(b.getDimensions());
         this.computeConsumption();
@@ -62,13 +62,13 @@ public class SmartBulb extends SmartDevice{
         if (this.getMode())
             switch(this.getTone()){
                 case COLD: 
-                    this.daily_consumption = Consumption_Val + Consumption_Val*0.5;
+                    this.daily_consumption = Consumption_Val*50 + COLD*0.25;
                     break;
                 case NEUTRAL:
-                    this.daily_consumption = Consumption_Val + Consumption_Val*1;
+                    this.daily_consumption = Consumption_Val*50 + NEUTRAL*0.5;
                     break;
                 case WARM:
-                    this.daily_consumption = Consumption_Val + Consumption_Val*2;
+                    this.daily_consumption = Consumption_Val*50 + WARM*0.75;
                     break;
             }
         else
@@ -84,18 +84,23 @@ public class SmartBulb extends SmartDevice{
     }
 
     /* Overrides */
+    @Override
     public boolean equals(Object o){
         if (this == o) return true;
         if (o == null || this.getClass() != o.getClass()) return false;
 
         SmartBulb bulb = (SmartBulb) o;
-        return (this.getMode() == bulb.getMode()
+        return ( super.equals(bulb)
+                && this.getMode() == bulb.getMode()
                 && this.getDimensions() == bulb.getDimensions()
                 && this.getTone() == bulb.getTone());
     }
+    @Override
     public String toString(){
         StringBuilder sb = new StringBuilder();
-        sb.append("This lightbulb is turned ")
+        sb.append("Lightbulb with ID:\t")
+          .append(this.getId())
+          .append("\nThis lightbulb is turned ")
           .append(this.getMode())
           .append("\nThis lightbulb is in tone:\t")
           .append(this.getTone())
@@ -106,6 +111,7 @@ public class SmartBulb extends SmartDevice{
           .append('\n');
         return sb.toString();
     }
+    @Override
     public SmartBulb clone(){
         return new SmartBulb(this);
     }

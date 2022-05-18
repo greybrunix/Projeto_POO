@@ -1,4 +1,4 @@
-package src.view;
+package view;
 
 /*
  * Menus for UI
@@ -6,42 +6,44 @@ package src.view;
 
 public class ViewMenu {
 
-    public static void initialMenu () {
+    public static void startMenu() {
         System.out.print("""
-                **************MENU***************
-                *  1- Criar Fornecedor          *
-                *  2- Criar Casa                *
-                *  3- Criar Dispositivo         *
-                *  4- Adicionar Divisao         *
-                *  5- Adicionar Disp. a Casa    *
-                *  6- Ligar Dispositivo         *
-                *  7- Desligar Dispositivo      *
-                *  8- Avançar no Tempo          *
-                *  9- Guardar                   *
-                * 10- Fechar                    *
+                **************MENU****************
+                *  1- Carregar Estado            *
+                *  2- Novo Estado                *
+                *  0- Fechar Programa            *
+                **********************************
+                """);
+    }
+
+    public static void startNewMenu(){
+        System.out.print("""
+                **************MENU****************
+                *  1- Criar Fornecedor           *
+                *  2- Criar Casa                 *
+                *  3- Criar Dispositivo          *
+                *  4- Adicionar Divisao          *
+                *  5- Adicionar Disp. a casa     *
+                *  6- Estabelecer Contrato       *
+                *  7- Ligar Dispositivos         *
+                *  8- Proceder no tempo          *
+                *  0- Voltar a menu anterior     *
+                **********************************
+                """);
+    }
+    public static void mainMenu() {
+        System.out.print("""
+                **************MENU****************
+                *  1- Dispositivos               *
+                *  2- Casas                      *
+                *  3- Fornecedores de Energia    *
+                *  x- Proceder no tempo          *
+                *  0- Fechar o Programa          *
                 *********************************
                 """);
     }
 
-    public static void menu () {
-        System.out.print("""
-                **************MENU***************
-                *  1- Criar Fornecedor          *
-                *  2- Criar Casa                *
-                *  3- Criar Dispositivo         *
-                *  4- Adicionar Divisao         *
-                *  5- Adicionar Disp. a Casa    *
-                *  6- Ligar Dispositivo         *
-                *  7- Desligar Dispositivo      *
-                *  8- Avançar no Tempo          *
-                *  9- Abrir Menu Estatistica    *
-                * 10- Guardar                   *
-                * 11- Fechar                    *
-                *********************************
-                """);
-    }
-
-    public static void estatistica () {
+    public static void stats () {
         System.out.print("""
                 **********************Estatística*********************
                 *  1- Casa que mais gastou no período                *
@@ -53,7 +55,7 @@ public class ViewMenu {
                 """);
     }
 
-    public static void devMenu () {
+    public static void startDevMenu () {
         System.out.print("""
                 *******SmartDevice********
                 *  1- SmartBulb          *

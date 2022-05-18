@@ -1,11 +1,15 @@
-package src.model;
+package model;
 
 import java.util.Map;
 import java.util.HashMap;
 
+/**
+ * 
+ * 
+ */
 public class SmartEP {
     public static final int tax_factor = 1;
-    public static final int base_value = 10;
+    public static final int base_value = 50;
     private int price;
     private Map<String,SmartHouse> houses;
 
@@ -37,6 +41,8 @@ public class SmartEP {
         }
         this.price = result;
     }
+
+    @Override
     public SmartEP clone(){
         return new SmartEP(this);
     }

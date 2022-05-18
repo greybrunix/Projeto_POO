@@ -1,12 +1,16 @@
-package src.model;
+package model;
 
-/********************************************************
+/**
  * 
  * This class is a super class for each individual SD
  *   It follows that it has identifier and mode vars
  *    and related standard methods, such as getters
  *     and setters and optimized standard algorithms
- ********************************************************/
+ * 
+ * @author Bruno Giao
+ * @author Miguel Vaz
+ * @author Joao Cruz
+ */
 public abstract class SmartDevice {
     // This could be a super of the devices
     private String id;
@@ -14,8 +18,6 @@ public abstract class SmartDevice {
 
     /* Do I actually want empty constructors? */
     public SmartDevice(){ // Might remove this
-        setMode(false);
-        this.setId("");
     }
     public SmartDevice(boolean mode, String id){
         setMode(mode);
