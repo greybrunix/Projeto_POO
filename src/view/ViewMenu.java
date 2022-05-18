@@ -26,6 +26,7 @@ public interface ViewMenu {
                 *  5- Adicionar Disp. a casa     *
                 *  6- Estabelecer Contrato       *
                 *  8- Proceder no tempo          *
+                *  9- Guardar Estado             *
                 *  0- Voltar ao menu anterior    *
                 **********************************"""
                 + "\n>> ");

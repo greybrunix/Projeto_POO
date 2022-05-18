@@ -50,7 +50,7 @@ import view.*;
     public void startAppNewSys(Model mod) {
         ViewMenu.startMenuNew();
         int test_int = sc.nextInt();
-        switch (Math.abs(test_int) % 8){
+        switch (Math.abs(test_int) % 9){
             case 1 -> {
                 System.out.println("Insira o nome do comercializador de energia: ");
                 System.out.print(">> ");
@@ -97,9 +97,26 @@ import view.*;
                 System.out.println("Insira o numero de dias que pretende avancar: ");
                 System.out.print(">> ");
                 int num_days = sc.nextInt();
-                mod.skipTime(num_days);
-                app(mod);
+                if (!mod.getHouse().isEmpty() || !mod.getHouse().isEmpty() || mod.getEnerg().isEmpty()){
+                    System.out.println("Error check if housessdfsd");
+                    startAppNewSys(mod);
+                    break;
+                }
+                else{
+                    mod.skipTime(num_days);
+                    app(mod);
+                    break;
+                }
             }
+            case 8 -> {
+                try{
+                file.save(save_slot);
+                } catch (Exception e){
+                    View.showError(e);
+                }
+                startAppNewSys(mod);
+                break;
+           }
             default -> startApp(mod);
         }
     }

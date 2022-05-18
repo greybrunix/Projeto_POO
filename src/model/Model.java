@@ -18,6 +18,17 @@ public class Model {
         this.date = LocalDate.now();
     }
 
+    public Map<String, SmartDevice> getDevs(){
+        return this.devices_no_house;
+    }
+    public Map<String, SmartHouse> getHouse(){
+        return this.houses_no_contract;
+    }
+    public Map<String, SmartEP> getEnerg(){
+        return this.energ_prov;
+    }
+
+
     public void addIsolDevice(SmartDevice dev){
         this.devices_no_house.put(dev.getId(), dev.clone());
     }
