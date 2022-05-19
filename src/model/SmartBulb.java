@@ -10,9 +10,9 @@ package model;
 public class SmartBulb extends SmartDevice{
     /* Constants */
     public static final int Consumption_Val = 1;
-    public static final int WARM = 100;
-    public static final int NEUTRAL = 50;
-    public static final int COLD = 10;
+    public static final int WARM = 3;
+    public static final int NEUTRAL = 2;
+    public static final int COLD = 1;
 
     /* Variables */
     private int tone; /* WARM NEUTRAL COLD */
@@ -62,13 +62,13 @@ public class SmartBulb extends SmartDevice{
         if (this.getMode())
             switch(this.getTone()){
                 case COLD: 
-                    this.daily_consumption = Consumption_Val*50 + COLD*0.25;
+                    this.daily_consumption = Consumption_Val*50 + COLD*25;
                     break;
                 case NEUTRAL:
-                    this.daily_consumption = Consumption_Val*50 + NEUTRAL*0.5;
+                    this.daily_consumption = Consumption_Val*50 + NEUTRAL*5;
                     break;
                 case WARM:
-                    this.daily_consumption = Consumption_Val*50 + WARM*0.75;
+                    this.daily_consumption = Consumption_Val*50 + WARM*75;
                     break;
             }
         else

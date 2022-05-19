@@ -128,17 +128,18 @@ public class Model implements Serializable{
                         IOException
     {
         try {
+            File f = new File(file_name);
+            if (!f.createNewFile()){
+                f.delete();
+                f.createNewFile();
+            }
             FileOutputStream fos = new FileOutputStream(file_name);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(this);
             oos.flush();
             oos.close();
-        } catch (FileNotFoundException e){
-            File myObj = new File(file_name);
-            myObj.createNewFile();
-            save(file_name);
-        } catch (Exception e) {
-            throw new IOException("Error saving to file. ");
+        } catch (IOException e) {
+            throw new IOException("Error writing to file. ");
         }
     }
     /**
