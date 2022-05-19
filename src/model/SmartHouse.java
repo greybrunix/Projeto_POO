@@ -6,7 +6,7 @@ import java.util.ArrayList;
 /**
  * Class that refers to a house, a collection of devices and rooms
  */
-public class SmartHouse{
+public class SmartHouse extends SmartEP {
 
     private Map<String, SmartDevice> devices;
     private Map<String, List<String>> rooms;
@@ -43,16 +43,16 @@ public class SmartHouse{
     public Map<String, List<String>> getRooms(){
         return rooms;
     }
-    public void setOwner(String newOwn){
+    /*private setOwner(String newOwn){
         this.owner = newOwn;
     }
     public void setNIF(String nif){
         this.NIF = nif;
-    }
+    }*/
 
     public void addDeviceToRoom(SmartDevice dev, String room){
         this.devices.put(dev.getId(), dev);
-        this.rooms.get(dev.getId()).add(dev.getId()); // What the fuck?
+        this.rooms.get(room).add(dev.getId()); // What the fuck?
     }
 
     public void setDeviceOn(String id){

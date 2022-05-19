@@ -1,6 +1,5 @@
 package view;
 
-
 /**
  * UI
  */
@@ -50,4 +49,55 @@ public interface View {
             + "3) a divisao existe ou 4) O SmartDevice existe"
             + ". \n Por favor corrija de modo a que estas condicoes se verifiquem");
     }
+    static void showInputStartMenu(int test_int)
+    {
+        switch (test_int){
+            case 1 -> {
+                System.out.println("Insira o nome do comercializador de energia: ");
+                System.out.print(">> ");
+            }
+            case 2 -> {
+                System.out.println("Insira o nome do dono e o seu NIF separados por virgulas: ");
+                System.out.print(">> ");
+            }
+            case 4 -> {
+                System.out.println("Insira o nome da divisao e o nome do dono da casa separado por virgulas: ");
+                System.out.print(">> ");
+            }
+            case 5 -> {
+                System.out.println("Insira o ID do disp., o nome do dono e o nome do quarto: ");
+                System.out.print(">> ");
+            }
+            case 6 -> {
+                System.out.println("Insira o nome do dono e o nome da empresa");
+                System.out.print(">> ");
+            }
+            case 7 -> {
+                System.out.println("Insira o numero de dias que pretende avancar: ");
+                System.out.print(">> ");
+            }
+            default -> {}
+        }
+    }
+    static void showInputStartMenuDev(int test_int){
+        switch (test_int){
+            case 1 -> {
+                System.out.println("Insere o modo, o id, o tom e as dimensoes: ");
+                System.out.print(">> ");
+            }
+            case 2 -> {
+                System.out.println("Insere o modo, o id, o volume, a radio, a marca e o valor base da marca: ");
+                System.out.print(">> ");
+            }
+            case 3 -> {
+                System.out.println("Insere o modo, o id, a resolucao e o tamanho do video: ");
+                System.out.print(">> ");
+            }
+            default -> {}
+        }
+    }
+    static void showAppPrompts(int test_int){
+
+    }
+    
 }

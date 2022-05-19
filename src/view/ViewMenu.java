@@ -25,8 +25,7 @@ public interface ViewMenu {
                 *  4- Adicionar Divisao          *
                 *  5- Adicionar Disp. a casa     *
                 *  6- Estabelecer Contrato       *
-                *  8- Proceder no tempo          *
-                *  9- Guardar Estado             *
+                *  7- Proceder no tempo          *
                 *  0- Voltar ao menu anterior    *
                 **********************************"""
                 + "\n>> ");
@@ -45,7 +44,7 @@ public interface ViewMenu {
     static void mainMenu() {
         System.out.print("""
                 **********MENU PRINCIPAL**********
-                *  1- Dispositivos               * 
+                *  1- Dispositivos               *
                 *  2- Casas                      *
                 *  3- Fornecedores de Energia    *
                 *  4- Estatisticas               *
@@ -61,6 +60,10 @@ public interface ViewMenu {
                 *********DISPOSITIVOS*************
                 *  1- Ligar um disp.             *
                 *  2- Desligar um disp.          *
+                *  3- Aumentar Volume (Speaker)  *
+                *  4- Diminuir Volume            *
+                *  5- Alterar Tom (Lampada)      *
+                *  6- Obter consumo diario       *
                 *  0- Voltar ao menu anterior    *
                 **********************************"""
                 + "\n>> ");

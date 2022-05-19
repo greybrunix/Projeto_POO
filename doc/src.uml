@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>C:/Users/GreyBrunix/Desktop/uniClasses/second year/POO/Projeto_POO/src</OriginalElement>
+  <nodes>
+    <node x="21.0" y="1087.0">model.SmartSpeaker</node>
+    <node x="603.0" y="1131.0">model.SmartCamera</node>
+    <node x="1089.5" y="749.9999999999999">model.SmartDevice</node>
+    <node x="924.0" y="1524.0">view.ViewMenu</node>
+    <node x="365.0" y="352.1323755142138">model.SmartEP</node>
+    <node x="363.0" y="1131.0">model.SmartBulb</node>
+    <node x="737.7326923076923" y="1783.0">controller.Controller</node>
+    <node x="1330.0" y="784.0">view.View</node>
+    <node x="740.0" y="1578.5">model.FileLoadingSaving</node>
+    <node x="886.9528765272917" y="287.371891692761">model.SmartHouse</node>
+    <node x="1041.9826923076923" y="2095.0">Main</node>
+    <node x="1120.0" y="1097.0">model.Model</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="Main" target="model.Model" relationship="TO_ONE">
+      <point x="-35.0" y="-37.0" />
+      <point x="1076.9826923076923" y="2074.0" />
+      <point x="1106.4826923076923" y="2074.0" />
+      <point x="1106.4826923076923" y="2064.0" />
+      <point x="1460.5778846153846" y="2064.0" />
+      <point x="1460.5778846153846" y="1492.0" />
+      <point x="1335.8333333333333" y="1492.0" />
+      <point x="86.33333333333326" y="181.5" />
+    </edge>
+    <edge source="model.Model" target="model.SmartEP" relationship="DEPENDENCY">
+      <point x="64.75" y="-181.5" />
+      <point x="1314.25" y="1045.0" />
+      <point x="1319.5" y="1045.0" />
+      <point x="1319.5" y="260.0" />
+      <point x="1084.8278846153846" y="260.0" />
+      <point x="1084.8278846153846" y="250.0" />
+      <point x="554.0" y="250.0" />
+      <point x="81.0" y="114.5" />
+    </edge>
+    <edge source="controller.Controller" target="model.SmartDevice" relationship="DEPENDENCY">
+      <point x="69.0" y="-125.0" />
+      <point x="910.2326923076923" y="1761.0" />
+      <point x="1123.7326923076923" y="1761.0" />
+      <point x="1123.7326923076923" y="1751.0" />
+      <point x="1109.5" y="1751.0" />
+      <point x="1109.5" y="1045.0" />
+      <point x="1249.5" y="1045.0" />
+      <point x="64.0" y="136.5" />
+    </edge>
+    <edge source="controller.Controller" target="view.ViewMenu" relationship="DEPENDENCY">
+      <point x="69.0" y="-125.0" />
+      <point x="910.2326923076923" y="1761.0" />
+      <point x="1123.7326923076923" y="1761.0" />
+      <point x="1123.7326923076923" y="1751.0" />
+      <point x="1011.5" y="1751.0" />
+      <point x="0.0" y="102.5" />
+    </edge>
+    <edge source="model.SmartEP" target="model.SmartDevice" relationship="DEPENDENCY">
+      <point x="81.0" y="114.5" />
+      <point x="554.0" y="250.0" />
+      <point x="1084.8278846153846" y="250.0" />
+      <point x="1084.8278846153846" y="728.0" />
+      <point x="1249.5" y="728.0" />
+      <point x="64.0" y="-136.5" />
+    </edge>
+    <edge source="Main" target="controller.Controller" relationship="TO_ONE">
+      <point x="-35.0" y="-37.0" />
+      <point x="1076.9826923076923" y="2074.0" />
+      <point x="1106.4826923076923" y="2074.0" />
+      <point x="1106.4826923076923" y="2064.0" />
+      <point x="789.4826923076923" y="2064.0" />
+      <point x="-51.75" y="125.0" />
+    </edge>
+    <edge source="model.Model" target="view.View" relationship="DEPENDENCY">
+      <point x="64.75" y="-181.5" />
+      <point x="1314.25" y="1065.0" />
+      <point x="1439.5" y="1065.0" />
+      <point x="0.0" y="102.5" />
+    </edge>
+    <edge source="model.Model" target="model.SmartEP" relationship="TO_MANY">
+      <point x="-64.75" y="-181.5" />
+      <point x="1184.75" y="1065.0" />
+      <point x="848.4826923076923" y="1065.0" />
+      <point x="848.4826923076923" y="1045.0" />
+      <point x="793.8278846153846" y="1045.0" />
+      <point x="793.8278846153846" y="260.0" />
+      <point x="865.625" y="260.0" />
+      <point x="865.625" y="250.0" />
+      <point x="446.0" y="250.0" />
+      <point x="-27.0" y="114.5" />
+    </edge>
+    <edge source="model.SmartBulb" target="model.SmartDevice" relationship="GENERALIZATION">
+      <point x="0.0" y="-147.5" />
+      <point x="473.0" y="1065.0" />
+      <point x="466.0778846153846" y="1065.0" />
+      <point x="466.0778846153846" y="1055.0" />
+      <point x="1121.5" y="1055.0" />
+      <point x="-64.0" y="136.5" />
+    </edge>
+    <edge source="model.Model" target="model.SmartDevice" relationship="TO_MANY">
+      <point x="-64.75" y="-181.5" />
+      <point x="1184.75" y="1065.0" />
+      <point x="848.4826923076923" y="1065.0" />
+      <point x="848.4826923076923" y="1045.0" />
+      <point x="1185.5" y="1045.0" />
+      <point x="0.0" y="136.5" />
+    </edge>
+    <edge source="controller.Controller" target="model.SmartCamera" relationship="CREATE">
+      <point x="-69.0" y="-125.0" />
+      <point x="772.2326923076923" y="1761.0" />
+      <point x="487.2326923076923" y="1761.0" />
+      <point x="487.2326923076923" y="1751.0" />
+      <point x="719.5" y="1751.0" />
+      <point x="0.0" y="147.5" />
+    </edge>
+    <edge source="model.Model" target="model.SmartHouse" relationship="DEPENDENCY">
+      <point x="64.75" y="-181.5" />
+      <point x="1314.25" y="1045.0" />
+      <point x="1309.0" y="1045.0" />
+      <point x="1309.0" y="708.0" />
+      <point x="1123.2028765272917" y="708.0" />
+      <point x="101.25" y="202.5" />
+    </edge>
+    <edge source="model.SmartSpeaker" target="model.SmartDevice" relationship="GENERALIZATION">
+      <point x="0.0" y="-191.5" />
+      <point x="182.0" y="1065.0" />
+      <point x="466.0778846153846" y="1065.0" />
+      <point x="466.0778846153846" y="1055.0" />
+      <point x="1121.5" y="1055.0" />
+      <point x="-64.0" y="136.5" />
+    </edge>
+    <edge source="controller.Controller" target="model.SmartSpeaker" relationship="CREATE">
+      <point x="-69.0" y="-125.0" />
+      <point x="772.2326923076923" y="1761.0" />
+      <point x="487.2326923076923" y="1761.0" />
+      <point x="487.2326923076923" y="1751.0" />
+      <point x="182.0" y="1751.0" />
+      <point x="0.0" y="191.5" />
+    </edge>
+    <edge source="model.Model" target="model.SmartDevice" relationship="DEPENDENCY">
+      <point x="64.75" y="-181.5" />
+      <point x="1314.25" y="1055.0" />
+      <point x="1109.5" y="1055.0" />
+      <point x="1109.5" y="1045.0" />
+      <point x="1249.5" y="1045.0" />
+      <point x="64.0" y="136.5" />
+    </edge>
+    <edge source="model.Model" target="model.SmartHouse" relationship="TO_MANY">
+      <point x="-64.75" y="-181.5" />
+      <point x="1184.75" y="1065.0" />
+      <point x="848.4826923076923" y="1065.0" />
+      <point x="848.4826923076923" y="1045.0" />
+      <point x="890.125" y="1045.0" />
+      <point x="890.125" y="728.0" />
+      <point x="934.3278846153846" y="728.0" />
+      <point x="934.3278846153846" y="718.0" />
+      <point x="988.2028765272917" y="718.0" />
+      <point x="-33.75" y="202.5" />
+    </edge>
+    <edge source="model.SmartHouse" target="model.SmartDevice" relationship="DEPENDENCY">
+      <point x="101.25" y="202.5" />
+      <point x="1123.2028765272917" y="708.0" />
+      <point x="1309.0" y="708.0" />
+      <point x="1309.0" y="718.0" />
+      <point x="1084.8278846153846" y="718.0" />
+      <point x="1084.8278846153846" y="728.0" />
+      <point x="1249.5" y="728.0" />
+      <point x="64.0" y="-136.5" />
+    </edge>
+    <edge source="model.SmartHouse" target="model.SmartEP" relationship="GENERALIZATION">
+      <point x="0.0" y="-202.5" />
+      <point x="1021.9528765272917" y="260.0" />
+      <point x="500.0" y="260.0" />
+      <point x="27.0" y="114.5" />
+    </edge>
+    <edge source="model.SmartDevice" target="model.SmartHouse" relationship="GENERALIZATION">
+      <point x="0.0" y="-136.5" />
+      <point x="1185.5" y="728.0" />
+      <point x="1055.7028765272917" y="728.0" />
+      <point x="33.75" y="202.5" />
+    </edge>
+    <edge source="model.SmartHouse" target="model.SmartDevice" relationship="TO_MANY">
+      <point x="-33.75" y="202.5" />
+      <point x="988.2028765272917" y="718.0" />
+      <point x="934.3278846153846" y="718.0" />
+      <point x="934.3278846153846" y="728.0" />
+      <point x="1121.5" y="728.0" />
+      <point x="-64.0" y="-136.5" />
+    </edge>
+    <edge source="model.FileLoadingSaving" target="model.Model" relationship="DEPENDENCY">
+      <point x="0.0" y="-48.0" />
+      <point x="822.0" y="1502.0" />
+      <point x="1249.5" y="1502.0" />
+      <point x="0.0" y="181.5" />
+    </edge>
+    <edge source="controller.Controller" target="model.SmartEP" relationship="CREATE">
+      <point x="-69.0" y="-125.0" />
+      <point x="772.2326923076923" y="1761.0" />
+      <point x="487.2326923076923" y="1761.0" />
+      <point x="487.2326923076923" y="1751.0" />
+      <point x="0.0" y="1751.0" />
+      <point x="0.0" y="250.0" />
+      <point x="392.0" y="250.0" />
+      <point x="-81.0" y="114.5" />
+    </edge>
+    <edge source="model.SmartCamera" target="model.SmartDevice" relationship="GENERALIZATION">
+      <point x="0.0" y="-147.5" />
+      <point x="719.5" y="1065.0" />
+      <point x="466.0778846153846" y="1065.0" />
+      <point x="466.0778846153846" y="1055.0" />
+      <point x="1121.5" y="1055.0" />
+      <point x="-64.0" y="136.5" />
+    </edge>
+    <edge source="model.SmartEP" target="model.SmartHouse" relationship="TO_MANY">
+      <point x="-27.0" y="114.5" />
+      <point x="446.0" y="250.0" />
+      <point x="865.625" y="250.0" />
+      <point x="865.625" y="362.14526923313076" />
+      <point x="931.9528765272917" y="362.14526923313076" />
+      <point x="-90.0" y="-202.5" />
+    </edge>
+    <edge source="controller.Controller" target="model.FileLoadingSaving" relationship="TO_ONE">
+      <point x="0.0" y="-125.0" />
+      <point x="841.2326923076923" y="1761.0" />
+      <point x="863.0" y="1761.0" />
+      <point x="41.0" y="48.0" />
+    </edge>
+    <edge source="Main" target="controller.Controller" relationship="DEPENDENCY">
+      <point x="35.0" y="-37.0" />
+      <point x="1146.9826923076923" y="2074.0" />
+      <point x="1471.3278846153846" y="2074.0" />
+      <point x="1471.3278846153846" y="2054.0" />
+      <point x="892.9826923076923" y="2054.0" />
+      <point x="51.75" y="125.0" />
+    </edge>
+    <edge source="controller.Controller" target="model.SmartBulb" relationship="CREATE">
+      <point x="-69.0" y="-125.0" />
+      <point x="772.2326923076923" y="1761.0" />
+      <point x="487.2326923076923" y="1761.0" />
+      <point x="487.2326923076923" y="1751.0" />
+      <point x="473.0" y="1751.0" />
+      <point x="0.0" y="147.5" />
+    </edge>
+    <edge source="Main" target="model.Model" relationship="DEPENDENCY">
+      <point x="35.0" y="-37.0" />
+      <point x="1146.9826923076923" y="2074.0" />
+      <point x="1471.3278846153846" y="2074.0" />
+      <point x="1471.5778846153846" y="1502.0" />
+      <point x="1249.5" y="1502.0" />
+      <point x="0.0" y="181.5" />
+    </edge>
+    <edge source="controller.Controller" target="view.View" relationship="DEPENDENCY">
+      <point x="69.0" y="-125.0" />
+      <point x="910.2326923076923" y="1761.0" />
+      <point x="1123.7326923076923" y="1761.0" />
+      <point x="1123.7326923076923" y="1751.0" />
+      <point x="1439.5" y="1751.0" />
+      <point x="0.0" y="102.5" />
+    </edge>
+    <edge source="model.SmartEP" target="model.SmartHouse" relationship="DEPENDENCY">
+      <point x="81.0" y="114.5" />
+      <point x="554.0" y="250.0" />
+      <point x="1084.8278846153846" y="250.0" />
+      <point x="1084.8278846153846" y="260.0" />
+      <point x="1111.9528765272917" y="260.0" />
+      <point x="90.0" y="-202.5" />
+    </edge>
+    <edge source="controller.Controller" target="model.SmartHouse" relationship="CREATE">
+      <point x="-69.0" y="-125.0" />
+      <point x="772.2326923076923" y="1761.0" />
+      <point x="487.2326923076923" y="1761.0" />
+      <point x="487.2326923076923" y="1751.0" />
+      <point x="10.5" y="1751.0" />
+      <point x="10.5" y="728.0" />
+      <point x="920.7028765272917" y="728.0" />
+      <point x="-101.25" y="202.5" />
+    </edge>
+    <edge source="controller.Controller" target="model.FileLoadingSaving" relationship="CREATE">
+      <point x="-69.0" y="-125.0" />
+      <point x="772.2326923076923" y="1761.0" />
+      <point x="487.2326923076923" y="1761.0" />
+      <point x="487.2326923076923" y="1751.0" />
+      <point x="781.0" y="1751.0" />
+      <point x="-41.0" y="48.0" />
+    </edge>
+    <edge source="controller.Controller" target="model.Model" relationship="CREATE">
+      <point x="-69.0" y="-125.0" />
+      <point x="772.2326923076923" y="1761.0" />
+      <point x="487.2326923076923" y="1761.0" />
+      <point x="487.2326923076923" y="1751.0" />
+      <point x="729.5" y="1751.0" />
+      <point x="729.5" y="1492.0" />
+      <point x="1163.1666666666667" y="1492.0" />
+      <point x="-86.33333333333326" y="181.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.3720191868433074" showDependencies="true" x="1282.8769073737824" y="632.4399828083748" />
+  <SelectedNodes>
+    <node>model.SmartEP</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

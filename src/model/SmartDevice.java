@@ -11,7 +11,7 @@ package model;
  * @author Miguel Vaz
  * @author Joao Cruz
  */
-public abstract class SmartDevice {
+public abstract class SmartDevice extends SmartHouse {
     // This could be a super of the devices
     private String id;
     private boolean mode;
