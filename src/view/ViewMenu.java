@@ -94,7 +94,7 @@ public interface ViewMenu {
     static void mainMenuStats() {
         System.out.print("""
                 **********************Estatistica*********************
-                *  1- Casa que mais gastou no periodo                *
+                *  1- Casa que mais gastou no ultimo mes             *
                 *  2- Comercializador com maior volume de facturacao *
                 *  3- Facturas emitidas por um comercializador       *
                 *  4- Ordenacao dos maiores consumidores de energia  *
