@@ -11,7 +11,6 @@ import view.*;
 
  public class Controller{
     private static final Scanner sc = new Scanner(System.in);
-    private static final Scanner ssc = new Scanner(System.in);
     private static final String file_name = "save_slot.bin";
     public Controller(){
     }
@@ -31,6 +30,7 @@ import view.*;
                 app(mod);
             } catch (Exception e) {
                 View.showError(e);
+                //e.printStackTrace();
             }
             }
             case 2-> {
@@ -38,14 +38,13 @@ import view.*;
             while (creating){
                 ViewMenu.startMenuNew();
                 test_int = Math.abs(sc.nextInt()) % 8;
-                View.showInputStartMenu(test_int);
+                String[] argv = View.showInputStartMenu(test_int);
                 switch (test_int){
                     case 1 -> {
-                    SmartEP comerc = new SmartEP(ssc.nextLine());
+                    SmartEP comerc = new SmartEP(argv[0]);
                     mod.addEnerg(comerc);
                     }
                     case 2 -> {
-                    String[] argv = ssc.nextLine().split(",");
                     SmartHouse house = new SmartHouse(argv[0], argv[1]);
                     mod.addIsolHouse(house);
                     }
@@ -55,7 +54,6 @@ import view.*;
                     View.showInputStartMenuDev(test_int);
                     switch (test_int){
                         case 1 -> {
-                        String[] argv = ssc.nextLine().split(",");
                         boolean mode = Boolean.parseBoolean(argv[0]);
                         int tone = Integer.parseInt(argv[2]) % 3 + 1;
                         int dim = Integer.parseInt(argv[3]);
@@ -63,7 +61,6 @@ import view.*;
                         mod.addIsolDevice(sd);
                         }
                         case 2 -> {
-                        String[] argv= ssc.nextLine().split(",");
                         boolean mode = Boolean.parseBoolean(argv[0]);
                         int v = Integer.parseInt(argv[2]);
                         double bbp = Double.parseDouble(argv[5]);
@@ -71,7 +68,6 @@ import view.*;
                         mod.addIsolDevice(sd);
                         }
                         case 3 -> {
-                        String[] argv = ssc.nextLine().split(",");
                         boolean mode = Boolean.parseBoolean(argv[0]);
                         int res = Integer.parseInt(argv[2]);
                         int size = Integer.parseInt(argv[3]);
@@ -82,21 +78,18 @@ import view.*;
                     }
                     }
                     case 4 -> {
-                    String[] argv = ssc.nextLine().split(",");
                     mod.addRoom(argv[1], argv[0]);
                     }
                     case 5 -> {
-                    String[] argv = ssc.nextLine().split(",");
                     mod.addDevToHouse(argv[0], argv[1], argv[2]);
                     }
                     case 6 -> {
-                    String[] argv = ssc.nextLine().split(",");
                     mod.signContract(argv[0], argv[1]);
                     }
                     case 7 -> {
-                    int num_days = sc.nextInt();
+                    int num_days = View.timeSkipPrompt();
                     if (!mod.getHouse().isEmpty() || !mod.getDevs().isEmpty() || mod.getEnerg().isEmpty()){
-                        System.out.println("Error check if housessdfsd");
+                        View.showErrorTimeSkip();
                     }
                     else{
                         mod.skipTime(num_days);
@@ -119,31 +112,78 @@ import view.*;
     }
 
     public void app(Model mod) {
+        while (true){
+        View.showDate();
         ViewMenu.mainMenu();
         int test_int = sc.nextInt() % 8;
-        View.showAppPrompts(test_int);
         switch (test_int) {
-            case 1 -> {}
-            case 2 -> {}
-            case 3 -> {}
-            case 4 -> {}
-            case 5 -> {}
-            case 6 -> {}
-            case 7 -> save(mod);
+            case 1 -> {
+            ViewMenu.mainMenuDev();
+            test_int = sc.nextInt() % 8;
+            String[] argv = View.showDevAppPrompts(test_int);
+            switch (test_int){
+                case 1 ->{mod.turnOnDev(argv[0]);}
+                case 2 ->{mod.turnOffDev(argv[0]);}
+                case 3 ->{mod.incVol(argv[0]);}
+                case 4 ->{mod.decVol(argv[0]);}
+                case 5 ->{mod.incTone(argv[0]);}
+                case 6 ->{mod.decTone(argv[0]);}
+                case 7 ->{mod.getDevDC(argv[0]);}
+                default -> {}
+            }
+            }
+            case 2 -> {
+            ViewMenu.mainMenuHouse();
+            test_int = sc.nextInt() % 6;
+            String[] argv = View.showHouseAppPrompts(test_int);
+            switch (test_int){
+                case 1-> {mod.setAllOn(argv[0]);}
+                case 2-> {mod.setAllOnDiv(argv[0],argv[1]);}
+                case 3-> {mod.setAllOff(argv[0]);}
+                case 4-> {mod.setAllOffDiv(argv[0]);}
+                case 5-> {mod.changeContract(argv[0],argv[1]);}
+                default -> {}
+            }
+            }
+            case 3 -> {
+            ViewMenu.mainMenuComer();
+            test_int = sc.nextInt() % 4;
+            String[] argv = View.showProvAppPrompts(test_int);
+            switch (test_int){
+                case 1->{int value = Integer.parseInt(argv[1]); mod.changeBaseValue(argv[0], value);}
+                case 2->{double tax = Double.parseDouble(argv[1]); mod.changeTaxFactor(argv[0],tax);}
+                case 3->{mod.changeFormula(argv[0]);}
+                default->{}
+            }
+            }
+            case 4 -> {
+            ViewMenu.mainMenuStats();
+            test_int = sc.nextInt() % 5;
+
+            }
+            case 5 -> {
+            View.showBills(mod);
+            }
+            case 6 -> {
+            View.timeSkipPrompt();
+            int days = sc.nextInt();
+            mod.skipTime(days);
+            }
+            case 7 -> {save(mod);}
             default -> {
                 View.exit();
                 System.exit(1);
             }
         }
+        }
     }
 
-    public void stats(Model sys){
-    }
     public void save(Model mod){
         try{
             mod.save(file_name);
         } catch (Exception e){
             View.showError(e);
+            //e.printStackTrace();
         }
     }
     public void houseMostExp(String name) {

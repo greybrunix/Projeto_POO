@@ -1,13 +1,14 @@
 package model;
 
 import java.util.Map;
+import java.io.Serializable;
 import java.util.HashMap;
 
 /**
  * 
  * 
  */
-public class SmartEP {
+public class SmartEP implements Serializable{
     public static final int tax_factor = 1;
     public static final int base_value = 50;
     private String name;

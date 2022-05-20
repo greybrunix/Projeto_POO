@@ -62,8 +62,9 @@ public interface ViewMenu {
                 *  2- Desligar um disp.          *
                 *  3- Aumentar Volume (Speaker)  *
                 *  4- Diminuir Volume            *
-                *  5- Alterar Tom (Lampada)      *
-                *  6- Obter consumo diario       *
+                *  5- Aumentar Tom (Lampada)     *
+                *  6- Diminuir Tom
+                *  7- Obter consumo diario       *
                 *  0- Voltar ao menu anterior    *
                 **********************************"""
                 + "\n>> ");
@@ -85,6 +86,7 @@ public interface ViewMenu {
                 **********************************
                 *  1- Alterar valor base         *
                 *  2- Alterar fator de impostos  *
+                *  3- Alterar formula de preço   *
                 *  0- Voltar ao menu anterior    *
                 **********************************"""
                 + "\n>> ");

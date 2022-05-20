@@ -1,12 +1,13 @@
 package model;
 
+
 /**
  * Subclass of SmartDevice which implements a volume,
  *  a radio station and a brand name
  * 
  * 
  */
-public class SmartSpeaker extends SmartDevice {
+public class SmartSpeaker extends SmartDevice{
     /* Constants  enums and structs */
     public static final int MAX = 20;    
 

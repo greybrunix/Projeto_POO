@@ -138,7 +138,11 @@ public class Model implements Serializable{
             oos.writeObject(this);
             oos.flush();
             oos.close();
+        } catch (FileNotFoundException e){
+            //e.printStackTrace();
+            throw new FileNotFoundException("File not found. ");
         } catch (IOException e) {
+            //e.printStackTrace();
             throw new IOException("Error writing to file. ");
         }
     }
@@ -152,18 +156,67 @@ public class Model implements Serializable{
     public Model loadState(String fileName) throws
                                 IOException, ClassNotFoundException
     {
+        Model sys = new Model();
         try {
             FileInputStream fis = new FileInputStream(fileName);
             ObjectInputStream ois = new ObjectInputStream(fis);
-            Model sys = (Model) ois.readObject();
+            sys = (Model) ois.readObject();
             ois.close();
             return sys;
         } catch (FileNotFoundException e){
+            //e.printStackTrace();
             throw new FileNotFoundException("Error file not found. ");
         } catch (IOException e) {
+            //e.printStackTrace();
             throw new IOException("Error Loading File. ");
         } catch (ClassNotFoundException e){
+            //e.printStackTrace();
             throw new ClassNotFoundException("Error, Class not found");
         }
+}
+
+    public void turnOnDev(String string) {
+    }
+
+    public void turnOffDev(String string) {
+    }
+
+    public void incVol(String string) {
+    }
+
+    public void decVol(String string) {
+    }
+
+    public void incTone(String string) {
+    }
+
+    public void decTone(String string) {
+    }
+
+    public void getDevDC(String string) {
+    }
+
+    public void setAllOn(String string) {
+    }
+
+    public void setAllOnDiv(String string, String string2) {
+    }
+
+    public void setAllOff(String string) {
+    }
+
+    public void setAllOffDiv(String string) {
+    }
+
+    public void changeContract(String string, String string2) {
+    }
+
+    public void changeBaseValue(String string, int value) {
+    }
+
+    public void changeTaxFactor(String string, double tax) {
+    }
+
+    public void changeFormula(String string) {
     }
 }

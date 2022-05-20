@@ -1,5 +1,6 @@
 package model;
 
+
 /**
  * 
  * This class is a super class for each individual SD
@@ -11,7 +12,7 @@ package model;
  * @author Miguel Vaz
  * @author Joao Cruz
  */
-public abstract class SmartDevice extends SmartHouse {
+public abstract class SmartDevice extends SmartHouse{
     // This could be a super of the devices
     private String id;
     private boolean mode;

@@ -1,5 +1,9 @@
 package view;
 
+import java.util.Scanner;
+
+import model.*;
+
 /**
  * UI
  */
@@ -9,8 +13,8 @@ public interface View {
     {
         System.out.print("""
                 ***** Bem vindo/a ao Simulador de Casas Inteligentes *****
-                  *    Estara disponivel, a seguir desta mensagem,     *
-                  * uma serie de menus onde a simulacao em si decorra  *
+                  *    Estara disponivel, a seguir desta mensagem,      *
+                  * uma serie de menus onde a simulacao em si decorra   *
                 ----------------------------------------------------------
 
                 """);
@@ -20,7 +24,7 @@ public interface View {
     {
         System.out.print("""
                 *****    Seja bem vindo, novo utilizador    *****
-                  * Criando nova simulaçao com dados inseridos *
+                  * Criando nova simulacao com dados inseridos *
                 -------------------------------------------------
 
                 """);
@@ -30,13 +34,13 @@ public interface View {
     {
         System.out.print("""
                *****     Seja bem vindo de volta     *****
-                 * Carregando onde ficou da ultima vez *
+                 * Carregando onde ficou da ultima vez  *
                -------------------------------------------
 
                """);
     }
     static void showError(Exception e) {
-        System.out.println(e.getMessage() + "Continuando onde estava antes...");
+        System.out.println(e.getMessage() + "Continuando onde estava antes...\n");
     }
     static void exit()
     {
@@ -44,13 +48,16 @@ public interface View {
     }
     static void showDeviceAddError()
     {
-        System.err.println("Erro, por favor verifique se "
-            + "1) a casa existe, 2) A casa ainda nao tem contrato, "
-            + "3) a divisao existe ou 4) O SmartDevice existe"
-            + ". \n Por favor corrija de modo a que estas condicoes se verifiquem");
+        System.err.println("Erro, por favor verifique se:"
+            + " 1) A casa existe;"
+            + "\n 2) A casa ainda nao tem contrato assinado com Comercializador de Energia;"
+            + "\n 3) A divisao existe;"
+            + "\n 4) O dispositivo existe e ainda nao foi associado a uma casa;"
+            + "\n Por favor, corrija os erros mencionados e tente de novo.\n");
     }
-    static void showInputStartMenu(int test_int)
+    static String[] showInputStartMenu(int test_int)
     {
+        Scanner sc = new Scanner(System.in);
         switch (test_int){
             case 1 -> {
                 System.out.println("Insira o nome do comercializador de energia: ");
@@ -72,14 +79,26 @@ public interface View {
                 System.out.println("Insira o nome do dono e o nome da empresa");
                 System.out.print(">> ");
             }
-            case 7 -> {
-                System.out.println("Insira o numero de dias que pretende avancar: ");
-                System.out.print(">> ");
+            default -> {
+                String[] array = "Hi Word!".split(" ");
+                sc.close();
+                return array;
             }
-            default -> {}
         }
+        String[] argv = sc.nextLine().split(",");
+        sc.close();
+        return argv;
     }
-    static void showInputStartMenuDev(int test_int){
+    static int timeSkipPrompt() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Insira o numero de dias que pretende avancar: \n>> ");
+        int res = sc.nextInt();
+        sc.close();
+        return res;
+    }
+
+    static String[] showInputStartMenuDev(int test_int){
+        Scanner sc = new Scanner(System.in);
         switch (test_int){
             case 1 -> {
                 System.out.println("Insere o modo, o id, o tom e as dimensoes: ");
@@ -95,9 +114,64 @@ public interface View {
             }
             default -> {}
         }
+        String[] array = sc.nextLine().split(",");
+        sc.close();
+        return array;
     }
-    static void showAppPrompts(int test_int){
+    static String[] showDevAppPrompts(int test_int){
+        Scanner sc = new Scanner(System.in);
+        switch (test_int){
+            case 1,2,3,4,5,6,7 ->{
+                System.out.print("Insere o id do dispositivo: \n>> ");
+            }
+            default -> {}
+        }
+        String[] array = sc.nextLine().split(",");
+        sc.close();
+        return array;
+    }
+    static String[] showHouseAppPrompts(int test_int){
+        Scanner sc = new Scanner(System.in);
+        switch (test_int){
+            case 1,2,3,4,5 ->{
+                System.out.print("Insere o nome do dono da casa: \n>> ");
+            }
+            default -> {}
+        }
+        String[]  array = sc.nextLine().split(",");
+        sc.close();
+        return array;
+    }
+    static String[] showProvAppPrompts(int test_int){
+        Scanner sc = new Scanner(System.in);
+        switch(test_int){
+            case 1->{
+                System.out.print("Insere onome da empresa e o novo valor base de KWh:\n>> ");
+            }
+            case 2->{
+                System.out.print("Insere o nome da empresa e o novo fator de impostos:\n>> ");
+            }
+            case 3->{
+                System.out.print("Insere o nome da empresa:\n>> ");
+            }
+        }
+        String[] array = sc.nextLine().split(",");
+        sc.close();
+        return array;
+    }
 
+    static void showBills(Model mod) {
+        System.out.println("Hi");
     }
-    
+
+    static void showErrorTimeSkip() {
+        System.out.print("Nao e possivel proceder se:\n"
+            + "1) Nao existem Comercializadores de Energia.\n"
+            + "2) Existem Dispositivos sem casa associada.\n"
+            + "3) Existem Casas sem contrato assinado com Comerc. de Energia.\n"
+            + "Por favor, corrija os erros mencionados e tente de novo.\n");
+    }
+
+    static void showDate() {
+    }
 }

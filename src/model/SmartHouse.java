@@ -6,7 +6,7 @@ import java.util.ArrayList;
 /**
  * Class that refers to a house, a collection of devices and rooms
  */
-public class SmartHouse extends SmartEP {
+public class SmartHouse extends SmartEP{
 
     private Map<String, SmartDevice> devices;
     private Map<String, List<String>> rooms;
@@ -103,7 +103,7 @@ public class SmartHouse extends SmartEP {
           .append("With Fiscal Identifying Number:\t")
           .append(this.getNIF())
           .append("With the following devices:\t")
-          .append(devices.toString())
+          .append(devices.values().toString())
           .append("And the following rooms:\t")
           .append(rooms.keySet().toString());
         return sb.toString();
