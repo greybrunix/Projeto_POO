@@ -148,7 +148,8 @@ public interface View {
             + "Por favor, corrija os erros mencionados e tente de novo.\n");
     }
 
-    static void showDate() {
+    static void showDate(Model mod) {
+        System.out.println(mod.getDate());
     }
 
     static void showInputError() {

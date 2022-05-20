@@ -304,7 +304,7 @@ public class Model implements Serializable{
     private String whereIsDev(String id){
         String owner = new String();
         for (String name_of_comp : this.energ_prov.keySet())
-            for (SmartHouse house : this.energ_prov.get(name_of_comp).getHouses().values())
+            for (SmartHouse house : this.energ_prov.get(name_of_comp).getHouses().values()) // get is null
                 if (house.getDevices().containsKey(id)){
                     owner = house.getOwner();
                     return owner;
@@ -314,7 +314,7 @@ public class Model implements Serializable{
     private String whereIsHouse(String owner){
         String name_of_comp = new String();
         for (String comp : this.energ_prov.keySet())
-            if (energ_prov.get(name_of_comp).getHouses().containsKey(owner))
+            if (energ_prov.get(name_of_comp).getHouses().containsKey(owner)) // get is null
                 return comp;
         return name_of_comp;
     }

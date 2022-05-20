@@ -161,7 +161,7 @@ import view.*;
 
     public void app(Model mod) {
         while (true){
-        View.showDate();
+        View.showDate(mod);
         ViewMenu.mainMenu();
         int test_int = Math.abs(sc.nextInt()) % 8;
         switch (test_int) {
