@@ -221,7 +221,7 @@ public class Model implements Serializable{
         String comp = whereIsHouse(owner);
         SmartSpeaker speak = new SmartSpeaker();
         SmartDevice sd = this.energ_prov.get(comp).getHouses().get(owner).getDevices().get(id);
-        if (sd.getClass() == speak.getClass()){
+        if (sd.getClass().equals(speak.getClass())){
             speak = (SmartSpeaker) sd;
             speak.volumeUP();
         }
@@ -232,7 +232,7 @@ public class Model implements Serializable{
         String comp = whereIsHouse(owner);
         SmartSpeaker speak = new SmartSpeaker();
         SmartDevice sd = this.energ_prov.get(comp).getHouses().get(owner).getDevices().get(id);
-        if (sd.getClass() == speak.getClass()){
+        if (sd.getClass().equals(speak.getClass())){
             speak = (SmartSpeaker) sd;
             speak.volumeDOWN();
         }
@@ -243,7 +243,7 @@ public class Model implements Serializable{
         String comp = whereIsHouse(owner);
         SmartBulb bulb = new SmartBulb();
         SmartDevice sd = this.energ_prov.get(comp).getHouses().get(owner).getDevices().get(id);
-        if (sd.getClass() == bulb.getClass()){
+        if (sd.getClass().equals(bulb.getClass())){
             bulb = (SmartBulb) sd;
             bulb.incTone();
         }
@@ -254,7 +254,7 @@ public class Model implements Serializable{
         String comp = whereIsHouse(owner);
         SmartBulb bulb = new SmartBulb();
         SmartDevice sd = this.energ_prov.get(comp).getHouses().get(owner).getDevices().get(id);
-        if (sd.getClass() == bulb.getClass()){
+        if (sd.getClass().equals(bulb.getClass())){
             bulb = (SmartBulb) sd;
             bulb.decTone();
         }
@@ -307,15 +307,14 @@ public class Model implements Serializable{
             for (SmartHouse house : this.energ_prov.get(name_of_comp).getHouses().values()) // get is null
                 if (house.getDevices().containsKey(id)){
                     owner = house.getOwner();
-                    return owner;
                 }
         return owner;
     }
     private String whereIsHouse(String owner){
         String name_of_comp = new String();
         for (String comp : this.energ_prov.keySet())
-            if (energ_prov.get(name_of_comp).getHouses().containsKey(owner)) // get is null
-                return comp;
+            if (this.energ_prov.get(comp).getHouses().containsKey(owner)) // get is null
+                name_of_comp = comp;
         return name_of_comp;
     }
 }
