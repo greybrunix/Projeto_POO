@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import model.*;
@@ -43,11 +44,19 @@ import view.*;
                 switch (test_int){
                     case 1 -> {
                     String[] argv = ssc.nextLine().split(",");
+                    while (argv.length != 1){
+                        View.showInputError();
+                        argv = ssc.nextLine().split(",");
+                    }
                     SmartEP comerc = new SmartEP(argv[0]);
                     mod.addEnerg(comerc);
                     }
                     case 2 -> {
                     String[] argv = ssc.nextLine().split(",");
+                    while (argv.length != 2){
+                        View.showInputError();
+                        argv = ssc.nextLine().split(",");
+                    }
                     SmartHouse house = new SmartHouse(argv[0], argv[1]);
                     mod.addIsolHouse(house);
                     }
@@ -58,6 +67,10 @@ import view.*;
                     switch (test_int){
                         case 1 -> {
                         String[] argv = ssc.nextLine().split(",");
+                        while (argv.length != 4){
+                            View.showInputError();
+                            argv = ssc.nextLine().split(",");
+                        }
                         boolean mode = Boolean.parseBoolean(argv[0]);
                         int tone = Integer.parseInt(argv[2]) % 3 + 1;
                         int dim = Integer.parseInt(argv[3]);
@@ -65,7 +78,11 @@ import view.*;
                         mod.addIsolDevice(sd);
                         }
                         case 2 -> {
-                            String[] argv = ssc.nextLine().split(",");
+                        String[] argv = ssc.nextLine().split(",");
+                        while (argv.length != 6){
+                            View.showInputError();
+                            argv = ssc.nextLine().split(",");
+                        }
                         boolean mode = Boolean.parseBoolean(argv[0]);
                         int v = Integer.parseInt(argv[2]);
                         double bbp = Double.parseDouble(argv[5]);
@@ -74,6 +91,10 @@ import view.*;
                         }
                         case 3 -> {
                         String[] argv = ssc.nextLine().split(",");
+                        while (argv.length != 4){
+                            View.showInputError();
+                            argv = ssc.nextLine().split(",");
+                        }
                         boolean mode = Boolean.parseBoolean(argv[0]);
                         int res = Integer.parseInt(argv[2]);
                         int size = Integer.parseInt(argv[3]);
@@ -85,14 +106,26 @@ import view.*;
                     }
                     case 4 -> {
                     String[] argv = ssc.nextLine().split(",");
+                    while (argv.length != 2){
+                        View.showInputError();
+                        argv = ssc.nextLine().split(",");
+                    }
                     mod.addRoom(argv[1], argv[0]);
                     }
                     case 5 -> {
                     String[] argv = ssc.nextLine().split(",");
+                    while (argv.length != 3){
+                        View.showInputError();
+                        argv = ssc.nextLine().split(",");
+                    }
                     mod.addDevToHouse(argv[0], argv[1], argv[2]);
                     }
                     case 6 -> {
                     String[] argv = ssc.nextLine().split(",");
+                    while (argv.length != 2){
+                        View.showInputError();
+                        argv = ssc.nextLine().split(",");
+                    }
                     mod.signContract(argv[0], argv[1]);
                     }
                     case 7 -> {
@@ -101,7 +134,12 @@ import view.*;
                         View.showErrorTimeSkip();
                     }
                     else{
-                        int num_days = sc.nextInt();
+                        int num_days;
+                        try{num_days = sc.nextInt();}
+                        catch (InputMismatchException e){
+                            View.showIntError();
+                            num_days = sc.nextInt();
+                        }
                         mod.skipTime(num_days);
                         View.welcomeCreate();
                         creating = false;
@@ -125,50 +163,151 @@ import view.*;
         while (true){
         View.showDate();
         ViewMenu.mainMenu();
-        int test_int = sc.nextInt() % 8;
+        int test_int = Math.abs(sc.nextInt()) % 8;
         switch (test_int) {
             case 1 -> {
             ViewMenu.mainMenuDev();
-            test_int = sc.nextInt() % 8;
+            test_int = Math.abs(sc.nextInt()) % 8;
             View.showDevAppPrompts(test_int);
             switch (test_int){
-                case 1 ->{String[] argv = ssc.nextLine().split(",");mod.turnOnDev(argv[0]);}
-                case 2 ->{String[] argv = ssc.nextLine().split(",");mod.turnOffDev(argv[0]);}
-                case 3 ->{String[] argv = ssc.nextLine().split(",");mod.incVol(argv[0]);}
-                case 4 ->{String[] argv = ssc.nextLine().split(",");mod.decVol(argv[0]);}
-                case 5 ->{String[] argv = ssc.nextLine().split(",");mod.incTone(argv[0]);}
-                case 6 ->{String[] argv = ssc.nextLine().split(",");mod.decTone(argv[0]);}
-                case 7 ->{String[] argv = ssc.nextLine().split(",");mod.getDevDC(argv[0]);}
+                case 1 ->{
+                String[] argv = ssc.nextLine().split(",");
+                while (argv.length != 1){
+                    View.showInputError();
+                    argv = ssc.nextLine().split(",");
+                }
+                mod.turnOnDev(argv[0]);
+                }
+                case 2 ->{
+                String[] argv = ssc.nextLine().split(",");
+                while (argv.length != 1){
+                    View.showInputError();
+                    argv = ssc.nextLine().split(",");
+                }
+                mod.turnOffDev(argv[0]);
+                }
+                case 3 ->{
+                String[] argv = ssc.nextLine().split(",");
+                while (argv.length != 1){
+                    View.showInputError();
+                    argv = ssc.nextLine().split(",");
+                }
+                mod.incVol(argv[0]);
+                }
+                case 4 ->{
+                    String[] argv = ssc.nextLine().split(",");
+                    while (argv.length != 1){
+                        View.showInputError();
+                        argv = ssc.nextLine().split(",");
+                    }
+                    mod.decVol(argv[0]);
+                }
+                case 5 ->{
+                    String[] argv = ssc.nextLine().split(",");
+                    while (argv.length != 1){
+                        View.showInputError();
+                        argv = ssc.nextLine().split(",");
+                    }
+                    mod.incTone(argv[0]);
+                }
+                case 6 ->{
+                    String[] argv = ssc.nextLine().split(",");
+                    while (argv.length != 1){
+                        View.showInputError();
+                        argv = ssc.nextLine().split(",");
+                    }
+                    mod.decTone(argv[0]);
+                }
+                case 7 ->{
+                    String[] argv = ssc.nextLine().split(",");
+                    while (argv.length != 1){
+                        View.showInputError();
+                        argv = ssc.nextLine().split(",");
+                    }
+                    mod.getDevDC(argv[0]);
+                }
                 default -> {}
             }
             }
             case 2 -> {
             ViewMenu.mainMenuHouse();
-            test_int = sc.nextInt() % 6;
+            test_int = Math.abs(sc.nextInt()) % 6;
             View.showHouseAppPrompts(test_int);
             switch (test_int){
-                case 1-> {String[] argv = ssc.nextLine().split(",");mod.setAllOn(argv[0]);}
-                case 2-> {String[] argv = ssc.nextLine().split(",");mod.setAllOnDiv(argv[0],argv[1]);}
-                case 3-> {String[] argv = ssc.nextLine().split(",");mod.setAllOff(argv[0]);}
-                case 4-> {String[] argv = ssc.nextLine().split(",");mod.setAllOffDiv(argv[0]);}
-                case 5-> {String[] argv = ssc.nextLine().split(",");mod.changeContract(argv[0],argv[1]);}
+                case 1-> {
+                    String[] argv = ssc.nextLine().split(",");
+                    while (argv.length != 1){
+                        View.showInputError();
+                        argv = ssc.nextLine().split(",");
+                    }
+                mod.setAllOn(argv[0]);
+                }
+                case 2-> {
+                    String[] argv = ssc.nextLine().split(",");
+                    while (argv.length != 2){
+                        View.showInputError();
+                        argv = ssc.nextLine().split(",");
+                    }
+                mod.setAllOnDiv(argv[0],argv[1]);
+                }
+                case 3-> {
+                    String[] argv = ssc.nextLine().split(",");
+                    while (argv.length != 1){
+                        View.showInputError();
+                        argv = ssc.nextLine().split(",");
+                    }
+                mod.setAllOff(argv[0]);}
+                case 4-> {
+                    String[] argv = ssc.nextLine().split(",");
+                    while (argv.length != 1){
+                        View.showInputError();
+                        argv = ssc.nextLine().split(",");
+                    }
+                mod.setAllOffDiv(argv[0]);}
+                case 5-> {
+                    String[] argv = ssc.nextLine().split(",");
+                    while (argv.length != 2){
+                        View.showInputError();
+                        argv = ssc.nextLine().split(",");
+                    }
+                mod.changeContract(argv[0],argv[1]);}
                 default -> {}
             }
             }
             case 3 -> {
             ViewMenu.mainMenuComer();
-            test_int = sc.nextInt() % 4;
+            test_int = Math.abs(sc.nextInt()) % 4;
             View.showProvAppPrompts(test_int);
             switch (test_int){
-                case 1->{String[] argv = ssc.nextLine().split(",");int value = Integer.parseInt(argv[1]); mod.changeBaseValue(argv[0], value);}
-                case 2->{String[] argv = ssc.nextLine().split(",");double tax = Double.parseDouble(argv[1]); mod.changeTaxFactor(argv[0],tax);}
-                case 3->{String[] argv = ssc.nextLine().split(",");mod.changeFormula(argv[0]);}
+                case 1->{String[] argv = ssc.nextLine().split(",");
+                while (argv.length != 2){
+                    View.showInputError();
+                    argv = ssc.nextLine().split(",");
+                }
+                int value = Integer.parseInt(argv[1]);
+                mod.changeBaseValue(argv[0], value);}
+                case 2->{String[] argv = ssc.nextLine().split(",");
+                while (argv.length != 2){
+                    View.showInputError();
+                    argv = ssc.nextLine().split(",");
+                }
+                double tax = Double.parseDouble(argv[1]);
+                mod.changeTaxFactor(argv[0],tax);}
+                case 3->{String[] argv = ssc.nextLine().split(",");
+                while (argv.length != 1){
+                    View.showInputError();
+                    argv = ssc.nextLine().split(",");
+                }
+                mod.changeFormula(argv[0]);}
                 default->{}
             }
             }
             case 4 -> {
             ViewMenu.mainMenuStats();
-            test_int = sc.nextInt() % 5;
+            test_int = Math.abs(sc.nextInt()) % 5;
+            switch (test_int){
+                default->{}
+            }
 
             }
             case 5 -> {
