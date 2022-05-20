@@ -24,7 +24,7 @@ import view.*;
         ViewMenu.startMenu();
         int test_int = sc.nextInt();
         switch(Math.abs(test_int) % 3){
-            case 1 -> {
+            case 1->{
             try{
                 mod = mod.loadState(file_name);
                 View.welcomeLoad();

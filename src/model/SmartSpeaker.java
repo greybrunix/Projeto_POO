@@ -16,7 +16,7 @@ public class SmartSpeaker extends SmartDevice{
     private int volume;
     private String radio;
     private String brand;
-    private double brand_base_price;
+    private double brand_base_cons;
 
 
     /* Constructors */
@@ -51,7 +51,7 @@ public class SmartSpeaker extends SmartDevice{
         return this.brand;
     }
     public double getBrandBP(){
-        return this.brand_base_price;
+        return this.brand_base_cons;
     }
     public double getConsumption(){
         return this.daily_consumption;
@@ -81,14 +81,16 @@ public class SmartSpeaker extends SmartDevice{
         this.computeConsumption();
     }
     public void setBrandBP(double bbp){
-        this.brand_base_price = bbp;
+        this.brand_base_cons = bbp;
         this.computeConsumption();
     }
 
     /* Computations */
     public void computeConsumption(){
-        if (this.getMode())
-            this.daily_consumption = .6*brand_base_price + .4*volume; /* Computation */
+        if (this.getMode()){
+            this.daily_consumption = .6*this.brand_base_cons + .4*this.volume;
+            this.daily_consumption *= 24; /* Computation */
+        }
         else
             this.daily_consumption = 0;
     }

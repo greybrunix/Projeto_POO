@@ -63,12 +63,15 @@ public class SmartBulb extends SmartDevice{
             switch(this.getTone()){
                 case COLD: 
                     this.daily_consumption = Consumption_Val*10 + COLD*.25;
+                    this.daily_consumption *= 24;
                     break;
                 case NEUTRAL:
                     this.daily_consumption = Consumption_Val*10 + NEUTRAL*.5;
+                    this.daily_consumption *= 24;
                     break;
                 case WARM:
                     this.daily_consumption = Consumption_Val*10 + WARM*.75;
+                    this.daily_consumption *= 24;
                     break;
             }
         else

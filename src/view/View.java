@@ -146,4 +146,10 @@ public interface View {
 
     static void showDate() {
     }
+
+    static void showInputError() {
+    }
+
+    static void showIntError() {
+    }
 }
