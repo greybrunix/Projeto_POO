@@ -14,19 +14,29 @@ public class Model implements Serializable{
     private final Map<String, SmartEP> energ_prov;
     private LocalDate date;
     private final Map<String, SmartEP> energ_with_changes;
+    private final Map<String, SmartDevice> dev_with_changes;
 
     public Model(){
         this.devices_no_house = new HashMap<String, SmartDevice>();
         this.houses_no_contract = new HashMap<String, SmartHouse>();
         this.energ_prov = new HashMap<String, SmartEP>();
         this.energ_with_changes = new HashMap<String, SmartEP>();
+        this.dev_with_changes = new HashMap<String, SmartDevice>();
         this.date = LocalDate.now();
     }
 
-    public Map<String, SmartDevice> getDevs(){return this.devices_no_house;}
-    public Map<String, SmartHouse> getHouse(){return this.houses_no_contract;}
-    public Map<String, SmartEP> getEnerg(){return this.energ_prov;}
-    public LocalDate getDate(){ return this.date;}
+    public Map<String, SmartDevice> getDevs(){
+        return new HashMap<String, SmartDevice>(this.devices_no_house);
+    }
+    public Map<String, SmartHouse> getHouse(){
+        return new HashMap<String, SmartHouse>(this.houses_no_contract);
+    }
+    public Map<String, SmartEP> getEnerg(){
+        return new HashMap<String, SmartEP>(this.energ_prov);
+    }
+    public LocalDate getDate(){
+        return this.date;
+    }
 
     /**
      * 
@@ -89,13 +99,21 @@ public class Model implements Serializable{
      * @param days
      */
     public void skipTime(int days){
-        this.date = date.plusDays(days);
+        if (this.dev_with_changes.size() > 0){
+            this.date.plusDays(1);
+            this.operateDevChanges();
+            this.date.plusDays(days-1);
+        }
+        else this.date = date.plusDays(days);
         if (date.isEqual(date.with(TemporalAdjusters.firstDayOfMonth()))){
             View.showAllBills(this);
             if (this.energ_with_changes.size() > 0)
                 this.operateEnergChanges();
         }
     }
+    private void operateDevChanges() {
+    }
+
     private void operateEnergChanges() {
     }
 
