@@ -1,6 +1,5 @@
 package view;
 
-import java.util.Scanner;
 
 import model.*;
 
@@ -55,9 +54,8 @@ public interface View {
             + "\n 4) O dispositivo existe e ainda nao foi associado a uma casa;"
             + "\n Por favor, corrija os erros mencionados e tente de novo.\n");
     }
-    static String[] showInputStartMenu(int test_int)
+    static void showInputStartMenu(int test_int)
     {
-        Scanner sc = new Scanner(System.in);
         switch (test_int){
             case 1 -> {
                 System.out.println("Insira o nome do comercializador de energia: ");
@@ -80,25 +78,14 @@ public interface View {
                 System.out.print(">> ");
             }
             default -> {
-                String[] array = "Hi Word!".split(" ");
-                sc.close();
-                return array;
             }
         }
-        String[] argv = sc.nextLine().split(",");
-        sc.close();
-        return argv;
     }
-    static int timeSkipPrompt() {
-        Scanner sc = new Scanner(System.in);
+    static void timeSkipPrompt() {
         System.out.print("Insira o numero de dias que pretende avancar: \n>> ");
-        int res = sc.nextInt();
-        sc.close();
-        return res;
     }
 
-    static String[] showInputStartMenuDev(int test_int){
-        Scanner sc = new Scanner(System.in);
+    static void showInputStartMenuDev(int test_int){
         switch (test_int){
             case 1 -> {
                 System.out.println("Insere o modo, o id, o tom e as dimensoes: ");
@@ -114,39 +101,27 @@ public interface View {
             }
             default -> {}
         }
-        String[] array = sc.nextLine().split(",");
-        sc.close();
-        return array;
     }
-    static String[] showDevAppPrompts(int test_int){
-        Scanner sc = new Scanner(System.in);
+    static void showDevAppPrompts(int test_int){
         switch (test_int){
             case 1,2,3,4,5,6,7 ->{
                 System.out.print("Insere o id do dispositivo: \n>> ");
             }
             default -> {}
         }
-        String[] array = sc.nextLine().split(",");
-        sc.close();
-        return array;
     }
-    static String[] showHouseAppPrompts(int test_int){
-        Scanner sc = new Scanner(System.in);
+    static void showHouseAppPrompts(int test_int){
         switch (test_int){
             case 1,2,3,4,5 ->{
                 System.out.print("Insere o nome do dono da casa: \n>> ");
             }
             default -> {}
         }
-        String[]  array = sc.nextLine().split(",");
-        sc.close();
-        return array;
     }
-    static String[] showProvAppPrompts(int test_int){
-        Scanner sc = new Scanner(System.in);
+    static void showProvAppPrompts(int test_int){
         switch(test_int){
             case 1->{
-                System.out.print("Insere onome da empresa e o novo valor base de KWh:\n>> ");
+                System.out.print("Insere o nome da empresa e o novo valor base de KWh:\n>> ");
             }
             case 2->{
                 System.out.print("Insere o nome da empresa e o novo fator de impostos:\n>> ");
@@ -155,9 +130,6 @@ public interface View {
                 System.out.print("Insere o nome da empresa:\n>> ");
             }
         }
-        String[] array = sc.nextLine().split(",");
-        sc.close();
-        return array;
     }
 
     static void showBills(Model mod) {

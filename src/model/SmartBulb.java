@@ -47,7 +47,7 @@ public class SmartBulb extends SmartDevice{
     }
 
     /* Setters */
-    public void setTone(int t){
+    private void setTone(int t){
         if (t > WARM) this.tone = WARM;
         else if (t < COLD) this.tone = COLD;
         else this.tone = t;
@@ -62,13 +62,13 @@ public class SmartBulb extends SmartDevice{
         if (this.getMode())
             switch(this.getTone()){
                 case COLD: 
-                    this.daily_consumption = Consumption_Val*50 + COLD*25;
+                    this.daily_consumption = Consumption_Val*10 + COLD*.25;
                     break;
                 case NEUTRAL:
-                    this.daily_consumption = Consumption_Val*50 + NEUTRAL*5;
+                    this.daily_consumption = Consumption_Val*10 + NEUTRAL*.5;
                     break;
                 case WARM:
-                    this.daily_consumption = Consumption_Val*50 + WARM*75;
+                    this.daily_consumption = Consumption_Val*10 + WARM*.75;
                     break;
             }
         else
@@ -81,6 +81,14 @@ public class SmartBulb extends SmartDevice{
     public void setOFF(){
         setMode(false);
         this.computeConsumption();
+    }
+    public void incTone(){
+        if (this.getTone() < WARM) this.setTone(this.getTone()+1);
+        else this.setTone(this.getTone());
+    }
+    public void decTone(){
+        if (this.getTone() > COLD) this.setTone(this.getTone()-1);
+        else this.setTone(this.getTone());
     }
 
     /* Overrides */

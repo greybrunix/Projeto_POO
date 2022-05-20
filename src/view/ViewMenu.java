@@ -94,11 +94,11 @@ public interface ViewMenu {
     static void mainMenuStats() {
         System.out.print("""
                 **********************Estatistica*********************
-                *  1- Casa que mais gastou no período                *
-                *  2- Comercializador com maior volume de facturação *
+                *  1- Casa que mais gastou no periodo                *
+                *  2- Comercializador com maior volume de facturacao *
                 *  3- Facturas emitidas por um comercializador       *
-                *  4- Ordenação dos maiores consumidores de energia  *
-                *     durante um período a determinar                *
+                *  4- Ordenacao dos maiores consumidores de energia  *
+                *            durante ultimo mes                      *
                 *  0- Voltar ao menu anterior                        *
                 ******************************************************"""
                 + "\n>> ");
