@@ -9,24 +9,22 @@ import java.util.HashMap;
  * 
  */
 public class SmartEP implements Serializable{
-    public static final int tax_factor = 1;
-    public static final int base_value = 50;
+    private double tax_factor = 1;
+    private int base_value = 50;
     private String name;
     private int price;
     private Map<String,SmartHouse> houses;
 
     public SmartEP(){
-        this.price = 0;
-        this.houses = new HashMap<String,SmartHouse>();
     }
     public SmartEP(String name){
         this.name  = name;
-        this.price = 0;
+        this.setPrice(0);
         this.houses = new HashMap<String,SmartHouse>();
     }
     private SmartEP(SmartEP ep){
         this.name = ep.getName();
-        this.price = ep.getPrice();
+        this.setPrice(ep.getPrice());
         this.houses = ep.getHouses();
     }
     public int getPrice(){
@@ -36,17 +34,55 @@ public class SmartEP implements Serializable{
         return this.name;
     }
     public Map<String,SmartHouse> getHouses(){
-        return this.houses;
+        Map<String, SmartHouse> houses = new HashMap<String,SmartHouse>();
+        for (SmartHouse house: this.houses.values())
+            houses.put(house.getOwner(), house.clone());
+        return houses;
     }
-
-    public void compute_price_one(String owner){
+    public void setPrice(int f){
+        this.price = f % 2;
+    }
+    public void setBV(int value){
+        this.base_value = value;
+    }
+    public void setTax(double tax){
+        this.tax_factor = tax;
+    }
+    public void changePrice(){
+        if (this.price == 0) this.price = 1;
+        else this.price = 0;
+    }
+    public int compute_price_one_sing(String owner){
         int result = 0;
         for (SmartDevice device : this.houses.get(owner).getDevices().values()){
             result += this.houses.get(owner).getDevices().size()>10?
-                    (base_value*device.getConsumption()*(1+tax_factor))*0.9:
-                    (base_value*device.getConsumption()*(1+tax_factor))*0.75;
+                (base_value*device.getConsumption()*(1+tax_factor))*0.9:
+                (base_value*device.getConsumption()*(1+tax_factor))*0.75;
         }
-        this.price = result;
+        return result;
+    }
+    public int compute_price_one(){
+        int result = 0;
+        for (SmartHouse house : this.houses.values())
+        for (SmartDevice device : house.getDevices().values()){
+            result += house.getDevices().size()>10?
+                (base_value*device.getConsumption()*(1+tax_factor))*0.9:
+                (base_value*device.getConsumption()*(1+tax_factor))*0.75;
+        }
+        return result;
+    }
+    public int compute_price_two_sing(String owner){
+        int result = 0;
+        for (SmartDevice device : this.houses.get(owner).getDevices().values())
+            result += (base_value*device.getConsumption()*(1+tax_factor))*0.9;
+        return result;
+    }
+    public int compute_price_two(){
+        int result = 0;
+        for (SmartHouse house : this.houses.values())
+        for (SmartDevice device : house.getDevices().values())
+            result += (base_value*device.getConsumption()*(1+tax_factor))*0.9;
+        return result;
     }
 
     @Override

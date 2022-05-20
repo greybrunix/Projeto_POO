@@ -8,16 +8,16 @@ import java.util.ArrayList;
  */
 public class SmartHouse extends SmartEP{
 
-    private Map<String, SmartDevice> devices;
-    private Map<String, List<String>> rooms;
+    private Map<String, SmartDevice> devices; // id -> device
+    private Map<String, List<String>> rooms; // name of room -> List of IDs
     private String owner;
     private String NIF;
 
     public SmartHouse(){ // Might remove this class
         this.owner = "";
         this.NIF =  "";
-        devices = new HashMap<String, SmartDevice>();
-        rooms = new HashMap<String, List<String>>();
+        this.devices = new HashMap<String, SmartDevice>();
+        this.rooms = new HashMap<String, List<String>>();
     }
     public SmartHouse(String owner, String NIF){
         this.owner = owner;
@@ -38,9 +38,19 @@ public class SmartHouse extends SmartEP{
         return this.NIF;
     }
     public Map<String, SmartDevice> getDevices(){
+        Map<String, SmartDevice> devices = new HashMap<String, SmartDevice>();
+        for (SmartDevice dev : this.devices.values())
+            devices.put(dev.getId(),dev.clone());
         return devices;
     }
     public Map<String, List<String>> getRooms(){
+        Map<String,List<String>> rooms = new HashMap<String,List<String>>();
+        for (String room : this.rooms.keySet()){
+            for (List<String> devs : this.rooms.values()){
+                List<String> devices = new ArrayList<String>(devs);
+                rooms.put(room, devices);
+            }
+        }
         return rooms;
     }
     /*private setOwner(String newOwn){

@@ -5,6 +5,7 @@ import view.View;
 
 import java.io.*;
 import java.time.LocalDate;
+import java.time.temporal.TemporalAdjusters;
 import java.util.HashMap;
 
 public class Model implements Serializable{
@@ -12,11 +13,13 @@ public class Model implements Serializable{
     private final Map<String, SmartHouse> houses_no_contract;
     private final Map<String, SmartEP> energ_prov;
     private LocalDate date;
+    private final Map<String, SmartEP> energ_with_changes;
 
     public Model(){
         this.devices_no_house = new HashMap<String, SmartDevice>();
         this.houses_no_contract = new HashMap<String, SmartHouse>();
         this.energ_prov = new HashMap<String, SmartEP>();
+        this.energ_with_changes = new HashMap<String, SmartEP>();
         this.date = LocalDate.now();
     }
 
@@ -87,7 +90,15 @@ public class Model implements Serializable{
      */
     public void skipTime(int days){
         this.date = date.plusDays(days);
+        if (date.isEqual(date.with(TemporalAdjusters.firstDayOfMonth()))){
+            View.showAllBills(this);
+            if (this.energ_with_changes.size() > 0)
+                this.operateEnergChanges();
+        }
     }
+    private void operateEnergChanges() {
+    }
+
     /**
      * 
      * @param d
@@ -175,48 +186,118 @@ public class Model implements Serializable{
         }
 }
 
-    public void turnOnDev(String string) {
+    public void turnOnDev(String id) {
+        String owner = whereIsDev(id);
+        String comp = whereIsHouse(owner);
+        this.energ_prov.get(comp).getHouses().get(owner).setDeviceOn(id);
     }
 
-    public void turnOffDev(String string) {
+    public void turnOffDev(String id) {
+        String owner = whereIsDev(id);
+        String comp = whereIsHouse(owner);
+        this.energ_prov.get(comp).getHouses().get(owner).setDeviceOff(id);
+    } //TODO: MAKE SURE THIS ONLY APPLIES WHEN DAY ENDS
+
+    public void incVol(String id) {
+        String owner = whereIsDev(id);
+        String comp = whereIsHouse(owner);
+        SmartSpeaker speak = new SmartSpeaker();
+        SmartDevice sd = this.energ_prov.get(comp).getHouses().get(owner).getDevices().get(id);
+        if (sd.getClass() == speak.getClass()){
+            speak = (SmartSpeaker) sd;
+            speak.volumeUP();
+        }
     }
 
-    public void incVol(String string) {
+    public void decVol(String id) {
+        String owner = whereIsDev(id);
+        String comp = whereIsHouse(owner);
+        SmartSpeaker speak = new SmartSpeaker();
+        SmartDevice sd = this.energ_prov.get(comp).getHouses().get(owner).getDevices().get(id);
+        if (sd.getClass() == speak.getClass()){
+            speak = (SmartSpeaker) sd;
+            speak.volumeDOWN();
+        }
     }
 
-    public void decVol(String string) {
+    public void incTone(String id) {
+        String owner = whereIsDev(id);
+        String comp = whereIsHouse(owner);
+        SmartBulb bulb = new SmartBulb();
+        SmartDevice sd = this.energ_prov.get(comp).getHouses().get(owner).getDevices().get(id);
+        if (sd.getClass() == bulb.getClass()){
+            bulb = (SmartBulb) sd;
+            bulb.incTone();
+        }
     }
 
-    public void incTone(String string) {
+    public void decTone(String id) {
+        String owner = whereIsDev(id);
+        String comp = whereIsHouse(owner);
+        SmartBulb bulb = new SmartBulb();
+        SmartDevice sd = this.energ_prov.get(comp).getHouses().get(owner).getDevices().get(id);
+        if (sd.getClass() == bulb.getClass()){
+            bulb = (SmartBulb) sd;
+            bulb.decTone();
+        }
     }
 
-    public void decTone(String string) {
+    public void getDevDC(String id) {
+        String owner = whereIsDev(id);
+        String comp = whereIsHouse(owner);
+        this.energ_prov.get(comp).getHouses().get(owner).getDevices().get(id).getConsumption();
     }
 
-    public void getDevDC(String string) {
+    public void setAllOn(String owner) {
+        String comp = whereIsHouse(owner);
+        this.energ_prov.get(comp).getHouses().get(owner).setAllOn();
     }
 
-    public void setAllOn(String string) {
-    }
+    public void setAllOnDiv(String owner, String room) {
+        String comp = whereIsHouse(owner);
+        this.energ_prov.get(comp).getHouses().get(owner);
+    } // TODO: MeTHOD TO MAKE ALL DEVICES CHANGE IN ONE ROOM
 
-    public void setAllOnDiv(String string, String string2) {
-    }
+    public void setAllOff(String owner) {
+        String comp = whereIsHouse(owner);
+        this.energ_prov.get(comp).getHouses().get(owner).setAllOff();
+    } //TODO: Make sure this only happens when day ends
 
-    public void setAllOff(String string) {
-    }
+    public void setAllOffDiv(String owner, String room) {
+        String comp = whereIsHouse(owner);
+        this.energ_prov.get(comp).getHouses().get(owner);
+    } // TODO: METHOD TO MAKE ALL DEVICES CHANGE IN ONE ROOM and only when day ends
 
-    public void setAllOffDiv(String string) {
-    }
+    public void changeContract(String owner, String comp) {
+    } // TODO: Make sure this only applies when month ends
 
-    public void changeContract(String string, String string2) {
-    }
+    public void changeBaseValue(String comp, int value) {
+        this.energ_prov.get(comp).setBV(value);
+    } // TODO: Make sure this only applies when month ends
 
-    public void changeBaseValue(String string, int value) {
-    }
+    public void changeTaxFactor(String comp, double tax) {
+        this.energ_prov.get(comp).setTax(tax);
+    } // TODO: Make sure this only applies when month ends
 
-    public void changeTaxFactor(String string, double tax) {
-    }
+    public void changeFormula(String comp) {
+        this.energ_prov.get(comp).changePrice();
+    } // TODO: Make sure this only applies when month ends
 
-    public void changeFormula(String string) {
+    private String whereIsDev(String id){
+        String owner = new String();
+        for (String name_of_comp : this.energ_prov.keySet())
+            for (SmartHouse house : this.energ_prov.get(name_of_comp).getHouses().values())
+                if (house.getDevices().containsKey(id)){
+                    owner = house.getOwner();
+                    return owner;
+                }
+        return owner;
+    }
+    private String whereIsHouse(String owner){
+        String name_of_comp = new String();
+        for (String comp : this.energ_prov.keySet())
+            if (energ_prov.get(name_of_comp).getHouses().containsKey(owner))
+                return comp;
+        return name_of_comp;
     }
 }

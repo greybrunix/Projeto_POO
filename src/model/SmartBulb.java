@@ -127,5 +127,3 @@ public class SmartBulb extends SmartDevice{
         return new SmartBulb(this);
     }
 }
-
-// TODO: Alter the computation for the bulb when the formula is announced

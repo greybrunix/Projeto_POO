@@ -149,4 +149,3 @@ public class SmartSpeaker extends SmartDevice{
         return new SmartSpeaker(this);
     }
 }
-// TODO: Check the computation for the Speaker's daily consumption 

@@ -132,7 +132,11 @@ public interface View {
         }
     }
 
-    static void showBills(Model mod) {
+    static void showAllBills(Model mod){
+        for (String name : mod.getEnerg().keySet())
+            showBills(mod, name);
+    }
+    static void showBills(Model mod, String name) {
         System.out.println("Hi");
     }
 

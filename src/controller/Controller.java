@@ -259,11 +259,11 @@ import view.*;
                 mod.setAllOff(argv[0]);}
                 case 4-> {
                     String[] argv = ssc.nextLine().split(",");
-                    while (argv.length != 1){
+                    while (argv.length != 2){
                         View.showInputError();
                         argv = ssc.nextLine().split(",");
                     }
-                mod.setAllOffDiv(argv[0]);}
+                mod.setAllOffDiv(argv[0], argv[1]);}
                 case 5-> {
                     String[] argv = ssc.nextLine().split(",");
                     while (argv.length != 2){
@@ -311,7 +311,7 @@ import view.*;
 
             }
             case 5 -> {
-            View.showBills(mod);
+            View.showAllBills(mod);
             }
             case 6 -> {
             View.timeSkipPrompt();
