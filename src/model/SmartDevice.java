@@ -51,7 +51,7 @@ public abstract class SmartDevice extends SmartHouse{
         if (this == o) return true;
         if (o == null || o.getClass() != this.getClass()) return false;
         SmartDevice sd = (SmartDevice) o;
-        return (this.getId() == sd.getId());
+        return (this.getId().equals(sd.getId()));
     }
     abstract public SmartDevice clone();
     abstract public void incTone();
