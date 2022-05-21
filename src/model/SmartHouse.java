@@ -69,8 +69,6 @@ public class SmartHouse extends SmartEP{
         devices.get(id).setON();
     }
     public void setAllOn(){
-        for (SmartDevice device: devices.values())
-            device.setON();
         for (List<String> devices_in_room: rooms.values())
             for (String identifier: devices_in_room)
                 setDeviceOn(identifier);
@@ -79,11 +77,17 @@ public class SmartHouse extends SmartEP{
         devices.get(id).setOFF();
     }
     public void setAllOff(){
-        for (SmartDevice device: devices.values())
-            device.setOFF();
         for (List<String> devices_in_room: rooms.values())
             for (String identifier: devices_in_room)
                 setDeviceOff(identifier);
+    }
+    public void setAllinRoomOn(String room){
+        for (String id : this.rooms.get(room))
+            setDeviceOn(id);
+    }
+    public void setAllinRoomOff(String room){
+        for (String id: this.rooms.get(room))
+            setDeviceOff(id);
     }
     public void addRoom(String room){
         List<String> devs = new ArrayList<String>();

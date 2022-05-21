@@ -54,6 +54,7 @@ public class SmartSpeaker extends SmartDevice{
         return this.brand_base_cons;
     }
     public double getConsumption(){
+        computeConsumption();
         return this.daily_consumption;
     }
 

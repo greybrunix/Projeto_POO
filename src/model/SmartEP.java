@@ -96,8 +96,8 @@ public class SmartEP implements Serializable{
     }
     public int compute(String owner){
         if (this.price == 0)
-            return compute_price_one_sing(owner);
-        else return compute_price_two_sing(owner);
+            return compute_price_one_sing(owner)*28;
+        else return compute_price_two_sing(owner)*28;
     }
     @Override
     public boolean equals(Object o){

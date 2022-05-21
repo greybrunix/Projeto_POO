@@ -34,6 +34,7 @@ public class SmartCamera extends SmartDevice{
         return this.size;
     }
     public double getConsumption(){
+        computeConsumption();
         return this.daily_consumption;
     }
     /* Setters */

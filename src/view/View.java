@@ -135,7 +135,7 @@ public interface View {
     }
     static void showBills(Model mod, String comp) {
         for (SmartHouse house : mod.getEnerg().get(comp).getHouses().values())
-            System.out.println("\t"+ house.getOwner() + ":\t" + mod.getEnerg().get(comp).compute(house.getOwner()));
+            System.out.println("\t"+ house.getOwner() + ":\t" + mod.getEnerg().get(comp).compute(house.getOwner())+"$/dia.");
     }
 
     static void showErrorTimeSkip() {

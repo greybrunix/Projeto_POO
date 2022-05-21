@@ -84,9 +84,7 @@ public interface ViewMenu {
     static void mainMenuComer(){
         System.out.print("""
                 **********************************
-                *  1- Alterar valor base         *
-                *  2- Alterar fator de impostos  *
-                *  3- Alterar formula de preço   *
+                *  1- Alterar formula de preço   *
                 *  0- Voltar ao menu anterior    *
                 **********************************"""
                 + "\n>> ");

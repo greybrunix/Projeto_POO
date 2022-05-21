@@ -277,7 +277,7 @@ public class Model implements Serializable{
 
     public void setAllOnDiv(String owner, String room) {
         String comp = whereIsHouse(owner);
-        this.energ_prov.get(comp).getHouses().get(owner);
+        this.energ_prov.get(comp).getHouses().get(owner).setAllinRoomOn(room);;
     } // TODO: MeTHOD TO MAKE ALL DEVICES CHANGE IN ONE ROOM
 
     public void setAllOff(String owner) {
@@ -287,18 +287,13 @@ public class Model implements Serializable{
 
     public void setAllOffDiv(String owner, String room) {
         String comp = whereIsHouse(owner);
-        this.energ_prov.get(comp).getHouses().get(owner);
+        this.energ_prov.get(comp).getHouses().get(owner).setAllinRoomOff(room);;
     } // TODO: METHOD TO MAKE ALL DEVICES CHANGE IN ONE ROOM and only when day ends
 
     public void changeContract(String owner, String comp) {
-    } // TODO: Make sure this only applies when month ends
-
-    public void changeBaseValue(String comp, int value) {
-        this.energ_prov.get(comp).setBV(value);
-    } // TODO: Make sure this only applies when month ends
-
-    public void changeTaxFactor(String comp, double tax) {
-        this.energ_prov.get(comp).setTax(tax);
+        String comp_old = whereIsHouse(owner);
+        SmartHouse house = this.energ_prov.get(comp_old).getHouses().remove(owner);
+        this.energ_prov.put(comp, house);
     } // TODO: Make sure this only applies when month ends
 
     public void changeFormula(String comp) {

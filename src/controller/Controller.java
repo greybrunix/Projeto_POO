@@ -277,24 +277,11 @@ import java.util.Scanner;
             }
             case 3 -> {
             ViewMenu.mainMenuComer();
-            test_int = Math.abs(sc.nextInt()) % 4;
+            test_int = Math.abs(sc.nextInt()) % 2;
             View.showProvAppPrompts(test_int);
             switch (test_int){
-                case 1->{String[] argv = ssc.nextLine().split(",");
-                while (argv.length != 2){
-                    View.showInputError();
-                    argv = ssc.nextLine().split(",");
-                }
-                int value = Integer.parseInt(argv[1]);
-                mod.changeBaseValue(argv[0], value);}
-                case 2->{String[] argv = ssc.nextLine().split(",");
-                while (argv.length != 2){
-                    View.showInputError();
-                    argv = ssc.nextLine().split(",");
-                }
-                double tax = Double.parseDouble(argv[1]);
-                mod.changeTaxFactor(argv[0],tax);}
-                case 3->{String[] argv = ssc.nextLine().split(",");
+                case 1->{
+                String[] argv = ssc.nextLine().split(",");
                 while (argv.length != 1){
                     View.showInputError();
                     argv = ssc.nextLine().split(",");
@@ -311,15 +298,13 @@ import java.util.Scanner;
             }
 
             }
-            case 5 -> {
-            View.showAllBills(mod);
-            }
+            case 5 -> View.showAllBills(mod);
             case 6 -> {
             View.timeSkipPrompt();
             int days = sc.nextInt();
             mod.skipTime(days);
             }
-            case 7 -> {save(mod);}
+            case 7 -> save(mod);
             default -> {
                 View.exit();
                 System.exit(1);

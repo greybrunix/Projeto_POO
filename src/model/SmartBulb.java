@@ -43,6 +43,7 @@ public class SmartBulb extends SmartDevice{
         return this.dimensions;
     }
     public double getConsumption(){
+        computeConsumption();
         return this.daily_consumption;
     }
 
