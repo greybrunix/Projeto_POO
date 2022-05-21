@@ -216,8 +216,10 @@ public class Model implements Serializable{
         String owner = whereIsDev(id);
         String comp = whereIsHouse(owner);
         System.out.println(comp);
-        this.energ_prov.get(comp).getHouses().get(owner).setDeviceOff(id);
-    } //TODO: MAKE SURE THIS ONLY APPLIES WHEN DAY ENDS
+        SmartDevice sd = this.energ_prov.get(comp).getHouses().get(owner).getDevices().get(id).clone();
+        sd.setOFF();
+        this.dev_with_changes.put(id, sd);
+    } //TODO: Check this sus code
 
     public void incVol(String id) {
         String owner = whereIsDev(id);

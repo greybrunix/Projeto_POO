@@ -80,6 +80,13 @@ public class SmartHouse extends SmartEP{
     public void decVol(String id){
         devices.get(id).volumeDOWN();
     }
+    public int totalDailyCons(){
+        int result = 0;
+        for (SmartDevice dc : this.devices.values()){
+            result += dc.getConsumption();
+        }
+        return result;
+    }
     public void setAllOn(){
         for (List<String> devices_in_room: rooms.values())
             for (String identifier: devices_in_room)

@@ -9,7 +9,7 @@ public class SmartCamera extends SmartDevice{
     /* Variables */
     private int resolution;
     private int size;
-    private double daily_consumption;
+    private int daily_consumption;
 
     /* Constructors */
     public SmartCamera(){ // Might remove this
@@ -33,7 +33,7 @@ public class SmartCamera extends SmartDevice{
     public int getSize(){
         return this.size;
     }
-    public double getConsumption(){
+    public int getConsumption(){
         computeConsumption();
         return this.daily_consumption;
     }
@@ -49,7 +49,7 @@ public class SmartCamera extends SmartDevice{
     /* Computations */
     public void computeConsumption(){
         if (this.getMode()){
-            this.daily_consumption = this.getRes()*0.009*0.1 * this.getSize()*0.02*0.9;
+            this.daily_consumption = (int) Math.round(this.getRes()*0.009*0.1 * this.getSize()*0.02*0.9);
             this.daily_consumption *= 24;
         }
         else

@@ -12,7 +12,7 @@ public class SmartSpeaker extends SmartDevice{
     public static final int MAX = 20;    
 
     /* Variables */
-    private double daily_consumption;
+    private int daily_consumption;
     private int volume;
     private String radio;
     private String brand;
@@ -53,7 +53,7 @@ public class SmartSpeaker extends SmartDevice{
     public double getBrandBP(){
         return this.brand_base_cons;
     }
-    public double getConsumption(){
+    public int getConsumption(){
         computeConsumption();
         return this.daily_consumption;
     }
@@ -89,7 +89,7 @@ public class SmartSpeaker extends SmartDevice{
     /* Computations */
     public void computeConsumption(){
         if (this.getMode()){
-            this.daily_consumption = .6*this.brand_base_cons*0.02 + .4*this.volume*0.005;
+            this.daily_consumption = (int) Math.round(.6*this.brand_base_cons*0.02 + .4*this.volume*0.005);
             this.daily_consumption *= 24; /* Computation */
         }
         else
