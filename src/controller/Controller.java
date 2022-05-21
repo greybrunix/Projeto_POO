@@ -164,7 +164,7 @@ import java.util.Scanner;
         while (true){
         View.showDate(mod);
         ViewMenu.mainMenu();
-        int test_int = Math.abs(sc.nextInt()) % 7;
+        int test_int = Math.abs(sc.nextInt()) % 8;
         switch (test_int) {
             case 1 -> {
             ViewMenu.mainMenuDev();
@@ -306,12 +306,13 @@ import java.util.Scanner;
                 default->{}
             }
             }
-            case 5 -> {
+            case 5 -> System.out.println(mod.getEnerg().values());
+            case 6 -> {
             View.timeSkipPrompt();
             int days = sc.nextInt();
             mod.skipTime(days);
             }
-            case 6 -> save(mod);
+            case 7 -> save(mod);
             default -> {
                 View.exit();
                 System.exit(1);

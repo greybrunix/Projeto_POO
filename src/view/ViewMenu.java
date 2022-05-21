@@ -48,8 +48,9 @@ public interface ViewMenu {
                 *  2- Casas                      *
                 *  3- Fornecedores de Energia    *
                 *  4- Estatisticas               *
-                *  5- Proceder no tempo          *
-                *  6- Guardar Estado             *
+                *  5- Mostrar fornecedores       *
+                *  6- Proceder no tempo          *
+                *  7- Guardar Estado             *
                 *  0- Fechar o Programa          *
                 **********************************"""
                 + "\n>> ");
@@ -62,7 +63,7 @@ public interface ViewMenu {
                 *  3- Aumentar Volume (Speaker)  *
                 *  4- Diminuir Volume            *
                 *  5- Aumentar Tom (Lampada)     *
-                *  6- Diminuir Tom
+                *  6- Diminuir Tom               *
                 *  7- Obter consumo diario       *
                 *  0- Voltar ao menu anterior    *
                 **********************************"""
