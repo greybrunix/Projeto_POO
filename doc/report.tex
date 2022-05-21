@@ -5,11 +5,11 @@
 \usepackage{lipsum}
 
 \titlespacing*{\section}
-{15pt}{0.75\baselineskip}{.55\baselineskip}
+{-1pt}{0.75\baselineskip}{.55\baselineskip}
 \titlespacing*{\subsection}
-{12pt}{.5\baselineskip}{.25\baselineskip}
+{2pt}{.5\baselineskip}{.25\baselineskip}
 \titlespacing*{\subsubsection}
-{11pt}{.3\baselineskip}{.1\baselineskip}
+{-4pt}{.3\baselineskip}{.1\baselineskip}
 \title{Projeto POO\\
         Simulação de Casas Inteligentes}
 \author{Bruno Gião a96544 \\ Miguel Vaz a72161 \\ João Cruz a95375 \\ Grupo 1}
@@ -23,21 +23,24 @@
 \newpage
 
 \section{Introdução}
-        Neste projeto, temos como objetivo criar uma simulação de `Casas Inteligentes' que fazem uso de `Dispositivos inteligentes'.
-        Ora, estes dispositivos inteligentes têm certas regras que os definem. Regras essas que tornam este projeto ideal para um paradigma como
+        Neste projeto, temos como objetivo criar uma simulação de `Casas Inteligentes'.\@
+        Ora, estas usam dispositivos inteligentes que têm certas regras que os definem. Regras essas que tornam este projeto ideal para um paradigma como
         o de Programação Orientada a Objetos.
-        Através de encapsulamento, abstração e composição, conseguimos realizar este projeto, assegurando a implementação devida de POO.\@
+        Através de encapsulamento, abstração, herança e composição, conseguimos realizar este projeto, assegurando a implementação devida de POO.\@
 \section{Classes Base}
-        De modo a implementar a tal `simulação' é necessário ter umas classes `base', nomeadamente as dos SmartDevices, as de Casas inteligentes e
-        de Fornecedores de Energia.
+        De modo a implementar a tal `simulação' é necessário ter classes `base',
+        nomeadamente as dos SmartDevices, SmartHouses e SmartEP.\@
 \subsection{SmartDevices}
         SmartDevices são dispositivos que podem ser ligados ou desligados e têm um identificador único, no entanto, podem ser divididos em três tipos:
         SmartBulbs; SmartSpeakers e SmartCameras.
         Assim, o melhor modo de realizar esta tarefa foi claramente através do uso de uma classe Abstrata extendida pelas previamente mencionadas.
 \subsection{SmartHouse}
-        Uma Casa Inteligente é 
+        Uma SmartHouse é uma casa com dono e com uma coleção de SmartDevices, no caso deste projeto, essa coleção foi implementada através de um Map.
+        De modo a garantir encapsulamento, estes são implementados através de composição.
 \subsection{Fornecedor de Energia}
-\lipsum[1]
+        Um fornecedor de energia é uma coleção de Casas, equipada com valores de impostos e de formulas para calcular preço por KWh.\@ 
+        Fornecedores de energia também têm nome de empresa de modo a conseguir empresas armazenar num HashMap.
+        De modo a colecionar estas casas, novamente, é utilizada composição.
 \section{Simulador}
 \lipsum[1]
 \subsection{MVC}
@@ -52,7 +55,7 @@
 Segue, a seguir o diagrama UML deste projeto:
 \begin{figure}
         \centering
-        \includegraphics[width=\textwidth]{diagram.png}
+        \includegraphics[width=\textwidth]{diagram_1.png}
 \end{figure}
 
 \newpage
