@@ -48,9 +48,8 @@ public interface ViewMenu {
                 *  2- Casas                      *
                 *  3- Fornecedores de Energia    *
                 *  4- Estatisticas               *
-                *  5- Mostrar faturas            *
-                *  6- Proceder no tempo          *
-                *  7- Guardar Estado             *
+                *  5- Proceder no tempo          *
+                *  6- Guardar Estado             *
                 *  0- Fechar o Programa          *
                 **********************************"""
                 + "\n>> ");
@@ -84,7 +83,7 @@ public interface ViewMenu {
     static void mainMenuComer(){
         System.out.print("""
                 **********************************
-                *  1- Alterar formula de preço   *
+                *  1- Alterar formula de preco   *
                 *  0- Voltar ao menu anterior    *
                 **********************************"""
                 + "\n>> ");
@@ -95,8 +94,6 @@ public interface ViewMenu {
                 *  1- Casa que mais gastou no ultimo mes             *
                 *  2- Comercializador com maior volume de facturacao *
                 *  3- Facturas emitidas por um comercializador       *
-                *  4- Ordenacao dos maiores consumidores de energia  *
-                *            durante ultimo mes                      *
                 *  0- Voltar ao menu anterior                        *
                 ******************************************************"""
                 + "\n>> ");

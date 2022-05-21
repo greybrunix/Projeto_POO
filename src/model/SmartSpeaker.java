@@ -12,7 +12,7 @@ public class SmartSpeaker extends SmartDevice{
     public static final int MAX = 20;    
 
     /* Variables */
-    private int daily_consumption;
+    private double daily_consumption;
     private int volume;
     private String radio;
     private String brand;
@@ -53,7 +53,7 @@ public class SmartSpeaker extends SmartDevice{
     public double getBrandBP(){
         return this.brand_base_cons;
     }
-    public int getConsumption(){
+    public double getConsumption(){
         computeConsumption();
         return this.daily_consumption;
     }
@@ -61,18 +61,10 @@ public class SmartSpeaker extends SmartDevice{
 
     /* Setters */
     public void setVolume(int v){
-        if (v >= 0 && v <= 20){
-        this.volume = v;
-        this.computeConsumption();
-        }
-        if (v < 0){
-            this.volume = 0;
-            this.computeConsumption();
-        }
-        if (v > 20){
-            this.volume = 20;
-            this.computeConsumption();
-        }
+        if (v >= 20) this.volume = 20;
+        else if (v <= 0) this.volume = 0;
+        else this.volume = v;
+        computeConsumption();
     }
     public void setRadio(String r){
         this.radio = r;
@@ -89,21 +81,17 @@ public class SmartSpeaker extends SmartDevice{
     /* Computations */
     public void computeConsumption(){
         if (this.getMode()){
-            this.daily_consumption = (int) Math.round(.6*this.brand_base_cons*0.02 + .4*this.volume*0.005);
+            this.daily_consumption = .6*this.brand_base_cons*0.02 + .4*this.volume*0.005;
             this.daily_consumption *= 24; /* Computation */
         }
         else
             this.daily_consumption = 0;
     }
     public void volumeUP(){
-        if (this.getVolume() < MAX){
-            this.setVolume(this.volume++);
-        }
+        this.setVolume(this.getVolume()+1);
     }
     public void volumeDOWN(){
-        if (this.getVolume() > 0){
-            this.setVolume(this.volume--);
-        }
+        this.setVolume(this.getVolume()-1);
     }
     public void incTone(){}
     public void decTone(){}

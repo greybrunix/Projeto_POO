@@ -17,7 +17,7 @@ public class SmartBulb extends SmartDevice{
     /* Variables */
     private int tone; /* WARM NEUTRAL COLD */
     private double dimensions; /* in centimetres */
-    private int daily_consumption; /* formula is group specific */
+    private double daily_consumption; /* formula is group specific */
 
     /* Constructors */
     public SmartBulb(){ // Might remove this
@@ -42,7 +42,7 @@ public class SmartBulb extends SmartDevice{
     public double getDimensions(){
         return this.dimensions;
     }
-    public int getConsumption(){
+    public double getConsumption(){
         computeConsumption();
         return this.daily_consumption;
     }
@@ -64,15 +64,15 @@ public class SmartBulb extends SmartDevice{
         if (this.getMode())
             switch(this.getTone()){
                 case COLD: 
-                    this.daily_consumption = (int) Math.round(Consumption_Val*.02*this.dimensions + COLD*.01);
+                    this.daily_consumption = Consumption_Val*.02*this.dimensions + COLD*.01;
                     this.daily_consumption *= 24;
                     break;
                 case NEUTRAL:
-                    this.daily_consumption = (int) Math.round(Consumption_Val*.02*this.dimensions + NEUTRAL*.05);
+                    this.daily_consumption = Consumption_Val*.02*this.dimensions + NEUTRAL*.05;
                     this.daily_consumption *= 24;
                     break;
                 case WARM:
-                    this.daily_consumption = (int) Math.round(Consumption_Val*.02*this.dimensions + WARM*.065);
+                    this.daily_consumption = Consumption_Val*.02*this.dimensions + WARM*.065;
                     this.daily_consumption *= 24;
                     break;
             }

@@ -35,7 +35,7 @@ public abstract class SmartDevice extends SmartHouse{
     public String getId(){
         return this.id;
     }
-    abstract public int getConsumption(); 
+    abstract public double getConsumption(); 
     public void setMode(boolean m){
         mode = m;
     }

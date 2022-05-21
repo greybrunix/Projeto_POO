@@ -164,7 +164,7 @@ import java.util.Scanner;
         while (true){
         View.showDate(mod);
         ViewMenu.mainMenu();
-        int test_int = Math.abs(sc.nextInt()) % 8;
+        int test_int = Math.abs(sc.nextInt()) % 7;
         switch (test_int) {
             case 1 -> {
             ViewMenu.mainMenuDev();
@@ -279,32 +279,28 @@ import java.util.Scanner;
             ViewMenu.mainMenuComer();
             test_int = Math.abs(sc.nextInt()) % 2;
             View.showProvAppPrompts(test_int);
-            switch (test_int){
-                case 1->{
+            if (test_int == 1){
                 String[] argv = ssc.nextLine().split(",");
                 while (argv.length != 1){
                     View.showInputError();
                     argv = ssc.nextLine().split(",");
                 }
-                mod.changeFormula(argv[0]);}
-                default->{}
+                mod.changeFormula(argv[0]);
             }
             }
             case 4 -> {
             ViewMenu.mainMenuStats();
-            test_int = Math.abs(sc.nextInt()) % 5;
+            test_int = Math.abs(sc.nextInt()) % 4;
             switch (test_int){
                 default->{}
             }
-
             }
-            case 5 -> View.showAllBills(mod);
-            case 6 -> {
+            case 5 -> {
             View.timeSkipPrompt();
             int days = sc.nextInt();
             mod.skipTime(days);
             }
-            case 7 -> save(mod);
+            case 6 -> save(mod);
             default -> {
                 View.exit();
                 System.exit(1);

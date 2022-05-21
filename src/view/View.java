@@ -114,16 +114,15 @@ public interface View {
     }
     static void showHouseAppPrompts(int test_int){
         switch (test_int){
-            case 1,2,3,4,5:
+            case 1,2,3,4:
                 System.out.print("Insere o nome do dono da casa: \n>> ");
+            case 5:
+                System.out.print("Insere o nome do dono da casa e o novo fornecedor: \n>> ");
             default: break;
         }
     }
     static void showProvAppPrompts(int test_int){
-        switch(test_int){
-            case 1-> System.out.print("Insere o nome da empresa:\n>> ");
-            default -> {}
-        }
+        if (test_int == 1) System.out.print("Insere o nome da empresa:\n>> ");
     }
 
     static void showAllBills(Model mod){
@@ -135,7 +134,7 @@ public interface View {
     static void showBills(Model mod, String comp) {
         for (SmartHouse house : mod.getEnerg().get(comp).getHouses().values())
             System.out.println("\t"+ house.getOwner() + ":\t" + mod.getEnerg().get(comp).compute(house.getOwner())*31 +"$; "
-            + mod.getEnerg().get(comp).getHouses().get(house.getOwner()).totalDailyCons() +  ".");
+            + mod.getEnerg().get(comp).getHouses().get(house.getOwner()).totalDailyCons() +  "KWh.");
     }
 
     static void showErrorTimeSkip() {
@@ -149,6 +148,7 @@ public interface View {
     }
 
     static void showDate(Model mod) {
+        showAllBills(mod);
         System.out.println("Today is : " + mod.getDate());
     }
 
