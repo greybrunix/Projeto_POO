@@ -68,6 +68,18 @@ public class SmartHouse extends SmartEP{
     public void setDeviceOn(String id){
         devices.get(id).setON();
     }
+    public void incTone(String id){
+        devices.get(id).incTone();
+    }
+    public void decTone(String id){
+        devices.get(id).decTone();
+    }
+    public void incVol(String id){
+        devices.get(id).volumeUP();
+    }
+    public void decVol(String id){
+        devices.get(id).volumeDOWN();
+    }
     public void setAllOn(){
         for (List<String> devices_in_room: rooms.values())
             for (String identifier: devices_in_room)

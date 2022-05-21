@@ -121,9 +121,8 @@ public interface View {
     }
     static void showProvAppPrompts(int test_int){
         switch(test_int){
-            case 1-> System.out.print("Insere o nome da empresa e o novo valor base de KWh:\n>> ");
-            case 2-> System.out.print("Insere o nome da empresa e o novo fator de impostos:\n>> ");
-            case 3-> System.out.print("Insere o nome da empresa:\n>> ");
+            case 1-> System.out.print("Insere o nome da empresa:\n>> ");
+            default -> {}
         }
     }
 
@@ -161,6 +160,6 @@ public interface View {
     }
 
     static void showDevDC(String id, double dc) {
-        System.out.print("The device " + id + " is expending " + dc + "KWh per day.\n");
+        System.out.print("The device " + id + " is using up to " + dc + "KWh per day.\n");
     }
 }

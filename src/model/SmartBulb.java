@@ -97,6 +97,8 @@ public class SmartBulb extends SmartDevice{
         else this.setTone(this.getTone());
         this.computeConsumption();
     }
+    public void volumeDOWN(){}
+    public void volumeUP(){}
 
     /* Overrides */
     @Override

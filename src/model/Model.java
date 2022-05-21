@@ -222,45 +222,29 @@ public class Model implements Serializable{
     public void incVol(String id) {
         String owner = whereIsDev(id);
         String comp = whereIsHouse(owner);
-        SmartSpeaker speak = new SmartSpeaker();
-        SmartDevice sd = this.energ_prov.get(comp).getHouses().get(owner).getDevices().get(id);
-        if (sd.getClass().equals(speak.getClass())){
-            speak = (SmartSpeaker) sd;
-            speak.volumeUP();
-        }
+        this.energ_prov.get(comp).getHouses().get(owner).incVol(id);
+        System.out.println(energ_prov);
     }
 
     public void decVol(String id) {
         String owner = whereIsDev(id);
         String comp = whereIsHouse(owner);
-        SmartSpeaker speak = new SmartSpeaker();
-        SmartDevice sd = this.energ_prov.get(comp).getHouses().get(owner).getDevices().get(id);
-        if (sd.getClass().equals(speak.getClass())){
-            speak = (SmartSpeaker) sd;
-            speak.volumeDOWN();
-        }
+        this.energ_prov.get(comp).getHouses().get(owner).decVol(id);
+        System.out.println(energ_prov);
     }
 
     public void incTone(String id) {
         String owner = whereIsDev(id);
         String comp = whereIsHouse(owner);
-        SmartBulb bulb = new SmartBulb();
-        SmartDevice sd = this.energ_prov.get(comp).getHouses().get(owner).getDevices().get(id);
-        if (sd.getClass().equals(bulb.getClass())){
-            bulb = (SmartBulb) sd;
-            bulb.incTone();
-        }
+        this.energ_prov.get(comp).getHouses().get(owner).incTone(id);
+        System.out.println(energ_prov);
     }
 
     public void decTone(String id) {
         String owner = whereIsDev(id);
         String comp = whereIsHouse(owner);
-        SmartBulb bulb = new SmartBulb();
-        SmartDevice sd = this.energ_prov.get(comp).getHouses().get(owner).getDevices().get(id);
-        if (sd.getClass().equals(bulb.getClass())){
-            bulb = (SmartBulb) sd;
-            bulb.decTone();
-        }
+        this.energ_prov.get(comp).getHouses().get(owner).decTone(id);
+        System.out.println(energ_prov);
     }
 
     public void getDevDC(String id) {

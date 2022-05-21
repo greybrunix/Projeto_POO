@@ -105,6 +105,8 @@ public class SmartSpeaker extends SmartDevice{
             this.setVolume(this.volume--);
         }
     }
+    public void incTone(){}
+    public void decTone(){}
 
     public void setON(){
         setMode(true);

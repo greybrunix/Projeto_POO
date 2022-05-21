@@ -54,4 +54,8 @@ public abstract class SmartDevice extends SmartHouse{
         return (this.getId() == sd.getId());
     }
     abstract public SmartDevice clone();
+    abstract public void incTone();
+    abstract public void decTone();
+    abstract public void volumeUP();
+    abstract public void volumeDOWN();
 }

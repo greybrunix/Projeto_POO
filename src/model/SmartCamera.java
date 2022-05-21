@@ -63,7 +63,10 @@ public class SmartCamera extends SmartDevice{
         setMode(false);
         this.computeConsumption();
     }
-    
+    public void volumeUP(){}
+    public void volumeDOWN(){}
+    public void incTone(){}
+    public void decTone(){}
     
     /* Overrides */
     @Override
