@@ -1,6 +1,7 @@
 package view;
 
 
+
 import model.Model;
 import model.SmartHouse;
 
@@ -127,12 +128,14 @@ public interface View {
     }
 
     static void showAllBills(Model mod){
-        for (String comp : mod.getEnerg().keySet())
+        for (String comp : mod.getEnerg().keySet()){
+            System.out.println(comp + ": ");
             showBills(mod, comp);
+        }
     }
     static void showBills(Model mod, String comp) {
         for (SmartHouse house : mod.getEnerg().get(comp).getHouses().values())
-            System.out.println(mod.getEnerg().get(comp).compute(house.getOwner()));
+            System.out.println("\t"+ house.getOwner() + ":\t" + mod.getEnerg().get(comp).compute(house.getOwner()));
     }
 
     static void showErrorTimeSkip() {
@@ -146,7 +149,7 @@ public interface View {
     }
 
     static void showDate(Model mod) {
-        System.out.println(mod.getDate());
+        System.out.println("Today is : " + mod.getDate());
     }
 
     static void showInputError() {

@@ -55,6 +55,7 @@ public class SmartBulb extends SmartDevice{
     }
     public void setDimensions(double dimensions){
         this.dimensions = dimensions;
+        this.computeConsumption();
     }
 
     /* Computations */
@@ -62,15 +63,15 @@ public class SmartBulb extends SmartDevice{
         if (this.getMode())
             switch(this.getTone()){
                 case COLD: 
-                    this.daily_consumption = Consumption_Val*2.5 + COLD*.25;
+                    this.daily_consumption = Consumption_Val*.02*this.dimensions + COLD*.01;
                     this.daily_consumption *= 24;
                     break;
                 case NEUTRAL:
-                    this.daily_consumption = Consumption_Val*2.5 + NEUTRAL*.5;
+                    this.daily_consumption = Consumption_Val*.02*this.dimensions + NEUTRAL*.05;
                     this.daily_consumption *= 24;
                     break;
                 case WARM:
-                    this.daily_consumption = Consumption_Val*2.5 + WARM*.75;
+                    this.daily_consumption = Consumption_Val*.02*this.dimensions + WARM*.065;
                     this.daily_consumption *= 24;
                     break;
             }
@@ -88,10 +89,12 @@ public class SmartBulb extends SmartDevice{
     public void incTone(){
         if (this.getTone() < WARM) this.setTone(this.getTone()+1);
         else this.setTone(this.getTone());
+        this.computeConsumption();
     }
     public void decTone(){
         if (this.getTone() > COLD) this.setTone(this.getTone()-1);
         else this.setTone(this.getTone());
+        this.computeConsumption();
     }
 
     /* Overrides */

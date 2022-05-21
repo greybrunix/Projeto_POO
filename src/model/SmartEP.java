@@ -10,7 +10,7 @@ import java.util.HashMap;
  */
 public class SmartEP implements Serializable{
     private double tax_factor = 1;
-    private int base_value = 50;
+    private int base_value = 15;
     private String name;
     private int price;
     private Map<String,SmartHouse> houses;
@@ -66,8 +66,8 @@ public class SmartEP implements Serializable{
         int result = 0;
         for (SmartDevice device : this.houses.get(owner).getDevices().values()){
             result += this.houses.get(owner).getDevices().size()>10?
-                (base_value*device.getConsumption()*(1+tax_factor))*0.9:
-                (base_value*device.getConsumption()*(1+tax_factor))*0.75;
+                (base_value*device.getConsumption()*(1+tax_factor))*0.25:
+                (base_value*device.getConsumption()*(1+tax_factor))*0.10;
         }
         return result;
     }
@@ -76,22 +76,22 @@ public class SmartEP implements Serializable{
         for (SmartHouse house : this.houses.values())
         for (SmartDevice device : house.getDevices().values()){
             result += house.getDevices().size()>10?
-                (base_value*device.getConsumption()*(1+tax_factor))*0.9:
-                (base_value*device.getConsumption()*(1+tax_factor))*0.75;
+                (base_value*device.getConsumption()*(1+tax_factor))*0.25:
+                (base_value*device.getConsumption()*(1+tax_factor))*0.10;
         }
         return result;
     }
     public int compute_price_two_sing(String owner){
         int result = 0;
         for (SmartDevice device : this.houses.get(owner).getDevices().values())
-            result += (base_value*device.getConsumption()*(1+tax_factor))*0.9;
+            result += (base_value*device.getConsumption()*(1+tax_factor))*0.25;
         return result;
     }
     public int compute_price_two(){
         int result = 0;
         for (SmartHouse house : this.houses.values())
         for (SmartDevice device : house.getDevices().values())
-            result += (base_value*device.getConsumption()*(1+tax_factor))*0.9;
+            result += (base_value*device.getConsumption()*(1+tax_factor))*0.25;
         return result;
     }
     public int compute(String owner){

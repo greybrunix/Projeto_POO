@@ -88,7 +88,7 @@ public class SmartSpeaker extends SmartDevice{
     /* Computations */
     public void computeConsumption(){
         if (this.getMode()){
-            this.daily_consumption = .6*this.brand_base_cons + .4*this.volume*0.02;
+            this.daily_consumption = .6*this.brand_base_cons*0.02 + .4*this.volume*0.005;
             this.daily_consumption *= 24; /* Computation */
         }
         else

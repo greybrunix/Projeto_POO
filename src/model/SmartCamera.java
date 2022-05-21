@@ -48,7 +48,7 @@ public class SmartCamera extends SmartDevice{
     /* Computations */
     public void computeConsumption(){
         if (this.getMode()){
-            this.daily_consumption = this.getRes()*0.10 * this.getSize()*0.01*0.9;
+            this.daily_consumption = this.getRes()*0.009*0.1 * this.getSize()*0.02*0.9;
             this.daily_consumption *= 24;
         }
         else
