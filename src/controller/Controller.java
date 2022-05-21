@@ -74,7 +74,7 @@ import java.util.Scanner;
                         }
                         boolean mode = Boolean.parseBoolean(argv[0]);
                         int tone = Integer.parseInt(argv[2]) % 3 + 1;
-                        int dim = Integer.parseInt(argv[3]);
+                        double dim = Double.parseDouble(argv[3]);
                         SmartDevice sd = new SmartBulb(mode, argv[1], tone, dim);
                         mod.addIsolDevice(sd);
                         }

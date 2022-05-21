@@ -2,6 +2,7 @@ package view;
 
 
 import model.Model;
+import model.SmartHouse;
 
 /**
  * UI
@@ -126,11 +127,12 @@ public interface View {
     }
 
     static void showAllBills(Model mod){
-        for (String name : mod.getEnerg().keySet())
-            showBills(mod, name);
+        for (String comp : mod.getEnerg().keySet())
+            showBills(mod, comp);
     }
-    static void showBills(Model mod, String name) {
-        System.out.println("Hi");
+    static void showBills(Model mod, String comp) {
+        for (SmartHouse house : mod.getEnerg().get(comp).getHouses().values())
+            System.out.println(mod.getEnerg().get(comp).compute(house.getOwner()));
     }
 
     static void showErrorTimeSkip() {
@@ -148,8 +150,14 @@ public interface View {
     }
 
     static void showInputError() {
+        System.out.print("Please make sure to insert the correct amount of parameters.\n>> ");
     }
 
     static void showIntError() {
+        System.out.print("Please make sure to insert an integer. \n>> ");
+    }
+
+    static void showDevDC(String id, double dc) {
+        System.out.print("The device " + id + " is expending " + dc + "KWh per day.\n");
     }
 }

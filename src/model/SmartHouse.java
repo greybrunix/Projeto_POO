@@ -108,15 +108,15 @@ public class SmartHouse extends SmartEP{
     }
     public String toString(){
         StringBuilder sb = new StringBuilder();
-        sb.append("This house belongs to:\t")
+        return sb.append("( ")
           .append(this.getOwner())
-          .append("With Fiscal Identifying Number:\t")
+          .append(", ")
           .append(this.getNIF())
-          .append("With the following devices:\t")
+          .append(" : ")
           .append(devices.values().toString())
-          .append("And the following rooms:\t")
-          .append(rooms.keySet().toString());
-        return sb.toString();
+          .append(" ; ")
+          .append(rooms.keySet().toString())
+          .append(" )").toString();
     }
     public SmartHouse clone(){
         return new SmartHouse(this);

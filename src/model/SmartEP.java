@@ -46,6 +46,9 @@ public class SmartEP implements Serializable{
             houses.put(house.getOwner(), house.clone());
         return houses; */
     }
+    public void addHouse(String owner, SmartHouse house){
+        this.houses.put(owner, house);
+    }
     public void setPrice(int f){
         this.price = f % 2;
     }
@@ -91,7 +94,11 @@ public class SmartEP implements Serializable{
             result += (base_value*device.getConsumption()*(1+tax_factor))*0.9;
         return result;
     }
-
+    public int compute(String owner){
+        if (this.price == 0)
+            return compute_price_one_sing(owner);
+        else return compute_price_two_sing(owner);
+    }
     @Override
     public boolean equals(Object o){
         if (this == o) return true;
@@ -99,6 +106,15 @@ public class SmartEP implements Serializable{
         SmartEP comerc = (SmartEP) o;
         return (this.name.equals(comerc.getName())
                 && this.houses.equals(comerc.getHouses()));
+    }
+    @Override
+    public String toString(){
+        StringBuilder sb = new StringBuilder();
+        return sb.append("( ")
+            .append(this.name)
+            .append(": ")
+            .append(this.houses.values().toString())
+            .append(" )").toString();
     }
     @Override
     public SmartEP clone(){

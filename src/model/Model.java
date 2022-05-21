@@ -6,7 +6,6 @@ import java.io.*;
 import java.time.LocalDate;
 import java.time.temporal.TemporalAdjusters;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 public class Model implements Serializable{
@@ -91,9 +90,12 @@ public class Model implements Serializable{
      */
     public void signContract(String owner, String comp_name){
         if (existsHouse(owner) && existsEnerg(comp_name)){
-        energ_prov.get(comp_name).getHouses().put(owner, houses_no_contract.get(owner));
+        energ_prov.get(comp_name).addHouse(owner, this.houses_no_contract.get(owner));
         houses_no_contract.remove(owner);
         }
+        /*for (SmartEP ep : energ_prov.values()){
+            System.out.println(ep.toString());
+        }*/
     }
     /**
      * 
@@ -207,13 +209,13 @@ public class Model implements Serializable{
     public void turnOnDev(String id) {
         String owner = whereIsDev(id);
         String comp = whereIsHouse(owner);
-        System.out.println(comp);
         this.energ_prov.get(comp).getHouses().get(owner).setDeviceOn(id);
     }
 
     public void turnOffDev(String id) {
         String owner = whereIsDev(id);
         String comp = whereIsHouse(owner);
+        System.out.println(comp);
         this.energ_prov.get(comp).getHouses().get(owner).setDeviceOff(id);
     } //TODO: MAKE SURE THIS ONLY APPLIES WHEN DAY ENDS
 
@@ -264,7 +266,8 @@ public class Model implements Serializable{
     public void getDevDC(String id) {
         String owner = whereIsDev(id);
         String comp = whereIsHouse(owner);
-        this.energ_prov.get(comp).getHouses().get(owner).getDevices().get(id).getConsumption();
+        double res = this.energ_prov.get(comp).getHouses().get(owner).getDevices().get(id).getConsumption();
+        View.showDevDC(id, res);
     }
 
     public void setAllOn(String owner) {
@@ -304,20 +307,21 @@ public class Model implements Serializable{
 
     private String whereIsDev(String id){
         String owner = "";
-        for (String name_of_comp : this.energ_prov.keySet())
-            for (SmartHouse house : this.energ_prov.get(name_of_comp).getHouses().values()) // get is null
+        for (String name_of_comp : this.energ_prov.keySet()){
+            for (SmartHouse house : this.energ_prov.get(name_of_comp).getHouses().values()){ // get is null
                 if (house.getDevices().containsKey(id)){
                     owner = house.getOwner();
                 }
+            }
+        }
         return owner;
     }
     private String whereIsHouse(String owner){
         String comp = "";
-        Iterator<SmartEP> iterator = energ_prov.values().iterator();
-        while (iterator.hasNext()){
-            SmartEP ep = iterator.next();
-            if (ep.getHouses().containsKey(owner))
-                comp = ep.getName();
+        for (String name_of_comp : this.energ_prov.keySet()){
+            if (this.energ_prov.get(name_of_comp).getHouses().containsKey(owner)){
+                comp = name_of_comp;
+            }
         }
         return comp;
     }

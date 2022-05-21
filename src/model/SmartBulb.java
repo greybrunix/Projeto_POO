@@ -16,13 +16,13 @@ public class SmartBulb extends SmartDevice{
 
     /* Variables */
     private int tone; /* WARM NEUTRAL COLD */
-    private int dimensions; /* in centimetres */
+    private double dimensions; /* in centimetres */
     private double daily_consumption; /* formula is group specific */
 
     /* Constructors */
     public SmartBulb(){ // Might remove this
     }
-    public SmartBulb(boolean mode,String id,int tone, int dimensions){
+    public SmartBulb(boolean mode,String id,int tone, double dimensions){
         super(mode, id);
         this.setTone(tone);
         this.setDimensions(dimensions);
@@ -39,7 +39,7 @@ public class SmartBulb extends SmartDevice{
     public int getTone(){
         return this.tone;
     }
-    public int getDimensions(){
+    public double getDimensions(){
         return this.dimensions;
     }
     public double getConsumption(){
@@ -53,7 +53,7 @@ public class SmartBulb extends SmartDevice{
         else this.tone = t;
         this.computeConsumption();
     }
-    public void setDimensions(int dimensions){
+    public void setDimensions(double dimensions){
         this.dimensions = dimensions;
     }
 
@@ -62,15 +62,15 @@ public class SmartBulb extends SmartDevice{
         if (this.getMode())
             switch(this.getTone()){
                 case COLD: 
-                    this.daily_consumption = Consumption_Val*10 + COLD*.25;
+                    this.daily_consumption = Consumption_Val*2.5 + COLD*.25;
                     this.daily_consumption *= 24;
                     break;
                 case NEUTRAL:
-                    this.daily_consumption = Consumption_Val*10 + NEUTRAL*.5;
+                    this.daily_consumption = Consumption_Val*2.5 + NEUTRAL*.5;
                     this.daily_consumption *= 24;
                     break;
                 case WARM:
-                    this.daily_consumption = Consumption_Val*10 + WARM*.75;
+                    this.daily_consumption = Consumption_Val*2.5 + WARM*.75;
                     this.daily_consumption *= 24;
                     break;
             }
@@ -109,18 +109,17 @@ public class SmartBulb extends SmartDevice{
     @Override
     public String toString(){
         StringBuilder sb = new StringBuilder();
-        sb.append("Lightbulb with ID:\t")
+        return sb.append("( ")
           .append(this.getId())
-          .append("\nThis lightbulb is turned ")
+          .append(": (ON: ")
           .append(this.getMode())
-          .append("\nThis lightbulb is in tone:\t")
+          .append(", TONE: ")
           .append(this.getTone())
-          .append("\nThis lightbulb has dimensions in cm:\t")
+          .append(", ")
           .append(this.getDimensions())
-          .append("\nThis lightbulb is consuming:\t")
+          .append("cm, ")
           .append(this.getConsumption())
-          .append('\n');
-        return sb.toString();
+          .append("KWh) )").toString();
     }
     @Override
     public SmartBulb clone(){

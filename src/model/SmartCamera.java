@@ -48,7 +48,7 @@ public class SmartCamera extends SmartDevice{
     /* Computations */
     public void computeConsumption(){
         if (this.getMode()){
-            this.daily_consumption = this.getRes()*0.01*0.10 * this.getSize()*0.001*0.9;
+            this.daily_consumption = this.getRes()*0.10 * this.getSize()*0.01*0.9;
             this.daily_consumption *= 24;
         }
         else
@@ -78,18 +78,17 @@ public class SmartCamera extends SmartDevice{
     @Override
     public String toString(){
         StringBuilder sb = new StringBuilder();
-        sb.append("Camera with id:\t")
+        return sb.append("( ")
           .append(this.getId())
-          .append("Is this camera on?\t")
+          .append(": (ON: ")
           .append(this.getMode())
-          .append("\nThis camera is recording in res:\t")
+          .append(", ")
           .append(this.getRes())
-          .append("\nThis camera is storing in size:\t")
+          .append("p, ")
           .append(this.getSize())
-          .append("\nThis Camera is expending daily:\t")
+          .append("KB, ")
           .append(this.getConsumption())
-          .append('\n');
-        return sb.toString();
+          .append("KWh) )").toString();
     }
     @Override
     public SmartCamera clone(){

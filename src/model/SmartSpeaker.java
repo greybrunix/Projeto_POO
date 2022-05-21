@@ -88,7 +88,7 @@ public class SmartSpeaker extends SmartDevice{
     /* Computations */
     public void computeConsumption(){
         if (this.getMode()){
-            this.daily_consumption = .6*this.brand_base_cons + .4*this.volume;
+            this.daily_consumption = .6*this.brand_base_cons + .4*this.volume*0.02;
             this.daily_consumption *= 24; /* Computation */
         }
         else
@@ -129,20 +129,19 @@ public class SmartSpeaker extends SmartDevice{
     @Override
     public String toString(){
         StringBuilder sb = new StringBuilder();
-        sb.append("Speaker with id:\t")
+        return sb.append("( ")
           .append(this.getId())
-          .append("Is this Speaker on?\t")
+          .append(": (ON: ")
           .append(this.getMode())
-          .append("Speaker with Volume:\t")
+          .append(", VOLUME: ")
           .append(this.getVolume())
-          .append("\nPlaying the radio station:\t")
+          .append(", RADIO: ")
           .append(this.getRadio())
-          .append("\nThis speaker is from the brand:\t")
+          .append(" FM, ")
           .append(this.getBrand())
-          .append("\nThis speaker is consuming:\t")
+          .append(", ")
           .append(this.getConsumption())
-          .append('\n');
-        return sb.toString();
+          .append("KWh) )").toString();
     }
     @Override
     public SmartSpeaker clone(){
