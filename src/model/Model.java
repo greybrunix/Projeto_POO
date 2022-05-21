@@ -27,8 +27,7 @@ public class Model implements Serializable{
         this.dev_with_changes = new HashMap<String, SmartDevice>();
         this.house_with_changes = new HashMap<String, SmartEP>();
         this.date = LocalDate.now();
-        this.mostExp = new SmartHouse();
-        this.mostLucrative = new SmartEP();
+
     }
 
     public Map<String, SmartDevice> getDevs(){
@@ -103,6 +102,8 @@ public class Model implements Serializable{
         if (existsHouse(owner) && existsEnerg(comp_name)){
         energ_prov.get(comp_name).addHouse(owner, this.houses_no_contract.get(owner));
         houses_no_contract.remove(owner);
+        this.mostExp = this.energ_prov.get(comp_name).getHouses().get(owner);
+        this.mostLucrative = this.energ_prov.get(comp_name);
         }
         /*for (SmartEP ep : energ_prov.values()){
             System.out.println(ep.toString());
@@ -126,13 +127,12 @@ public class Model implements Serializable{
             for (SmartEP ep : this.energ_prov.values()){
                 for (SmartHouse house : ep.getHouses().values()){
                     String comp = whereIsHouse(this.mostExp.getOwner());
-                    if (comp == null) this.mostExp = house;
-                    else if (ep.compute(house.getOwner()) > this.energ_prov.get(comp).compute(mostExp.getOwner())) this.mostExp = house;
+                    if (ep.compute(house.getOwner()) > this.energ_prov.get(comp).compute(mostExp.getOwner())) this.mostExp = house;
                 }
             }
             for (SmartEP ep : this.energ_prov.values()){
-                if (this.mostLucrative.getName() == null) this.mostLucrative = ep;
-                else if (ep.computeAll() > this.energ_prov.get(mostLucrative.getName()).computeAll()) this.mostLucrative = ep;
+
+                if (ep.computeAll() > this.energ_prov.get(mostLucrative.getName()).computeAll()) this.mostLucrative = ep;
             }
 
         }
