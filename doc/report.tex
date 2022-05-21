@@ -86,9 +86,11 @@
 \subsection{Simular a passagem de tempo, estatisticas e alterar estados}
         De modo a realizar a componente mais importante da simulação: a passagem do tempo,
         foi utilizado o package `LocalDate', fazendo uso do metodo plusDays.
-        Através desta funcionalidade tambem a conseguimos aproveitar para efetuar as alterações que não podem ser feitas de modo imediato,
+        \\ Através desta funcionalidade tambem a conseguimos aproveitar para efetuar as alterações que não podem ser feitas de modo imediato,
         seja porque precisam de pelo menos um dia para efetuar, ou porque só podem ocorrer no próximo ciclo de faturação, assim através de
         uma estrutura de dados auxiliar, conseguimos efetuar essas alterações, sempre respeitando composição e encapsulamento.
+        \\ Para além destas alterações, certas estatisticas são dependentes de faturações, daí ser essencial quando a passagem do tempo ocorre,
+        verificar se estamos no primeiro dia do mês (por convenção de grupo, dia de faturação), calcular as estatisticas previstas para a realização do projeto.
 
 \newpage
 \section{Conclusão}
