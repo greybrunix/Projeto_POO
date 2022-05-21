@@ -99,6 +99,10 @@ public class SmartEP implements Serializable{
             return compute_price_one_sing(owner);
         else return compute_price_two_sing(owner);
     }
+    public int computeAll() {
+        if (this.price == 0) return compute_price_one();
+        else return compute_price_two();
+    }
     @Override
     public boolean equals(Object o){
         if (this == o) return true;
@@ -120,4 +124,5 @@ public class SmartEP implements Serializable{
     public SmartEP clone(){
         return new SmartEP(this);
     }
+
 }

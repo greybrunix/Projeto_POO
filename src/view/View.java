@@ -122,7 +122,9 @@ public interface View {
         }
     }
     static void showProvAppPrompts(int test_int){
-        if (test_int == 1) System.out.print("Insere o nome da empresa:\n>> ");
+        if (test_int == 3){
+            System.out.print("Insere o nome da empresa: \n>> ");
+        }
     }
 
     static void showAllBills(Model mod){

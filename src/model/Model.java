@@ -16,6 +16,8 @@ public class Model implements Serializable{
     private final Map<String, SmartEP> energ_with_changes;
     private final Map<String, SmartEP> house_with_changes;
     private final Map<String, SmartDevice> dev_with_changes;
+    private SmartHouse mostExp;
+    private SmartEP mostLucrative;
 
     public Model(){
         this.devices_no_house = new HashMap<String, SmartDevice>();
@@ -25,6 +27,8 @@ public class Model implements Serializable{
         this.dev_with_changes = new HashMap<String, SmartDevice>();
         this.house_with_changes = new HashMap<String, SmartEP>();
         this.date = LocalDate.now();
+        this.mostExp = new SmartHouse();
+        this.mostLucrative = new SmartEP();
     }
 
     public Map<String, SmartDevice> getDevs(){
@@ -39,7 +43,12 @@ public class Model implements Serializable{
     public LocalDate getDate(){
         return this.date;
     }
-
+    public SmartHouse getMostExp(){
+        return this.mostExp.clone();
+    }
+    public SmartEP getMostLucrative(){
+        return this.mostLucrative.clone();
+    }
     /**
      * 
      * @param dev
@@ -114,6 +123,18 @@ public class Model implements Serializable{
             || date.isEqual(date.with(TemporalAdjusters.firstDayOfMonth())))){
             if (!energ_with_changes.isEmpty()) operateEnergChanges();
             if (!house_with_changes.isEmpty()) operateHouseChanges();
+            for (SmartEP ep : this.energ_prov.values()){
+                for (SmartHouse house : ep.getHouses().values()){
+                    String comp = whereIsHouse(this.mostExp.getOwner());
+                    if (comp == null) this.mostExp = house;
+                    else if (ep.compute(house.getOwner()) > this.energ_prov.get(comp).compute(mostExp.getOwner())) this.mostExp = house;
+                }
+            }
+            for (SmartEP ep : this.energ_prov.values()){
+                if (this.mostLucrative.getName() == null) this.mostLucrative = ep;
+                else if (ep.computeAll() > this.energ_prov.get(mostLucrative.getName()).computeAll()) this.mostLucrative = ep;
+            }
+
         }
     }
     private void operateDevChanges() {
@@ -331,4 +352,5 @@ public class Model implements Serializable{
         }
         return comp;
     }
+
 }

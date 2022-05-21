@@ -291,7 +291,18 @@ import java.util.Scanner;
             case 4 -> {
             ViewMenu.mainMenuStats();
             test_int = Math.abs(sc.nextInt()) % 4;
+            View.showProvAppPrompts(test_int);
             switch (test_int){
+                case 1-> mod.getMostExp();
+                case 2-> mod.getMostLucrative();
+                case 3-> {
+                    String[] argv = ssc.nextLine().split(",");
+                    while (argv.length != 1){
+                        View.showInputError();
+                        argv = ssc.nextLine().split(",");
+                    }
+                    View.showBills(mod, argv[0]);
+                }
                 default->{}
             }
             }
@@ -316,13 +327,5 @@ import java.util.Scanner;
             View.showError(e);
             //e.printStackTrace();
         }
-    }
-    public void houseMostExp(String name) {
-    }
-    public void largestBill() {
-    }
-    public void companyBills() {
-    }
-    public void podiumConsumption() {
     }
  }

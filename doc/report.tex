@@ -83,9 +83,12 @@
         Através de FileOutputStreams e FileInputStreams e do uso de MVC, é possível guardar e carregar seguramente o estado da sessão em curso.
         Isto pois, toda a informação relevante está armazenada inteiramente no Model, sendo assim é apenas necessário escrever para um ficheiro binário o
         conteúdo da classe Model. Tornando o uso de sessões anteriores não só viável mas incrivelmente eficiente e acessível para o utilizador.
-\subsection{}
-
-
+\subsection{Simular a passagem de tempo, estatisticas e alterar estados}
+        De modo a realizar a componente mais importante da simulação: a passagem do tempo,
+        foi utilizado o package `LocalDate', fazendo uso do metodo plusDays.
+        Através desta funcionalidade tambem a conseguimos aproveitar para efetuar as alterações que não podem ser feitas de modo imediato,
+        seja porque precisam de pelo menos um dia para efetuar, ou porque só podem ocorrer no próximo ciclo de faturação, assim através de
+        uma estrutura de dados auxiliar, conseguimos efetuar essas alterações, sempre respeitando composição e encapsulamento.
 
 \newpage
 \section{Conclusão}
