@@ -23,7 +23,7 @@ public class SmartEP implements Serializable{
         this.setPrice(0);
         this.houses = new HashMap<String,SmartHouse>();
     }
-    private SmartEP(SmartEP ep){
+    public SmartEP(SmartEP ep){
         super();
         this.name = ep.getName();
         this.setPrice(ep.getPrice());

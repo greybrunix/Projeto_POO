@@ -14,7 +14,7 @@ public class Model implements Serializable{
     private final Map<String, SmartEP> energ_prov;
     private LocalDate date;
     private final Map<String, SmartEP> energ_with_changes;
-    private final Map<String, SmartHouse> house_with_changes;
+    private final Map<String, SmartEP> house_with_changes;
     private final Map<String, SmartDevice> dev_with_changes;
 
     public Model(){
@@ -23,7 +23,7 @@ public class Model implements Serializable{
         this.energ_prov = new HashMap<String, SmartEP>();
         this.energ_with_changes = new HashMap<String, SmartEP>();
         this.dev_with_changes = new HashMap<String, SmartDevice>();
-        this.house_with_changes = new HashMap<String, SmartHouse>();
+        this.house_with_changes = new HashMap<String, SmartEP>();
         this.date = LocalDate.now();
     }
 
@@ -134,11 +134,14 @@ public class Model implements Serializable{
     }
 
     private void operateHouseChanges() {
-        for (SmartHouse house: house_with_changes.values()){
-            String comp = whereIsHouse(house.getOwner());
-            this.energ_prov.get(comp).getHouses().remove(house.getOwner());
-            this.energ_prov.get(comp).addHouse(house.getOwner(), house);
-            this.house_with_changes.remove(house.getOwner());
+        for (String owner: house_with_changes.keySet()){
+            String comp = whereIsHouse(owner);
+            SmartEP ep = this.house_with_changes.get(owner);
+            this.energ_prov.remove(ep.getName());
+            this.energ_prov.put(ep.getName(),ep.clone());
+            this.energ_prov.get(comp).getHouses().remove(owner);
+            this.house_with_changes.remove(owner);
+            
         }
     }
 
@@ -246,26 +249,26 @@ public class Model implements Serializable{
     public void incVol(String id) {
         String owner = whereIsDev(id);
         String comp = whereIsHouse(owner);
-        this.energ_prov.get(comp).getHouses().get(owner).incVol(id);
+        this.energ_prov.get(comp).getHouses().get(owner).incDevVol(id);
     }
 
     public void decVol(String id) {
         String owner = whereIsDev(id);
         String comp = whereIsHouse(owner);
-        this.energ_prov.get(comp).getHouses().get(owner).decVol(id);
-        System.out.println(energ_prov);
+        this.energ_prov.get(comp).getHouses().get(owner).decDevVol(id);
+        System.out.println(energ_prov.values());
     }
 
     public void incTone(String id) {
         String owner = whereIsDev(id);
         String comp = whereIsHouse(owner);
-        this.energ_prov.get(comp).getHouses().get(owner).incTone(id);
+        this.energ_prov.get(comp).getHouses().get(owner).incDevTone(id);
     }
 
     public void decTone(String id) {
         String owner = whereIsDev(id);
         String comp = whereIsHouse(owner);
-        this.energ_prov.get(comp).getHouses().get(owner).decTone(id);
+        this.energ_prov.get(comp).getHouses().get(owner).decDevTone(id);
     }
 
     public void getDevDC(String id) {
@@ -288,25 +291,25 @@ public class Model implements Serializable{
     public void setAllOff(String owner) {
         String comp = whereIsHouse(owner);
         this.energ_prov.get(comp).getHouses().get(owner).setAllOff();
-    } //TODO: Make sure this only happens when day ends
+    } 
 
     public void setAllOffDiv(String owner, String room) {
         String comp = whereIsHouse(owner);
         this.energ_prov.get(comp).getHouses().get(owner).setAllinRoomOff(room);
-    } // TODO: make this only take effect when day ends
+    }
 
     public void changeContract(String owner, String comp) {
         String comp_old = whereIsHouse(owner);
         SmartHouse house = this.energ_prov.get(comp_old).getHouses().get(owner);
-        this.house_with_changes.put(owner, house);
-
-        //this.energ_prov.put(comp, house);
-    } // TODO: Make sure this only applies when month ends
+        SmartEP comp_new = new SmartEP(this.energ_prov.get(comp));
+        comp_new.addHouse(owner, house);
+        this.house_with_changes.put(house.getName(), comp_new);
+    }
 
     public void changeFormula(String comp) {
         SmartEP ep = this.energ_prov.get(comp).clone();
         this.energ_with_changes.put(comp,ep);
-    } // TODO: check this sus code
+    } 
 
     private String whereIsDev(String id){
         String owner = "";

@@ -9,8 +9,8 @@ package model;
  */
 public class SmartSpeaker extends SmartDevice{
     /* Constants  enums and structs */
-    public static final int MAX = 20;    
-
+    public static final int MAX = 20;
+    public static final int MIN = 1;
     /* Variables */
     private double daily_consumption;
     private int volume;
@@ -61,8 +61,8 @@ public class SmartSpeaker extends SmartDevice{
 
     /* Setters */
     public void setVolume(int v){
-        if (v >= 20) this.volume = 20;
-        else if (v <= 0) this.volume = 0;
+        if (v > MAX) this.volume = 20;
+        if (v < MIN) this.volume = 0;
         else this.volume = v;
         computeConsumption();
     }
@@ -81,17 +81,21 @@ public class SmartSpeaker extends SmartDevice{
     /* Computations */
     public void computeConsumption(){
         if (this.getMode()){
-            this.daily_consumption = .6*this.brand_base_cons*0.02 + .4*this.volume*0.005;
+            this.daily_consumption = .6*this.brand_base_cons*0.02 + .4*this.volume;
             this.daily_consumption *= 24; /* Computation */
         }
         else
             this.daily_consumption = 0;
     }
     public void volumeUP(){
-        this.setVolume(this.getVolume()+1);
+        if (this.getVolume() < MAX) this.setVolume(this.getVolume()+1);
+        else this.setVolume(this.getVolume());
+        this.computeConsumption();
     }
     public void volumeDOWN(){
-        this.setVolume(this.getVolume()-1);
+        if (this.getVolume() > MIN) this.setVolume(this.getVolume()-1);
+        else this.setVolume(this.getVolume());
+        this.computeConsumption();
     }
     public void incTone(){}
     public void decTone(){}

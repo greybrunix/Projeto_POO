@@ -25,7 +25,7 @@ public class SmartHouse extends SmartEP{
         this.devices = new HashMap<String, SmartDevice>();
         this.rooms = new HashMap<String, List<String>>();
     }
-    private SmartHouse(SmartHouse h){
+    public SmartHouse(SmartHouse h){
         this.owner = h.getOwner();
         this.NIF = h.getNIF();
         this.devices = h.getDevices();
@@ -68,16 +68,16 @@ public class SmartHouse extends SmartEP{
     public void setDeviceOn(String id){
         devices.get(id).setON();
     }
-    public void incTone(String id){
+    public void incDevTone(String id){
         devices.get(id).incTone();
     }
-    public void decTone(String id){
+    public void decDevTone(String id){
         devices.get(id).decTone();
     }
-    public void incVol(String id){
+    public void incDevVol(String id){
         devices.get(id).volumeUP();
     }
-    public void decVol(String id){
+    public void decDevVol(String id){
         devices.get(id).volumeDOWN();
     }
     public int totalDailyCons(){
