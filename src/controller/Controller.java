@@ -141,8 +141,8 @@ import java.util.Scanner;
                             View.showIntError();
                             num_days = sc.nextInt();
                         }
-                        mod.skipTime(num_days);
                         View.welcomeCreate();
+                        mod.skipTime(num_days);
                         creating = false;
                         start = false;
                         app(mod);
