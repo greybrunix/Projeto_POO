@@ -1,3 +1,10 @@
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.gz
+*.toc
 *.class
 .idea
 *.iml
+out

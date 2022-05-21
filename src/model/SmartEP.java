@@ -18,26 +18,33 @@ public class SmartEP implements Serializable{
     public SmartEP(){
     }
     public SmartEP(String name){
+        super();
         this.name  = name;
         this.setPrice(0);
         this.houses = new HashMap<String,SmartHouse>();
     }
     private SmartEP(SmartEP ep){
+        super();
         this.name = ep.getName();
         this.setPrice(ep.getPrice());
         this.houses = ep.getHouses();
+        this.tax_factor = ep.getTax();
+        this.base_value = ep.getBV();
     }
     public int getPrice(){
         return this.price;
     }
+    public double getTax() { return this.tax_factor;}
+    public int getBV() { return this.base_value;}
     public String getName(){
         return this.name;
     }
     public Map<String,SmartHouse> getHouses(){
-        Map<String, SmartHouse> houses = new HashMap<String,SmartHouse>();
+        return new HashMap<String,SmartHouse>(this.houses);
+        /*Map<String, SmartHouse> houses = new HashMap<String,SmartHouse>();
         for (SmartHouse house: this.houses.values())
             houses.put(house.getOwner(), house.clone());
-        return houses;
+        return houses; */
     }
     public void setPrice(int f){
         this.price = f % 2;
@@ -90,7 +97,7 @@ public class SmartEP implements Serializable{
         if (this == o) return true;
         if (o == null || this.getClass() != o.getClass()) return false;
         SmartEP comerc = (SmartEP) o;
-        return (this.name == comerc.getName()
+        return (this.name.equals(comerc.getName())
                 && this.houses.equals(comerc.getHouses()));
     }
     @Override

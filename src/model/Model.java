@@ -1,12 +1,13 @@
 package model;
 
-import java.util.Map;
 import view.View;
 
 import java.io.*;
 import java.time.LocalDate;
 import java.time.temporal.TemporalAdjusters;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 public class Model implements Serializable{
     private final Map<String, SmartDevice> devices_no_house;
@@ -185,11 +186,10 @@ public class Model implements Serializable{
     public Model loadState(String fileName) throws
                                 IOException, ClassNotFoundException
     {
-        Model sys = new Model();
         try {
             FileInputStream fis = new FileInputStream(fileName);
             ObjectInputStream ois = new ObjectInputStream(fis);
-            sys = (Model) ois.readObject();
+            Model sys = (Model) ois.readObject();
             ois.close();
             return sys;
         } catch (FileNotFoundException e){
@@ -207,6 +207,7 @@ public class Model implements Serializable{
     public void turnOnDev(String id) {
         String owner = whereIsDev(id);
         String comp = whereIsHouse(owner);
+        System.out.println(comp);
         this.energ_prov.get(comp).getHouses().get(owner).setDeviceOn(id);
     }
 
@@ -302,7 +303,7 @@ public class Model implements Serializable{
     } // TODO: Make sure this only applies when month ends
 
     private String whereIsDev(String id){
-        String owner = new String();
+        String owner = "";
         for (String name_of_comp : this.energ_prov.keySet())
             for (SmartHouse house : this.energ_prov.get(name_of_comp).getHouses().values()) // get is null
                 if (house.getDevices().containsKey(id)){
@@ -311,10 +312,13 @@ public class Model implements Serializable{
         return owner;
     }
     private String whereIsHouse(String owner){
-        String name_of_comp = new String();
-        for (String comp : this.energ_prov.keySet())
-            if (this.energ_prov.get(comp).getHouses().containsKey(owner)) // get is null
-                name_of_comp = comp;
-        return name_of_comp;
+        String comp = "";
+        Iterator<SmartEP> iterator = energ_prov.values().iterator();
+        while (iterator.hasNext()){
+            SmartEP ep = iterator.next();
+            if (ep.getHouses().containsKey(owner))
+                comp = ep.getName();
+        }
+        return comp;
     }
 }

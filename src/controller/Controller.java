@@ -1,10 +1,11 @@
 package controller;
 
+import model.*;
+import view.View;
+import view.ViewMenu;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
-import model.*;
-import view.*;
 
 /**
  * Logica do Programa

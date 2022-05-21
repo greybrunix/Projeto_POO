@@ -1,7 +1,7 @@
 package view;
 
 
-import model.*;
+import model.Model;
 
 /**
  * UI
@@ -47,12 +47,13 @@ public interface View {
     }
     static void showDeviceAddError()
     {
-        System.err.println("Erro, por favor verifique se:"
-            + " 1) A casa existe;"
-            + "\n 2) A casa ainda nao tem contrato assinado com Comercializador de Energia;"
-            + "\n 3) A divisao existe;"
-            + "\n 4) O dispositivo existe e ainda nao foi associado a uma casa;"
-            + "\n Por favor, corrija os erros mencionados e tente de novo.\n");
+        System.err.println("""
+                Erro, por favor verifique se: 1) A casa existe;
+                 2) A casa ainda nao tem contrato assinado com Comercializador de Energia;
+                 3) A divisao existe;
+                 4) O dispositivo existe e ainda nao foi associado a uma casa;
+                 Por favor, corrija os erros mencionados e tente de novo.
+                """);
     }
     static void showInputStartMenu(int test_int)
     {
@@ -104,31 +105,23 @@ public interface View {
     }
     static void showDevAppPrompts(int test_int){
         switch (test_int){
-            case 1,2,3,4,5,6,7 ->{
+            case 1,2,3,4,5,6,7:
                 System.out.print("Insere o id do dispositivo: \n>> ");
-            }
-            default -> {}
+            default: break;
         }
     }
     static void showHouseAppPrompts(int test_int){
         switch (test_int){
-            case 1,2,3,4,5 ->{
+            case 1,2,3,4,5:
                 System.out.print("Insere o nome do dono da casa: \n>> ");
-            }
-            default -> {}
+            default: break;
         }
     }
     static void showProvAppPrompts(int test_int){
         switch(test_int){
-            case 1->{
-                System.out.print("Insere o nome da empresa e o novo valor base de KWh:\n>> ");
-            }
-            case 2->{
-                System.out.print("Insere o nome da empresa e o novo fator de impostos:\n>> ");
-            }
-            case 3->{
-                System.out.print("Insere o nome da empresa:\n>> ");
-            }
+            case 1-> System.out.print("Insere o nome da empresa e o novo valor base de KWh:\n>> ");
+            case 2-> System.out.print("Insere o nome da empresa e o novo fator de impostos:\n>> ");
+            case 3-> System.out.print("Insere o nome da empresa:\n>> ");
         }
     }
 
@@ -141,11 +134,13 @@ public interface View {
     }
 
     static void showErrorTimeSkip() {
-        System.out.print("Nao e possivel proceder se:\n"
-            + "1) Nao existem Comercializadores de Energia.\n"
-            + "2) Existem Dispositivos sem casa associada.\n"
-            + "3) Existem Casas sem contrato assinado com Comerc. de Energia.\n"
-            + "Por favor, corrija os erros mencionados e tente de novo.\n");
+        System.out.print("""
+                Nao e possivel proceder se:
+                1) Nao existem Comercializadores de Energia.
+                2) Existem Dispositivos sem casa associada.
+                3) Existem Casas sem contrato assinado com Comerc. de Energia.
+                Por favor, corrija os erros mencionados e tente de novo.
+                """);
     }
 
     static void showDate(Model mod) {

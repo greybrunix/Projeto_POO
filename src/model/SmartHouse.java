@@ -8,10 +8,10 @@ import java.util.ArrayList;
  */
 public class SmartHouse extends SmartEP{
 
-    private Map<String, SmartDevice> devices; // id -> device
-    private Map<String, List<String>> rooms; // name of room -> List of IDs
-    private String owner;
-    private String NIF;
+    private final Map<String, SmartDevice> devices; // id -> device
+    private final Map<String, List<String>> rooms; // name of room -> List of IDs
+    private final String owner;
+    private final String NIF;
 
     public SmartHouse(){ // Might remove this class
         this.owner = "";
@@ -95,7 +95,7 @@ public class SmartHouse extends SmartEP{
     {
         for (List<String> devices_in_room: rooms.values())
             for (String identifier: devices_in_room)
-                if (id == identifier) return true;
+                if (id.equals(identifier)) return true;
         return false;
     }
 
@@ -103,8 +103,8 @@ public class SmartHouse extends SmartEP{
         if (o == this) return true;
         if (o == null || this.getClass() != o.getClass()) return false;
         SmartHouse house = (SmartHouse) o;
-        return (house.getNIF() == this.getNIF() &&
-                house.getOwner() == this.getNIF());
+        return (house.getNIF().equals(this.getNIF()) &&
+                house.getOwner().equals(this.getOwner()));
     }
     public String toString(){
         StringBuilder sb = new StringBuilder();
