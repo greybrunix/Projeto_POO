@@ -263,7 +263,7 @@ public class Model implements Serializable{
 
     public void setAllOnDiv(String owner, String room) {
         String comp = whereIsHouse(owner);
-        this.energ_prov.get(comp).getHouses().get(owner).setAllinRoomOn(room);;
+        this.energ_prov.get(comp).getHouses().get(owner).setAllinRoomOn(room);
     }
 
     public void setAllOff(String owner) {
@@ -273,7 +273,7 @@ public class Model implements Serializable{
 
     public void setAllOffDiv(String owner, String room) {
         String comp = whereIsHouse(owner);
-        this.energ_prov.get(comp).getHouses().get(owner).setAllinRoomOff(room);;
+        this.energ_prov.get(comp).getHouses().get(owner).setAllinRoomOff(room);
     } // TODO: make this only take effect when day ends
 
     public void changeContract(String owner, String comp) {
