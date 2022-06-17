@@ -6,7 +6,7 @@ import java.util.ArrayList;
 /**
  * Class that refers to a house, a collection of devices and rooms
  */
-public class SmartHouse extends SmartEP{
+public class SmartHouse implements Serializable{
 
     private final Map<String, SmartDevice> devices; // id -> device
     private final Map<String, List<String>> rooms; // name of room -> List of IDs
