@@ -324,7 +324,7 @@ public class Model implements Serializable{
         SmartHouse house = this.energ_prov.get(comp_old).getHouses().get(owner);
         SmartEP comp_new = new SmartEP(this.energ_prov.get(comp));
         comp_new.addHouse(owner, house);
-        this.house_with_changes.put(house.getName(), comp_new);
+        this.house_with_changes.put(house.getOwner(), comp_new);
     }
 
     public void changeFormula(String comp) {
